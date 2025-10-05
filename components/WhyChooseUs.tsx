@@ -47,10 +47,10 @@ const WhyChooseUs = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Pourquoi choisir <span className="text-blue-600">AMD Serrurier Paris</span> ?
+            Pourquoi choisir <span className="text-blue-600">Serrurier Pas Cher Paris</span> ?
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Des centaines de clients font confiance à AMD chaque mois. 
+            Des centaines de clients font confiance à Serrurier Pas Cher Paris chaque mois.
             Découvrez pourquoi nous sommes le serrurier de référence à Paris.
           </p>
         </div>
@@ -105,7 +105,7 @@ const WhyChooseUs = () => {
         <div className="mt-16 text-center">
           <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-white">
             <h3 className="text-2xl font-bold mb-4">
-              Faites confiance à AMD, experts parisiens
+              Faites confiance à Serrurier Pas Cher Paris, experts parisiens
             </h3>
             <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
               Rejoignez nos milliers de clients satisfaits. Intervention immédiate et tarifs transparents.

@@ -55,10 +55,10 @@ const Services = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Services <span className="text-blue-600">AMD Serrurier Paris</span>
+            Services <span className="text-blue-600">Serrurier Pas Cher Paris</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            AMD, votre artisan serrurier qualifié à Paris. 
+              Serrurier Pas Cher, votre artisan serrurier qualifié à Paris.
             Dépannage serrurier urgent avec tarifs transparents et compétitifs pour tous vos besoins.
           </p>
         </div>

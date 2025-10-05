@@ -9,19 +9,19 @@ const FAQ = () => {
   const faqs = [
     {
       question: "Quels sont vos tarifs pour l'ouverture de porte ?",
-      answer: "Nos tarifs AMD sont transparents : ouverture de porte claquée dès 95€ TTC, porte fermée à clé dès 139€ TTC. Pour les portes blindées : claquée dès 129€ TTC, fermée à clé dès 179€ TTC. Tarifs majorés la nuit, weekends et jours fériés."
+      answer: "Nos tarifs Serrurier Pas Cher Paris sont transparents : ouverture de porte claquée dès 95€ TTC, porte fermée à clé dès 139€ TTC. Pour les portes blindées : claquée dès 129€ TTC, fermée à clé dès 179€ TTC. Tarifs majorés la nuit, weekends et jours fériés."
     },
     {
       question: "En combien de temps arrivez-vous sur place ?",
-      answer: "AMD garantit une intervention rapide dans tout Paris. Nos équipes sont disponibles 24h/24 et 7j/7 pour assurer une rapidité optimale lors de vos urgences serrurerie."
+      answer: "Serrurier Pas Cher Paris garantit une intervention rapide dans tout Paris. Nos équipes sont disponibles 24h/24 et 7j/7 pour assurer une rapidité optimale lors de vos urgences serrurerie."
     },
     {
       question: "Intervenez-vous vraiment 24h/24 ?",
-      answer: "Oui, AMD est disponible 24h/24, 7j/7, y compris les weekends et jours fériés. Nos serruriers d'urgence sont toujours prêts à intervenir. Tarifs majorés appliqués la nuit, weekends et jours fériés."
+      answer: "Oui, Serrurier Pas Cher Paris est disponible 24h/24, 7j/7, y compris les weekends et jours fériés. Nos serruriers d'urgence sont toujours prêts à intervenir. Tarifs majorés appliqués la nuit, weekends et jours fériés."
     },
     {
       question: "Peut-on ouvrir ma porte sans la casser ?",
-      answer: "Dans la majorité des cas, les techniques professionnelles AMD permettent d'ouvrir votre porte sans dégradation. Nous privilégions toujours les méthodes douces et n'endommageons votre porte qu'en dernier recours."
+      answer: "Dans la majorité des cas, les techniques professionnelles Serrurier Pas Cher Paris permettent d'ouvrir votre porte sans dégradation. Nous privilégions toujours les méthodes douces et n'endommageons votre porte qu'en dernier recours."
     },
     {
       question: "Quels sont vos tarifs pour les serrures ?",
@@ -29,15 +29,15 @@ const FAQ = () => {
     },
     {
       question: "Acceptez-vous les paiements par carte bancaire ?",
-      answer: "Oui, AMD accepte tous les modes de paiement : espèces, chèque, carte bancaire et virement. Nos techniciens sont équipés de terminaux de paiement pour votre confort."
+      answer: "Oui, Serrurier Pas Cher Paris accepte tous les modes de paiement : espèces, chèque, carte bancaire et virement. Nos techniciens sont équipés de terminaux de paiement pour votre confort."
     },
     {
       question: "Vos travaux sont-ils garantis ?",
-      answer: "Absolument ! Tous les travaux AMD bénéficient d'une garantie. La durée varie selon le type d'intervention : dépannage, installation ou réparation. Nous sommes fiers de la qualité de notre travail."
+      answer: "Absolument ! Tous les travaux Serrurier Pas Cher Paris bénéficient d'une garantie. La durée varie selon le type d'intervention : dépannage, installation ou réparation. Nous sommes fiers de la qualité de notre travail."
     },
     {
       question: "Intervenez-vous dans tous les arrondissements de Paris ?",
-      answer: "Oui, AMD couvre l'intégralité de Paris et sa proche banlieue. Nos équipes sont mobiles et peuvent se rendre rapidement dans tous les arrondissements parisiens."
+      answer: "Oui, Serrurier Pas Cher Paris couvre l'intégralité de Paris et sa proche banlieue. Nos équipes sont mobiles et peuvent se rendre rapidement dans tous les arrondissements parisiens."
     }
   ];
 

@@ -11,10 +11,10 @@ const Footer = () => {
           {/* Informations principales */}
           <div className="lg:col-span-2">
             <h3 className="text-2xl font-bold mb-4">
-              AMD <span className="text-blue-400">Serrurier Paris</span>
+              Serrurier Pas Cher <span className="text-blue-400">Paris</span>
             </h3>
             <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
-              AMD, votre artisan serrurier de confiance à Paris. Dépannage serrurier urgent 24h/24 pour tous vos besoins : 
+              Serrurier Pas Cher Paris, votre artisan serrurier de confiance à Paris. Dépannage serrurier urgent 24h/24 pour tous vos besoins :
               ouverture de porte dès 95€, urgence serrurerie, installation. Tarifs transparents et compétitifs.
             </p>
             

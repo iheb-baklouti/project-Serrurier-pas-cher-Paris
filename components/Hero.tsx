@@ -19,7 +19,7 @@ const Hero = () => {
               </div>
               
               <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
-                AMD Serrurier
+                Serrurier Pas Cher
                 <span className="text-blue-600 dark:text-blue-400 block">Paris - Dépannage 24h/24</span>
               </h1>
               
