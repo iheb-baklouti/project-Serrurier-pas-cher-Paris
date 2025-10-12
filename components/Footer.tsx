@@ -37,7 +37,7 @@ const Footer = () => {
                 <div>
                   <div className="text-gray-300">WhatsApp</div>
                   <a 
-                    href="https://wa.me/0033635355158?text=Bonjour, j'ai besoin d'un serrurier"
+                    href="https://wa.me/33635355158?text=Bonjour, j'ai besoin d'un serrurier"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-green-400 hover:text-green-300 font-medium"
@@ -87,8 +87,8 @@ const Footer = () => {
                 <Mail className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
                 <div>
                   <div className="font-medium">Email</div>
-                  <a href="mailto:amd.fermetures@gmail.com" className="text-sm hover:text-blue-400">
-                    amd.fermetures@gmail.com
+                  <a href="mailto:spcp.paris@gmail.com" className="text-sm hover:text-blue-400">
+                    spcp.paris@gmail.com
                   </a>
                 </div>
               </div>

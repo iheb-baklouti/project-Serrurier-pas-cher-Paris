@@ -59,7 +59,7 @@ const Contact = () => {
       `---\nDemande envoyée depuis amd-serrurier-paris.fr`
     );
     
-    const emailTo = 'amd.fermetures@gmail.com';
+    const emailTo = 'spcp.paris@gmail.com';
     
     // Ouvrir selon le client email détecté
     switch (emailClient) {
@@ -151,7 +151,7 @@ const Contact = () => {
                     <Button 
                       variant="outline" 
                       className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white dark:border-green-500 dark:text-green-400"
-                      onClick={() => window.open('https://wa.me/0033635355158?text=Bonjour, j\'ai besoin d\'un serrurier d\'urgence', '_blank')}
+                      onClick={() => window.open('https://wa.me/33635355158?text=Bonjour, j\'ai besoin d\'un serrurier d\'urgence', '_blank')}
                     >
                       Envoyer un message
                     </Button>
@@ -162,11 +162,11 @@ const Contact = () => {
                   <Mail className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Email</h4>
-                    <p className="text-blue-600 dark:text-blue-400 mb-2 font-medium">amd.fermetures@gmail.com</p>
+                    <p className="text-blue-600 dark:text-blue-400 mb-2 font-medium">spcp.paris@gmail.com</p>
                     <Button 
                       variant="outline" 
                       className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400"
-                      onClick={() => window.open('mailto:amd.fermetures@gmail.com?subject=Demande de renseignements', '_self')}
+                      onClick={() => window.open('mailto:spcp.paris@gmail.com?subject=Demande de renseignements', '_self')}
                     >
                       <Mail className="h-4 w-4 mr-2" />
                       Envoyer un email
@@ -306,7 +306,7 @@ const Contact = () => {
                     <Button 
                       variant="outline"
                       className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
-                      onClick={() => window.open('https://wa.me/0033635355158?text=Bonjour, j\'ai besoin d\'un serrurier d\'urgence', '_blank')}
+                      onClick={() => window.open('https://wa.me/33635355158?text=Bonjour, j\'ai besoin d\'un serrurier d\'urgence', '_blank')}
                     >
                       <MessageSquare className="h-4 w-4 mr-2" />
                       WhatsApp
@@ -343,7 +343,7 @@ const Contact = () => {
             </p>
             <Button 
               size="lg"
-              className="bg-red-600 hover:bg-red-700 text-white text-xl px-12 py-4 h-auto"
+              className="bg-red-600 hover:bg-red-700 text-white px-12 h-full py-3 text-lg font-semibold w-full"
               onClick={() => window.open('tel:0635355158', '_self')}
             >
               <Phone className="h-6 w-6 mr-3" />

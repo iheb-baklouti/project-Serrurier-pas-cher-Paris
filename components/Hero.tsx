@@ -60,7 +60,7 @@ const Hero = () => {
                 size="lg" 
                 variant="outline" 
                 className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-600 dark:hover:text-white text-lg px-8 py-4 h-auto"
-                onClick={() => window.open('https://wa.me/0033635355158?text=Bonjour, j\'ai besoin d\'un serrurier d\'urgence', '_blank')}
+                onClick={() => window.open('https://wa.me/33635355158?text=Bonjour, j\'ai besoin d\'un serrurier d\'urgence', '_blank')}
               >
                 WhatsApp
               </Button>

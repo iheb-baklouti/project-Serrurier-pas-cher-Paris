@@ -133,7 +133,7 @@ const Testimonials = () => {
             <div className="mt-8">
               <button 
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-                onClick={() => window.open('tel:+33123456789', '_self')}
+                onClick={() => window.open('tel:+330635355158', '_self')}
               >
                 Rejoignez nos clients satisfaits
               </button>

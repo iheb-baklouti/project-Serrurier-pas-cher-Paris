@@ -11,7 +11,7 @@ const WhatsAppButton = () => {
   }, []);
 
   const handleClick = () => {
-    window.open('https://wa.me/0033635355158?text=Bonjour, j\'ai besoin d\'un serrurier d\'urgence à Paris', '_blank');
+    window.open('https://wa.me/33635355158?text=Bonjour, j\'ai besoin d\'un serrurier d\'urgence à Paris', '_blank');
   };
 
   return (
@@ -36,7 +36,7 @@ const WhatsAppButton = () => {
 
         {/* Badge d'urgence */}
         <div className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-pulse">
-          !
+          1
         </div>
         
         {/* Tooltip au survol */}

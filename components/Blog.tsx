@@ -788,14 +788,14 @@ const Blog = () => {
                                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                     <button
                                         className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
-                                        onClick={() => window.open('tel:+33123456789', '_self')}
+                                        onClick={() => window.open('tel:+330635355158', '_self')}
                                     >
                                         <Phone className="h-5 w-5"/>
                                         Appeler maintenant
                                     </button>
                                     <button
                                         className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-600 dark:hover:text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 hover:shadow-lg transform hover:scale-105"
-                                        onClick={() => window.open('https://wa.me/33123456789?text=Bonjour, j\'ai une question suite à la lecture de votre article', '_blank')}
+                                        onClick={() => window.open('https://wa.me/330635355158?text=Bonjour, j\'ai une question suite à la lecture de votre article', '_blank')}
                                     >
                                         <MessageSquare className="h-5 w-5"/>
                                         WhatsApp
@@ -958,7 +958,7 @@ const Blog = () => {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button
                                 className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white flex items-center gap-2"
-                                onClick={() => window.open('tel:+33123456789', '_self')}
+                                onClick={() => window.open('tel:+330635355158', '_self')}
                             >
                                 <Shield className="h-5 w-5"/>
                                 Conseil gratuit
