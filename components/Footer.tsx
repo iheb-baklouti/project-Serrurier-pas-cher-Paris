@@ -124,6 +124,22 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Liens arrondissements Paris */}
+        <div className="border-t border-gray-800 mt-8 pt-8">
+          <h4 className="text-sm font-semibold text-gray-400 mb-4 uppercase tracking-wide">Serrurier par arrondissement Paris</h4>
+          <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-10 lg:grid-cols-20 gap-2 text-xs">
+            {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+              <a
+                key={num}
+                href={`/paris-${num}`}
+                className="text-gray-300 hover:text-blue-400 transition-colors text-center px-2 py-1 hover:bg-gray-800 rounded"
+              >
+                Paris {num}
+              </a>
+            ))}
+          </div>
+        </div>
+
         {/* Copyright */}
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
           <p>© {currentYear} AMD Serrurier Paris. Tous droits réservés. | 

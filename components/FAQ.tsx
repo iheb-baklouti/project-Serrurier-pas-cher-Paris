@@ -1,45 +1,65 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ChevronDown, ChevronUp, CircleHelp as HelpCircle } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
-const FAQ = () => {
+interface FAQItem {
+  id: string;
+  question: string;
+  answer: string;
+  order: number;
+  visible?: boolean;
+  linkedPage: string;
+}
+
+interface FAQProps {
+  linkedPage?: string;
+  take?: number;
+}
+
+const FAQ = ({ linkedPage, take = 20 }: FAQProps) => {
+  const pathname = usePathname();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [faqs, setFaqs] = useState<FAQItem[]>([])
+  const [loading, setLoading] = useState(true)
 
-  const faqs = [
-    {
-      question: "Quels sont vos tarifs pour l'ouverture de porte ?",
-      answer: "Nos tarifs Serrurier Pas Cher Paris sont transparents : ouverture de porte claquée dès 95€ TTC, porte fermée à clé dès 139€ TTC. Pour les portes blindées : claquée dès 129€ TTC, fermée à clé dès 179€ TTC. Tarifs majorés la nuit, weekends et jours fériés."
-    },
-    {
-      question: "En combien de temps arrivez-vous sur place ?",
-      answer: "Serrurier Pas Cher Paris garantit une intervention rapide dans tout Paris. Nos équipes sont disponibles 24h/24 et 7j/7 pour assurer une rapidité optimale lors de vos urgences serrurerie."
-    },
-    {
-      question: "Intervenez-vous vraiment 24h/24 ?",
-      answer: "Oui, Serrurier Pas Cher Paris est disponible 24h/24, 7j/7, y compris les weekends et jours fériés. Nos serruriers d'urgence sont toujours prêts à intervenir. Tarifs majorés appliqués la nuit, weekends et jours fériés."
-    },
-    {
-      question: "Peut-on ouvrir ma porte sans la casser ?",
-      answer: "Dans la majorité des cas, les techniques professionnelles Serrurier Pas Cher Paris permettent d'ouvrir votre porte sans dégradation. Nous privilégions toujours les méthodes douces et n'endommageons votre porte qu'en dernier recours."
-    },
-    {
-      question: "Quels sont vos tarifs pour les serrures ?",
-      answer: "Changement de cylindre simple : 80€ à 150€ selon modèle. Serrure multipoints haute sécurité : dès 250€. Réparation/réglage de porte : entre 100€ et 200€. Pose de porte blindée : sur devis selon norme A2P."
-    },
-    {
-      question: "Acceptez-vous les paiements par carte bancaire ?",
-      answer: "Oui, Serrurier Pas Cher Paris accepte tous les modes de paiement : espèces, chèque, carte bancaire et virement. Nos techniciens sont équipés de terminaux de paiement pour votre confort."
-    },
-    {
-      question: "Vos travaux sont-ils garantis ?",
-      answer: "Absolument ! Tous les travaux Serrurier Pas Cher Paris bénéficient d'une garantie. La durée varie selon le type d'intervention : dépannage, installation ou réparation. Nous sommes fiers de la qualité de notre travail."
-    },
-    {
-      question: "Intervenez-vous dans tous les arrondissements de Paris ?",
-      answer: "Oui, Serrurier Pas Cher Paris couvre l'intégralité de Paris et sa proche banlieue. Nos équipes sont mobiles et peuvent se rendre rapidement dans tous les arrondissements parisiens."
+  const pageKey = useMemo(() => {
+    if (linkedPage) return linkedPage;
+    const match = pathname?.match(/\/paris-(\d+)/);
+    return match ? `paris-${match[1]}` : 'principal';
+  }, [pathname, linkedPage]);
+
+  useEffect(() => {
+    const fetchFaqs = async () => {
+      setLoading(true)
+      try {
+        const res = await fetch(`/api/public/faqs?page=${encodeURIComponent(pageKey)}&take=${take}`, { cache: 'no-store' })
+        if (res.ok) {
+          const data: FAQItem[] = await res.json()
+          setFaqs(data)
+          setOpenIndex(data.length ? 0 : null)
+        }
+      } catch {
+        // ignore
+      } finally {
+        setLoading(false)
+      }
     }
-  ];
+    fetchFaqs()
+  }, [pageKey, take])
+
+  const SkeletonItem = () => (
+    <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+      <div className="px-6 py-4">
+        <div className="animate-pulse">
+          <div className="h-5 bg-gray-200 rounded w-3/4 mb-3" />
+          <div className="h-4 bg-gray-200 rounded w-full mb-2" />
+          <div className="h-4 bg-gray-200 rounded w-5/6" />
+        </div>
+      </div>
+    </div>
+  )
 
   return (
     <section className="py-20 bg-gray-50">
@@ -56,33 +76,40 @@ const FAQ = () => {
           </p>
         </div>
 
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-              <button
-                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors focus:outline-none focus:bg-gray-50"
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              >
-                <h3 className="text-lg font-semibold text-gray-900 pr-4">
-                  {faq.question}
-                </h3>
-                {openIndex === index ? (
-                  <ChevronUp className="h-5 w-5 text-blue-600 flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="h-5 w-5 text-gray-400 flex-shrink-0" />
+        {loading ? (
+          <div className="space-y-4">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <SkeletonItem key={i} />
+            ))}
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={faq.id} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors focus:outline-none focus:bg-gray-50"
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 pr-4">
+                    {faq.question}
+                  </h3>
+                  {openIndex === index ? (
+                    <ChevronUp className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                  ) : (
+                    <ChevronDown className="h-5 w-5 text-gray-400 flex-shrink-0" />
+                  )}
+                </button>
+                {openIndex === index && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
                 )}
-              </button>
-              
-              {openIndex === index && (
-                <div className="px-6 pb-4">
-                  <p className="text-gray-600 leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* CTA après FAQ */}
         <div className="mt-16 text-center">

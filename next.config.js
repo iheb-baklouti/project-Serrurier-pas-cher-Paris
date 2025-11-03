@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // output: 'export' - Retiré car incompatible avec les pages admin dynamiques et l'API backend
   eslint: {
     ignoreDuringBuilds: true,
   },

@@ -1,16 +1,27 @@
 'use client';
 
-'use client';
-
 import { useState, useEffect } from 'react';
-import { Phone, Menu, X } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { Phone, Menu, X, ChevronDown, MapPin } from 'lucide-react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import Logo from '@/components/Logo';
 
 const Header = () => {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  
+  // Extraire le numéro d'arrondissement de l'URL
+  const arrondissementMatch = pathname?.match(/\/paris-(\d+)/);
+  const selectedArrondissement = arrondissementMatch ? parseInt(arrondissementMatch[1]) : null;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,7 +53,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             <button onClick={() => scrollToSection('accueil')} className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
               Accueil
             </button>
@@ -61,6 +72,43 @@ const Header = () => {
             <button onClick={() => scrollToSection('contact')} className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
               Contact
             </button>
+            
+            {/* Menu déroulant Arrondissements */}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors outline-none focus:outline-none">
+                <MapPin className="h-4 w-4" />
+                <span>
+                  {selectedArrondissement ? `Paris ${selectedArrondissement}` : 'Arrondissements'}
+                </span>
+                <ChevronDown className="h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-64 max-h-96 overflow-y-auto">
+                <div className="p-2">
+                  <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 px-2 py-1 mb-2 uppercase tracking-wide">
+                    Paris par arrondissement
+                  </div>
+                  <div className="grid grid-cols-2 gap-1">
+                    {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => {
+                      const isSelected = selectedArrondissement === num;
+                      return (
+                        <DropdownMenuItem key={num} asChild className="p-0">
+                          <Link 
+                            href={`/paris-${num}`}
+                            className={`flex items-center justify-center px-3 py-2 text-sm rounded cursor-pointer w-full ${
+                              isSelected
+                                ? 'bg-blue-600 text-white hover:bg-blue-700'
+                                : 'hover:bg-blue-50 dark:hover:bg-blue-900/20'
+                            }`}
+                          >
+                            Paris {num}
+                          </Link>
+                        </DropdownMenuItem>
+                      );
+                    })}
+                  </div>
+                </div>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </nav>
 
           {/* Phone CTA + Theme Toggle */}
@@ -88,27 +136,55 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-gray-200">
+          <div className="md:hidden border-t border-gray-200 dark:border-gray-700">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-gray-900">
-              <button onClick={() => scrollToSection('accueil')} className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+              <button onClick={() => scrollToSection('accueil')} className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors w-full text-left">
                 Accueil
               </button>
-              <button onClick={() => scrollToSection('services')} className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+              <button onClick={() => scrollToSection('services')} className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors w-full text-left">
                 Services
               </button>
-              <button onClick={() => scrollToSection('pourquoi')} className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+              <button onClick={() => scrollToSection('pourquoi')} className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors w-full text-left">
                 Pourquoi nous ?
               </button>
-              <button onClick={() => scrollToSection('temoignages')} className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+              <button onClick={() => scrollToSection('temoignages')} className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors w-full text-left">
                 Témoignages
               </button>
-              <button onClick={() => scrollToSection('blog')} className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+              <button onClick={() => scrollToSection('blog')} className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors w-full text-left">
                 Blog
               </button>
-              <button onClick={() => scrollToSection('contact')} className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+              <button onClick={() => scrollToSection('contact')} className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors w-full text-left">
                 Contact
               </button>
-              <div className="px-3 py-2 flex items-center gap-2">
+              
+              {/* Section Arrondissements Mobile */}
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
+                <div className="px-3 py-2 font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  {selectedArrondissement ? `Paris ${selectedArrondissement}` : 'Arrondissements Paris'}
+                </div>
+                <div className="grid grid-cols-3 gap-1 px-3 py-2">
+                  {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => {
+                    const isSelected = selectedArrondissement === num;
+                    return (
+                      <Link
+                        key={num}
+                        href={`/paris-${num}`}
+                        className={`px-3 py-2 text-sm rounded transition-colors text-center ${
+                          isSelected
+                            ? 'bg-blue-600 text-white hover:bg-blue-700'
+                            : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20'
+                        }`}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        Paris {num}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+              
+              <div className="px-3 py-2 flex items-center gap-2 border-t border-gray-200 dark:border-gray-700 mt-2 pt-2">
                 <ThemeToggle />
               </div>
               <div className="px-3 py-2">

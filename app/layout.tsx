@@ -1,6 +1,7 @@
 import './globals.css';
 import type {Metadata} from 'next';
 import {ThemeProvider} from '@/components/ThemeProvider';
+import {Toaster} from '@/components/ui/sonner';
 
 export const metadata: Metadata = {
     title: 'Serrurier pas cher Paris | Dépannage Urgent 24h/24 | Tarifs Transparents',
@@ -51,6 +52,7 @@ export default function RootLayout({children,}: { children: React.ReactNode; }) 
             disableTransitionOnChange
         >
             {children}
+            <Toaster closeButton />
         </ThemeProvider>
         </body>
         </html>
