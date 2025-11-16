@@ -15,7 +15,7 @@ const defaultContactInfo: ContactInfo = {
 }
 
 export function useContactInfo() {
-  const [contactInfo, setContactInfo] = useState<ContactInfo>()
+  const [contactInfo, setContactInfo] = useState<ContactInfo>(defaultContactInfo)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
