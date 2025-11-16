@@ -41,26 +41,34 @@ interface AdminBlogEditorProps {
 
 const pageOptions = [
   { value: 'principal', label: 'Page principale' },
-  { value: 'paris-1', label: 'Paris 1' },
-  { value: 'paris-2', label: 'Paris 2' },
-  { value: 'paris-3', label: 'Paris 3' },
-  { value: 'paris-4', label: 'Paris 4' },
-  { value: 'paris-5', label: 'Paris 5' },
-  { value: 'paris-6', label: 'Paris 6' },
-  { value: 'paris-7', label: 'Paris 7' },
-  { value: 'paris-8', label: 'Paris 8' },
-  { value: 'paris-9', label: 'Paris 9' },
-  { value: 'paris-10', label: 'Paris 10' },
-  { value: 'paris-11', label: 'Paris 11' },
-  { value: 'paris-12', label: 'Paris 12' },
-  { value: 'paris-13', label: 'Paris 13' },
-  { value: 'paris-14', label: 'Paris 14' },
-  { value: 'paris-15', label: 'Paris 15' },
-  { value: 'paris-16', label: 'Paris 16' },
-  { value: 'paris-17', label: 'Paris 17' },
-  { value: 'paris-18', label: 'Paris 18' },
-  { value: 'paris-19', label: 'Paris 19' },
-  { value: 'paris-20', label: 'Paris 20' },
+  { value: 'paris-1er', label: 'Paris 1er' },
+  { value: 'paris-2eme', label: 'Paris 2ème' },
+  { value: 'paris-3eme', label: 'Paris 3ème' },
+  { value: 'paris-4eme', label: 'Paris 4ème' },
+  { value: 'paris-5eme', label: 'Paris 5ème' },
+  { value: 'paris-6eme', label: 'Paris 6ème' },
+  { value: 'paris-7eme', label: 'Paris 7ème' },
+  { value: 'paris-8eme', label: 'Paris 8ème' },
+  { value: 'paris-9eme', label: 'Paris 9ème' },
+  { value: 'paris-10eme', label: 'Paris 10ème' },
+  { value: 'paris-11eme', label: 'Paris 11ème' },
+  { value: 'paris-12eme', label: 'Paris 12ème' },
+  { value: 'paris-13eme', label: 'Paris 13ème' },
+  { value: 'paris-14eme', label: 'Paris 14ème' },
+  { value: 'paris-15eme', label: 'Paris 15ème' },
+  { value: 'paris-16eme', label: 'Paris 16ème' },
+  { value: 'paris-17eme', label: 'Paris 17ème' },
+  { value: 'paris-18eme', label: 'Paris 18ème' },
+  { value: 'paris-19eme', label: 'Paris 19ème' },
+  { value: 'paris-20eme', label: 'Paris 20ème' },
+]
+
+const categoryOptions = [
+  { value: 'conseils', label: 'Conseils sécurité' },
+  { value: 'urgence', label: 'Situations d\'urgence' },
+  { value: 'installation', label: 'Installation' },
+  { value: 'entretien', label: 'Entretien' },
+  { value: 'autre', label: 'Autre' },
 ]
 
 export default function AdminBlogEditor({ blogId }: AdminBlogEditorProps) {
@@ -90,12 +98,29 @@ export default function AdminBlogEditor({ blogId }: AdminBlogEditorProps) {
 
   const published = watch('published')
   const linkedPage = watch('linkedPage')
+  const category = watch('category')
+  const [customCategory, setCustomCategory] = useState('')
+  const [selectedCategoryType, setSelectedCategoryType] = useState<string>('')
 
   useEffect(() => {
     if (blogId) {
       fetchBlog()
     }
   }, [blogId])
+
+  useEffect(() => {
+    // Vérifier si la catégorie actuelle correspond à une option du select
+    if (category) {
+      const isInOptions = categoryOptions.some(opt => opt.value === category)
+      if (isInOptions) {
+        setSelectedCategoryType(category)
+        setCustomCategory('')
+      } else {
+        setSelectedCategoryType('autre')
+        setCustomCategory(category)
+      }
+    }
+  }, [category])
 
   useEffect(() => {
     const title = watch('title')
@@ -120,6 +145,17 @@ export default function AdminBlogEditor({ blogId }: AdminBlogEditorProps) {
             setValue(key as keyof BlogForm, data[key])
           }
         })
+        // Initialiser la catégorie après le chargement
+        if (data.category) {
+          const isInOptions = categoryOptions.some(opt => opt.value === data.category)
+          if (isInOptions) {
+            setSelectedCategoryType(data.category)
+            setCustomCategory('')
+          } else {
+            setSelectedCategoryType('autre')
+            setCustomCategory(data.category)
+          }
+        }
       }
     } catch (error) {
       toast.error('Erreur lors du chargement')
@@ -260,11 +296,43 @@ export default function AdminBlogEditor({ blogId }: AdminBlogEditorProps) {
 
                 <div className="space-y-2">
                   <Label htmlFor="category">Catégorie</Label>
-                  <Input
-                    id="category"
-                    {...register('category')}
-                    placeholder="conseils, urgence, etc."
-                  />
+                  <Select
+                    value={selectedCategoryType}
+                    onValueChange={(value) => {
+                      setSelectedCategoryType(value)
+                      if (value === 'autre') {
+                        setValue('category', customCategory)
+                      } else {
+                        setValue('category', value)
+                        setCustomCategory('')
+                      }
+                    }}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Sélectionner une catégorie" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {categoryOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {selectedCategoryType === 'autre' && (
+                    <div className="mt-2">
+                      <Input
+                        id="customCategory"
+                        value={customCategory}
+                        onChange={(e) => {
+                          const value = e.target.value
+                          setCustomCategory(value)
+                          setValue('category', value)
+                        }}
+                        placeholder="Saisir une catégorie personnalisée"
+                      />
+                    </div>
+                  )}
                 </div>
 
                 <div className="space-y-2">

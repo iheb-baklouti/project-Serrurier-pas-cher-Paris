@@ -12,7 +12,9 @@
     "db:migrate": "prisma migrate dev",
     "db:generate": "prisma generate",
     "create-admin": "tsx scripts/create-admin.ts",
-    "db:seed": "tsx scripts/seed.ts"
+    "db:seed": "tsx scripts/seed.ts",
+    "seed-paris-20-faqs": "tsx scripts/seed-paris-20-faqs.ts",
+    "fix-linkedpage": "tsx scripts/fix-linkedpage-format.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

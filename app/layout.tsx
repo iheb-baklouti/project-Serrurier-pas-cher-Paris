@@ -2,6 +2,7 @@ import './globals.css';
 import type {Metadata} from 'next';
 import {ThemeProvider} from '@/components/ThemeProvider';
 import {Toaster} from '@/components/ui/sonner';
+import {Providers} from '@/components/providers';
 
 export const metadata: Metadata = {
     title: 'Serrurier pas cher Paris | Dépannage Urgent 24h/24 | Tarifs Transparents',
@@ -45,15 +46,17 @@ export default function RootLayout({children,}: { children: React.ReactNode; }) 
             <meta name="ICBM" content="48.8566, 2.3522"/>
         </head>
         <body>
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem
-            disableTransitionOnChange
-        >
-            {children}
-            <Toaster closeButton />
-        </ThemeProvider>
+        <Providers>
+            <ThemeProvider
+                attribute="class"
+                defaultTheme="light"
+                enableSystem
+                disableTransitionOnChange
+            >
+                {children}
+                <Toaster closeButton />
+            </ThemeProvider>
+        </Providers>
         </body>
         </html>
     );

@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useMemo, useState, useRef} from 'react';
 import {
     Calendar,
     Clock,
@@ -13,11 +13,21 @@ import {
     Lock,
     Phone,
     MessageSquare,
-    ArrowLeft
+    ArrowLeft,
+    ChevronLeft,
+    ChevronRight
 } from 'lucide-react';
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card';
 import {Button} from '@/components/ui/button';
 import { usePathname } from 'next/navigation';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination as SwiperPagination, Keyboard, Mousewheel, Autoplay } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 interface BlogItem {
   id: string;
@@ -38,15 +48,26 @@ interface BlogProps {
   take?: number;
 }
 
-const Blog = ({ linkedPage, take = 6 }: BlogProps) => {
+const Blog = ({ linkedPage, take = 100 }: BlogProps) => {
     const pathname = usePathname();
     const [selectedCategory, setSelectedCategory] = useState('tous');
     const [articles, setArticles] = useState<BlogItem[]>([]);
     const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
+    const swiperRef = useRef<SwiperType | null>(null);
 
     const pageKey = useMemo(() => {
       if (linkedPage) return linkedPage;
+      
+      // Support des nouveaux slugs (paris-1er, paris-2eme, paris-3eme, paris-Xeme) et anciens (paris-X)
+      if (pathname?.includes('/paris-1er')) return 'paris-1er';
+      if (pathname?.includes('/paris-2eme')) return 'paris-2eme';
+      if (pathname?.includes('/paris-3eme')) return 'paris-3eme';
+      
+      // Support pour paris-Xeme (4 à 20)
+      const emeMatch = pathname?.match(/\/paris-(\d+)eme/);
+      if (emeMatch) return `paris-${emeMatch[1]}eme`;
+      
       const match = pathname?.match(/\/paris-(\d+)/);
       return match ? `paris-${match[1]}` : 'principal';
     }, [pathname, linkedPage]);
@@ -63,10 +84,11 @@ const Blog = ({ linkedPage, take = 6 }: BlogProps) => {
       const fetchBlogs = async () => {
         setLoading(true);
         try {
-          const res = await fetch(`/api/public/blogs?page=${encodeURIComponent(pageKey)}&take=${take}`, { cache: 'no-store' })
+          const categoryParam = selectedCategory !== 'tous' ? `&category=${encodeURIComponent(selectedCategory)}` : '';
+          const res = await fetch(`/api/public/blogs?page=${encodeURIComponent(pageKey)}&take=${take}${categoryParam}`, { cache: 'no-store' })
           if (res.ok) {
-            const data: BlogItem[] = await res.json()
-            setArticles(data)
+            const data = await res.json()
+            setArticles(data.blogs || [])
           }
         } catch (e) {
           // ignore
@@ -75,13 +97,10 @@ const Blog = ({ linkedPage, take = 6 }: BlogProps) => {
         }
       }
       fetchBlogs()
-    }, [pageKey, take])
+    }, [pageKey, take, selectedCategory])
 
-    const filteredArticles = useMemo(() => (
-      selectedCategory === 'tous'
-        ? articles
-        : articles.filter(article => article.category === selectedCategory)
-    ), [articles, selectedCategory])
+    // Les articles sont déjà filtrés côté serveur, donc pas besoin de filtrage côté client
+    const filteredArticles = articles
 
     const formatDate = (dateString?: string | null) => {
         if (!dateString) return ''
@@ -289,69 +308,185 @@ const Blog = ({ linkedPage, take = 6 }: BlogProps) => {
                     })}
                 </div>
 
-                {/* Articles */}
+                {/* Carrousel d'articles */}
                 {loading ? (
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {Array.from({ length: take }).map((_, i) => (
+                    {Array.from({ length: 6 }).map((_, i) => (
                       <SkeletonCard key={i} />
                     ))}
                   </div>
-                ) : (
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                ) : filteredArticles.length > 0 ? (
+                  <div className="relative">
+                    <Swiper
+                      modules={[Navigation, SwiperPagination, Keyboard, Mousewheel, Autoplay]}
+                      spaceBetween={30}
+                      slidesPerView={1}
+                      slidesPerGroup={1}
+                      loop={filteredArticles.length > 3}
+                      autoplay={{
+                        delay: 5000,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true,
+                      }}
+                      breakpoints={{
+                        640: {
+                          slidesPerView: 2,
+                          slidesPerGroup: 2,
+                        },
+                        1024: {
+                          slidesPerView: 3,
+                          slidesPerGroup: 3,
+                        },
+                      }}
+                      navigation={{
+                        prevEl: '.swiper-button-prev-custom',
+                        nextEl: '.swiper-button-next-custom',
+                      }}
+                      pagination={{
+                        clickable: true,
+                        dynamicBullets: true,
+                        bulletClass: 'swiper-pagination-bullet-custom',
+                        renderBullet: function (index, className) {
+                          return '<span class="' + className + ' swiper-pagination-bullet-custom"></span>';
+                        },
+                      }}
+                      keyboard={{
+                        enabled: true,
+                        onlyInViewport: true,
+                      }}
+                      mousewheel={{
+                        forceToAxis: true,
+                      }}
+                      onSwiper={(swiper) => {
+                        swiperRef.current = swiper;
+                      }}
+                      className="!pb-16"
+                      style={{ 
+                        '--swiper-slide-height': 'auto'
+                      } as React.CSSProperties}
+                    >
                       {filteredArticles.map((article) => (
-                          <Card key={article.id}
-                                className="hover:shadow-lg transition-shadow duration-300 cursor-pointer group bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600">
-                              <div onClick={() => setSelectedArticle(article.id)}>
-                                  {article.image && (
-                                    <div className="relative overflow-hidden rounded-t-lg">
-                                        <img
-                                            src={article.image}
-                                            alt={article.title}
-                                            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                                        />
+                        <SwiperSlide key={article.id} className="!h-auto">
+                          <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 cursor-pointer group bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 min-h-[500px]">
+                            <div onClick={() => setSelectedArticle(article.id)} className="flex flex-col h-full">
+                              {article.image && (
+                                <div className="relative overflow-hidden rounded-t-lg flex-shrink-0">
+                                  <img
+                                    src={article.image}
+                                    alt={article.title}
+                                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                                    loading="lazy"
+                                  />
+                                </div>
+                              )}
+
+                              <CardHeader className="flex-shrink-0">
+                                <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-2">
+                                  {article.updatedAt && (
+                                    <div className="flex items-center gap-1">
+                                      <Calendar className="h-4 w-4"/>
+                                      {formatDate(article.updatedAt)}
                                     </div>
                                   )}
+                                  {article.readTime && (
+                                    <div className="flex items-center gap-1">
+                                      <Clock className="h-4 w-4"/>
+                                      {article.readTime}
+                                    </div>
+                                  )}
+                                </div>
 
-                                  <CardHeader>
-                                      <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-2">
-                                          {article.updatedAt && (
-                                            <div className="flex items-center gap-1">
-                                                <Calendar className="h-4 w-4"/>
-                                                {formatDate(article.updatedAt)}
-                                            </div>
-                                          )}
-                                          {article.readTime && (
-                                            <div className="flex items-center gap-1">
-                                                <Clock className="h-4 w-4"/>
-                                                {article.readTime}
-                                            </div>
-                                          )}
-                                      </div>
+                                <CardTitle className="text-xl group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-gray-900 dark:text-white line-clamp-2 min-h-[3.5rem]">
+                                  {article.title}
+                                </CardTitle>
+                              </CardHeader>
 
-                                      <CardTitle className="text-xl group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-gray-900 dark:text-white">
-                                          {article.title}
-                                      </CardTitle>
-                                  </CardHeader>
+                              <CardContent className="flex flex-col flex-grow">
+                                <CardDescription className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 flex-grow">
+                                  {article.excerpt || ''}
+                                </CardDescription>
 
-                                  <CardContent>
-                                      <CardDescription className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
-                                          {article.excerpt || ''}
-                                      </CardDescription>
-
-                                      <div className="flex items-center justify-between">
-                                          <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                                              <User className="h-4 w-4"/>
-                                              {article.author || 'Admin'}
-                                          </div>
-                                          <div className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-medium text-sm group-hover:gap-2 transition-all">
-                                              Lire l'article
-                                              <ArrowRight className="h-4 w-4"/>
-                                          </div>
-                                      </div>
-                                  </CardContent>
-                              </div>
+                                <div className="flex items-center justify-between mt-auto">
+                                  <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                                    <User className="h-4 w-4"/>
+                                    {article.author || 'Admin'}
+                                  </div>
+                                  <div className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-medium text-sm group-hover:gap-2 transition-all">
+                                    Lire l'article
+                                    <ArrowRight className="h-4 w-4"/>
+                                  </div>
+                                </div>
+                              </CardContent>
+                            </div>
                           </Card>
+                        </SwiperSlide>
                       ))}
+                    </Swiper>
+
+                    {/* Boutons de navigation personnalisés */}
+                    {filteredArticles.length > 3 && (
+                      <>
+                        <button
+                          className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors flex items-center justify-center group"
+                          aria-label="Article précédent"
+                        >
+                          <ChevronLeft className="h-6 w-6 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
+                        </button>
+                        <button
+                          className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors flex items-center justify-center group"
+                          aria-label="Article suivant"
+                        >
+                          <ChevronRight className="h-6 w-6 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
+                        </button>
+                      </>
+                    )}
+
+                    {/* Styles personnalisés pour la pagination */}
+                    <style jsx global>{`
+                      .swiper-pagination {
+                        position: relative !important;
+                        margin-top: 2rem !important;
+                        display: flex !important;
+                        justify-content: center !important;
+                        align-items: center !important;
+                        gap: 8px !important;
+                      }
+                      .swiper-pagination-bullet-custom {
+                        width: 12px !important;
+                        height: 12px !important;
+                        background: #e5e7eb !important;
+                        opacity: 1 !important;
+                        margin: 0 !important;
+                        border-radius: 50% !important;
+                        cursor: pointer !important;
+                        transition: all 0.3s ease !important;
+                        display: inline-block !important;
+                      }
+                      .swiper-pagination-bullet-custom:hover {
+                        transform: scale(1.2) !important;
+                        background: #9ca3af !important;
+                      }
+                      .swiper-pagination-bullet-custom-active {
+                        background: #2563eb !important;
+                        width: 32px !important;
+                        height: 12px !important;
+                        border-radius: 6px !important;
+                        transform: scale(1.1) !important;
+                      }
+                      .dark .swiper-pagination-bullet-custom {
+                        background: #4b5563 !important;
+                      }
+                      .dark .swiper-pagination-bullet-custom:hover {
+                        background: #6b7280 !important;
+                      }
+                      .dark .swiper-pagination-bullet-custom-active {
+                        background: #3b82f6 !important;
+                      }
+                    `}</style>
+                  </div>
+                ) : (
+                  <div className="text-center py-12 text-gray-600 dark:text-gray-400">
+                    Aucun article disponible pour le moment.
                   </div>
                 )}
 

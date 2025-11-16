@@ -19,9 +19,37 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   
-  // Extraire le numéro d'arrondissement de l'URL
-  const arrondissementMatch = pathname?.match(/\/paris-(\d+)/);
-  const selectedArrondissement = arrondissementMatch ? parseInt(arrondissementMatch[1]) : null;
+  // Extraire le numéro d'arrondissement de l'URL (support des anciens et nouveaux slugs)
+  const arrondissementMatch = pathname?.match(/\/paris-(?:1er|2eme|3eme|\d+eme|\d+)/);
+  let selectedArrondissement: number | null = null;
+  
+  if (pathname?.includes('/paris-1er')) {
+    selectedArrondissement = 1;
+  } else if (pathname?.includes('/paris-2eme')) {
+    selectedArrondissement = 2;
+  } else if (pathname?.includes('/paris-3eme')) {
+    selectedArrondissement = 3;
+  } else {
+    // Support pour paris-Xeme (4 à 20) et anciens paris-X
+    const match = pathname?.match(/\/paris-(\d+)(?:eme)?/);
+    selectedArrondissement = match ? parseInt(match[1]) : null;
+  }
+
+  // Fonction pour obtenir le slug d'URL correct
+  const getArrondissementSlug = (num: number): string => {
+    if (num === 1) return '/paris-1er';
+    if (num === 2) return '/paris-2eme';
+    if (num === 3) return '/paris-3eme';
+    return `/paris-${num}eme`;
+  };
+
+  // Fonction pour obtenir le nom d'affichage
+  const getArrondissementName = (num: number): string => {
+    if (num === 1) return 'Paris 1er';
+    if (num === 2) return 'Paris 2ème';
+    if (num === 3) return 'Paris 3ème';
+    return `Paris ${num}ème`;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,7 +106,7 @@ const Header = () => {
               <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors outline-none focus:outline-none">
                 <MapPin className="h-4 w-4" />
                 <span>
-                  {selectedArrondissement ? `Paris ${selectedArrondissement}` : 'Arrondissements'}
+                  {selectedArrondissement ? getArrondissementName(selectedArrondissement) : 'Arrondissements'}
                 </span>
                 <ChevronDown className="h-4 w-4" />
               </DropdownMenuTrigger>
@@ -87,20 +115,33 @@ const Header = () => {
                   <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 px-2 py-1 mb-2 uppercase tracking-wide">
                     Paris par arrondissement
                   </div>
+                  {/* Bouton "Tous les arrondissements" */}
+                  <DropdownMenuItem asChild className="p-0 mb-2">
+                    <Link 
+                      href="/"
+                      className={`flex items-center justify-center px-3 py-2 text-sm rounded cursor-pointer w-full font-medium ${
+                        !selectedArrondissement
+                          ? 'bg-blue-600 text-white hover:bg-blue-700'
+                          : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400'
+                      }`}
+                    >
+                      Tous les arrondissements
+                    </Link>
+                  </DropdownMenuItem>
                   <div className="grid grid-cols-2 gap-1">
                     {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => {
                       const isSelected = selectedArrondissement === num;
                       return (
                         <DropdownMenuItem key={num} asChild className="p-0">
                           <Link 
-                            href={`/paris-${num}`}
+                            href={getArrondissementSlug(num)}
                             className={`flex items-center justify-center px-3 py-2 text-sm rounded cursor-pointer w-full ${
                               isSelected
                                 ? 'bg-blue-600 text-white hover:bg-blue-700'
                                 : 'hover:bg-blue-50 dark:hover:bg-blue-900/20'
                             }`}
                           >
-                            Paris {num}
+                            {getArrondissementName(num)}
                           </Link>
                         </DropdownMenuItem>
                       );
@@ -161,15 +202,27 @@ const Header = () => {
               <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
                 <div className="px-3 py-2 font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
                   <MapPin className="h-4 w-4" />
-                  {selectedArrondissement ? `Paris ${selectedArrondissement}` : 'Arrondissements Paris'}
+                  {selectedArrondissement ? getArrondissementName(selectedArrondissement) : 'Arrondissements Paris'}
                 </div>
+                {/* Bouton "Tous les arrondissements" Mobile */}
+                <Link
+                  href="/"
+                  className={`block px-3 py-2 text-sm rounded transition-colors text-center mb-2 mx-3 font-medium ${
+                    !selectedArrondissement
+                      ? 'bg-blue-600 text-white hover:bg-blue-700'
+                      : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400'
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Tous les arrondissements
+                </Link>
                 <div className="grid grid-cols-3 gap-1 px-3 py-2">
                   {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => {
                     const isSelected = selectedArrondissement === num;
                     return (
                       <Link
                         key={num}
-                        href={`/paris-${num}`}
+                        href={getArrondissementSlug(num)}
                         className={`px-3 py-2 text-sm rounded transition-colors text-center ${
                           isSelected
                             ? 'bg-blue-600 text-white hover:bg-blue-700'
@@ -177,7 +230,7 @@ const Header = () => {
                         }`}
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        Paris {num}
+                        {getArrondissementName(num)}
                       </Link>
                     );
                   })}

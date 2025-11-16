@@ -26,6 +26,16 @@ const FAQ = ({ linkedPage, take = 20 }: FAQProps) => {
 
   const pageKey = useMemo(() => {
     if (linkedPage) return linkedPage;
+    
+    // Support des nouveaux slugs (paris-1er, paris-2eme, paris-3eme, paris-Xeme) et anciens (paris-X)
+    if (pathname?.includes('/paris-1er')) return 'paris-1er';
+    if (pathname?.includes('/paris-2eme')) return 'paris-2eme';
+    if (pathname?.includes('/paris-3eme')) return 'paris-3eme';
+    
+    // Support pour paris-Xeme (4 à 20)
+    const emeMatch = pathname?.match(/\/paris-(\d+)eme/);
+    if (emeMatch) return `paris-${emeMatch[1]}eme`;
+    
     const match = pathname?.match(/\/paris-(\d+)/);
     return match ? `paris-${match[1]}` : 'principal';
   }, [pathname, linkedPage]);

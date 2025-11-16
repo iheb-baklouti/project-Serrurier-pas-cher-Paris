@@ -2,6 +2,22 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAuth } from '@/lib/auth'
 
+// Fonction pour convertir les formats de linkedPage (paris-Xeme → paris-X)
+function normalizeLinkedPage(page: string): string {
+  if (!page || page === 'principal') return 'principal'
+  
+  // Convertir paris-1er → paris-1
+  if (page === 'paris-1er') return 'paris-1'
+  if (page === 'paris-2eme') return 'paris-2'
+  if (page === 'paris-3eme') return 'paris-3'
+  
+  // Convertir paris-Xeme → paris-X (4 à 20)
+  const emeMatch = page.match(/^paris-(\d+)eme$/)
+  if (emeMatch) return `paris-${emeMatch[1]}`
+  
+  return page
+}
+
 // GET - Une FAQ spécifique
 export async function GET(
   req: NextRequest,
@@ -48,7 +64,7 @@ export async function PUT(
         ...(answer && { answer }),
         ...(order !== undefined && { order }),
         ...(visible !== undefined && { visible }),
-        ...(linkedPage && { linkedPage }),
+        ...(linkedPage && { linkedPage: normalizeLinkedPage(linkedPage) }),
       }
     })
 
