@@ -49,7 +49,7 @@ const PaginationLink = ({
   const Component = onClick ? 'button' : 'a';
   return (
     <Component
-      type={onClick ? ('button' as const) : undefined}
+      {...(onClick && { type: 'button' as 'button' })}
       aria-current={isActive ? 'page' : undefined}
       className={cn(
         buttonVariants({
