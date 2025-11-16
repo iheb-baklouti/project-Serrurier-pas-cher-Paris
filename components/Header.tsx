@@ -13,8 +13,27 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import Logo from '@/components/Logo';
+import { useContactInfo } from '@/lib/useContactInfo';
+
+const HeaderPhoneButton = () => {
+  const { contact_phone, getPhoneLink } = useContactInfo();
+  
+  return (
+    <div className="hidden md:flex items-center gap-3">
+      <ThemeToggle />
+      <Button 
+        className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white flex items-center gap-2"
+        onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
+      >
+        <Phone className="h-4 w-4" />
+        {contact_phone}
+      </Button>
+    </div>
+  );
+};
 
 const Header = () => {
+  const { contact_phone, getPhoneLink } = useContactInfo();
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -153,16 +172,7 @@ const Header = () => {
           </nav>
 
           {/* Phone CTA + Theme Toggle */}
-          <div className="hidden md:flex items-center gap-3">
-            <ThemeToggle />
-            <Button 
-              className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white flex items-center gap-2"
-              onClick={() => window.open('tel:0635355158', '_self')}
-            >
-              <Phone className="h-4 w-4" />
-              06 35 35 51 58
-            </Button>
-          </div>
+          <HeaderPhoneButton />
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -243,10 +253,10 @@ const Header = () => {
               <div className="px-3 py-2">
                 <Button 
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-2"
-                  onClick={() => window.open('tel:0635355158', '_self')}
+                  onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
                 >
                   <Phone className="h-4 w-4" />
-                  06 35 35 51 58
+                  {contact_phone}
                 </Button>
               </div>
             </div>

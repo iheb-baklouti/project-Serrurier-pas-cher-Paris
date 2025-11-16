@@ -2,12 +2,14 @@
 
 import { Phone, Clock, MapPin, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useContactInfo } from '@/lib/useContactInfo';
 
 interface HeroArrondissementProps {
   arrondissement: number;
 }
 
 const HeroArrondissement = ({ arrondissement }: HeroArrondissementProps) => {
+  const { contact_phone, contact_whatsapp, getPhoneLink, getWhatsAppLink } = useContactInfo();
   // Nom spécifique de l'arrondissement
   const nomsArrondissements: { [key: number]: string } = {
     1: '1er', 2: '2ème', 3: '3ème', 4: '4ème', 5: '5ème',
@@ -70,7 +72,7 @@ const HeroArrondissement = ({ arrondissement }: HeroArrondissementProps) => {
               <Button 
                 size="lg" 
                 className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white text-lg px-8 py-4 h-auto"
-                onClick={() => window.open('tel:0635355158', '_self')}
+                onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
               >
                 <Phone className="h-5 w-5 mr-2" />
                 Appeler maintenant
@@ -80,7 +82,7 @@ const HeroArrondissement = ({ arrondissement }: HeroArrondissementProps) => {
                 size="lg" 
                 variant="outline" 
                 className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-600 dark:hover:text-white text-lg px-8 py-4 h-auto"
-                onClick={() => window.open('https://wa.me/33635355158?text=Bonjour, j\'ai besoin d\'un serrurier d\'urgence à Paris ' + arrondissement, '_blank')}
+                onClick={() => window.open(getWhatsAppLink(contact_whatsapp, `Bonjour, j'ai besoin d'un serrurier d'urgence à Paris ${arrondissement}`), '_blank')}
               >
                 WhatsApp
               </Button>
@@ -94,7 +96,7 @@ const HeroArrondissement = ({ arrondissement }: HeroArrondissementProps) => {
                 </div>
                 <div>
                   <p className="text-red-800 dark:text-red-200 font-semibold">Urgence 24h/24 Paris {arrondissement}</p>
-                  <p className="text-red-700 dark:text-red-300 text-lg font-bold">06 35 35 51 58</p>
+                  <p className="text-red-700 dark:text-red-300 text-lg font-bold">{contact_phone}</p>
                 </div>
               </div>
             </div>

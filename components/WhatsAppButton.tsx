@@ -1,8 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useContactInfo } from '@/lib/useContactInfo';
 
 const WhatsAppButton = () => {
+  const { contact_whatsapp, getWhatsAppLink } = useContactInfo();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -11,7 +13,7 @@ const WhatsAppButton = () => {
   }, []);
 
   const handleClick = () => {
-    window.open('https://wa.me/33635355158?text=Bonjour, j\'ai besoin d\'un serrurier d\'urgence à Paris', '_blank');
+    window.open(getWhatsAppLink(contact_whatsapp, "Bonjour, j'ai besoin d'un serrurier d'urgence à Paris"), '_blank');
   };
 
   return (

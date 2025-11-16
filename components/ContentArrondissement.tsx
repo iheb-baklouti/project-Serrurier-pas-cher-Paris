@@ -2,12 +2,14 @@
 
 import { Phone, Clock, Euro, Shield, CheckCircle, Wrench } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useContactInfo } from '@/lib/useContactInfo';
 
 interface ContentArrondissementProps {
   arrondissement: number;
 }
 
 const ContentArrondissement = ({ arrondissement }: ContentArrondissementProps) => {
+  const { contact_phone, contact_whatsapp, getPhoneLink, getWhatsAppLink } = useContactInfo();
   const nomsArrondissements: { [key: number]: string } = {
     1: '1er', 2: '2ème', 3: '3ème', 4: '4ème', 5: '5ème',
     6: '6ème', 7: '7ème', 8: '8ème', 9: '9ème', 10: '10ème',
@@ -130,16 +132,16 @@ const ContentArrondissement = ({ arrondissement }: ContentArrondissementProps) =
               <Button 
                 size="lg"
                 className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold"
-                onClick={() => window.open('tel:0635355158', '_self')}
+                onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
               >
                 <Phone className="h-5 w-5 mr-2" />
-                Appelez-nous : 06 35 35 51 58
+                Appelez-nous : {contact_phone}
               </Button>
               <Button 
                 size="lg"
                 variant="outline"
                 className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold"
-                onClick={() => window.open('https://wa.me/33635355158?text=Bonjour, j\'ai besoin d\'un serrurier d\'urgence à Paris ' + arrondissement, '_blank')}
+                onClick={() => window.open(getWhatsAppLink(contact_whatsapp, `Bonjour, j'ai besoin d'un serrurier d'urgence à Paris ${arrondissement}`), '_blank')}
               >
                 Demander un devis gratuit
               </Button>

@@ -1,8 +1,12 @@
+'use client';
+
 import React from 'react';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { useContactInfo } from '@/lib/useContactInfo';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { contact_phone, contact_whatsapp, contact_email, getPhoneLink, getWhatsAppLink } = useContactInfo();
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -24,8 +28,8 @@ const Footer = () => {
                 <Phone className="h-5 w-5 text-blue-400" />
                 <div>
                   <div className="font-semibold">Urgence 24h/24</div>
-                  <a href="tel:0635355158" className="text-xl font-bold text-blue-400 hover:text-blue-300">
-                    06 35 35 51 58
+                  <a href={`tel:${getPhoneLink(contact_phone)}`} className="text-xl font-bold text-blue-400 hover:text-blue-300">
+                    {contact_phone}
                   </a>
                 </div>
               </div>
@@ -37,7 +41,7 @@ const Footer = () => {
                 <div>
                   <div className="text-gray-300">WhatsApp</div>
                   <a 
-                    href="https://wa.me/33635355158?text=Bonjour, j'ai besoin d'un serrurier"
+                    href={getWhatsAppLink(contact_whatsapp, "Bonjour, j'ai besoin d'un serrurier")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-green-400 hover:text-green-300 font-medium"
@@ -87,8 +91,8 @@ const Footer = () => {
                 <Mail className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
                 <div>
                   <div className="font-medium">Email</div>
-                  <a href="mailto:spcp.paris@gmail.com" className="text-sm hover:text-blue-400">
-                    spcp.paris@gmail.com
+                  <a href={`mailto:${contact_email}`} className="text-sm hover:text-blue-400">
+                    {contact_email}
                   </a>
                 </div>
               </div>

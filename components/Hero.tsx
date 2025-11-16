@@ -1,11 +1,11 @@
 'use client';
 
-'use client';
-
 import { Phone, Clock, MapPin, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useContactInfo } from '@/lib/useContactInfo';
 
 const Hero = () => {
+  const { contact_phone, contact_whatsapp, getPhoneLink, getWhatsAppLink } = useContactInfo();
   return (
     <section id="accueil" className="pt-16 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -50,7 +50,7 @@ const Hero = () => {
               <Button 
                 size="lg" 
                 className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white text-lg px-8 py-4 h-auto"
-                onClick={() => window.open('tel:0635355158', '_self')}
+                onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
               >
                 <Phone className="h-5 w-5 mr-2" />
                 Appeler maintenant
@@ -60,7 +60,7 @@ const Hero = () => {
                 size="lg" 
                 variant="outline" 
                 className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-600 dark:hover:text-white text-lg px-8 py-4 h-auto"
-                onClick={() => window.open('https://wa.me/33635355158?text=Bonjour, j\'ai besoin d\'un serrurier d\'urgence', '_blank')}
+                onClick={() => window.open(getWhatsAppLink(contact_whatsapp, "Bonjour, j'ai besoin d'un serrurier d'urgence"), '_blank')}
               >
                 WhatsApp
               </Button>
@@ -74,7 +74,7 @@ const Hero = () => {
                 </div>
                 <div>
                   <p className="text-red-800 dark:text-red-200 font-semibold">Urgence 24h/24</p>
-                  <p className="text-red-700 dark:text-red-300 text-lg font-bold">06 35 35 51 58</p>
+                  <p className="text-red-700 dark:text-red-300 text-lg font-bold">{contact_phone}</p>
                 </div>
               </div>
             </div>
