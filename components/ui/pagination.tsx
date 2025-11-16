@@ -34,22 +34,32 @@ const PaginationItem = React.forwardRef<
 ));
 PaginationItem.displayName = 'PaginationItem';
 
+// Helper type to convert event handlers to accept both anchor and button elements
+type PolymorphicEventHandlers<T> = {
+  [K in keyof T]: K extends `on${string}`
+    ? T[K] extends ((...args: any[]) => any) | undefined
+      ? ((...args: any[]) => any) | undefined
+      : T[K]
+    : T[K];
+};
+
 type PaginationLinkProps = {
   isActive?: boolean;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
 } & Pick<ButtonProps, 'size'> &
-  React.ComponentProps<'a'>;
+  PolymorphicEventHandlers<Omit<React.ComponentProps<'a'>, 'onClick' | 'ref' | 'type'>> & {
+    ref?: React.Ref<HTMLAnchorElement | HTMLButtonElement>;
+  };
 
-const PaginationLink = ({
-  className,
-  isActive,
-  size = 'icon',
-  onClick,
-  ...props
-}: PaginationLinkProps) => {
+const PaginationLink = React.forwardRef<
+  HTMLAnchorElement | HTMLButtonElement,
+  PaginationLinkProps
+>(({ className, isActive, size = 'icon', onClick, ...props }, ref) => {
   const Component = onClick ? 'button' : 'a';
   return (
     <Component
-      {...(onClick && { type: 'button' as 'button' })}
+      ref={ref as any}
+      {...(onClick && { type: 'button' as const })}
       aria-current={isActive ? 'page' : undefined}
       className={cn(
         buttonVariants({
@@ -59,10 +69,10 @@ const PaginationLink = ({
         className
       )}
       onClick={onClick}
-      {...props}
+      {...(props as any)}
     />
   );
-};
+});
 PaginationLink.displayName = 'PaginationLink';
 
 const PaginationPrevious = ({
