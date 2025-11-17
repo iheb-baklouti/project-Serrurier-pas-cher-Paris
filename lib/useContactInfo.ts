@@ -21,10 +21,31 @@ export function useContactInfo() {
   useEffect(() => {
     const fetchContactInfo = async () => {
       try {
-        const response = await fetch('/api/public/settings')
+        const response = await fetch('/api/public/settings', {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache'
+          }
+        })
+        
         if (response.ok) {
           const data = await response.json()
-          setContactInfo(data)
+          console.log('Données reçues de l\'API:', data)
+          // Vérifier que les données sont valides
+          if (data && (data.contact_email || data.contact_phone || data.contact_whatsapp)) {
+            const newContactInfo = {
+              contact_email: data.contact_email || defaultContactInfo.contact_email,
+              contact_phone: data.contact_phone || defaultContactInfo.contact_phone,
+              contact_whatsapp: data.contact_whatsapp || defaultContactInfo.contact_whatsapp
+            }
+            console.log('Mise à jour des informations de contact:', newContactInfo)
+            setContactInfo(newContactInfo)
+          } else {
+            console.warn('Données de contact invalides, utilisation des valeurs par défaut', data)
+          }
+        } else {
+          const errorText = await response.text()
+          console.error('Erreur HTTP lors de la récupération des informations de contact:', response.status, response.statusText, errorText)
         }
       } catch (error) {
         console.error('Erreur lors de la récupération des informations de contact:', error)

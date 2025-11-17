@@ -33,11 +33,12 @@ export async function POST(req: NextRequest) {
     const updates = []
 
     // Toujours mettre à jour, même si la valeur est vide
+    const now = new Date()
     updates.push(
       prisma.settings.upsert({
         where: { key: 'contact_email' },
         update: { value: email || '' },
-        create: { key: 'contact_email', value: email || '' }
+        create: { key: 'contact_email', value: email || '', updatedAt: now }
       })
     )
 
@@ -45,7 +46,7 @@ export async function POST(req: NextRequest) {
       prisma.settings.upsert({
         where: { key: 'contact_phone' },
         update: { value: phone || '' },
-        create: { key: 'contact_phone', value: phone || '' }
+        create: { key: 'contact_phone', value: phone || '', updatedAt: now }
       })
     )
 
@@ -53,7 +54,7 @@ export async function POST(req: NextRequest) {
       prisma.settings.upsert({
         where: { key: 'contact_whatsapp' },
         update: { value: whatsapp || '' },
-        create: { key: 'contact_whatsapp', value: whatsapp || '' }
+        create: { key: 'contact_whatsapp', value: whatsapp || '', updatedAt: now }
       })
     )
 
