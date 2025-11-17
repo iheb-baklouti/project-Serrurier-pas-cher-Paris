@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
     updates.push(
       prisma.settings.upsert({
         where: { key: 'contact_email' },
-        update: { value: email || '' },
+        update: { value: email || '', updatedAt: now },
         create: { key: 'contact_email', value: email || '', updatedAt: now }
       })
     )
@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
     updates.push(
       prisma.settings.upsert({
         where: { key: 'contact_phone' },
-        update: { value: phone || '' },
+        update: { value: phone || '', updatedAt: now },
         create: { key: 'contact_phone', value: phone || '', updatedAt: now }
       })
     )
@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
     updates.push(
       prisma.settings.upsert({
         where: { key: 'contact_whatsapp' },
-        update: { value: whatsapp || '' },
+        update: { value: whatsapp || '', updatedAt: now },
         create: { key: 'contact_whatsapp', value: whatsapp || '', updatedAt: now }
       })
     )
