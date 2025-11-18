@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { requireAuth } from '@/lib/auth'
-import { writeFile, mkdir } from 'fs/promises'
-import { join } from 'path'
-import { existsSync } from 'fs'
+import { supabaseAdmin } from '@/lib/supabase'
 
 export async function POST(req: NextRequest) {
   try {
@@ -36,26 +34,47 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // Créer le répertoire public/uploads s'il n'existe pas
-    const uploadsDir = join(process.cwd(), 'public', 'uploads')
-    if (!existsSync(uploadsDir)) {
-      await mkdir(uploadsDir, { recursive: true })
+    // Vérifier que Supabase est configuré
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+      return NextResponse.json(
+        { error: 'Configuration Supabase manquante. Veuillez configurer NEXT_PUBLIC_SUPABASE_URL et SUPABASE_SERVICE_ROLE_KEY.' },
+        { status: 500 }
+      )
     }
 
     // Générer un nom de fichier unique
-    const bytes = await file.arrayBuffer()
-    const buffer = Buffer.from(bytes)
     const timestamp = Date.now()
     const randomString = Math.random().toString(36).substring(2, 15)
     const extension = file.name.split('.').pop()
     const filename = `${timestamp}-${randomString}.${extension}`
+    const filePath = `uploads/${filename}`
 
-    // Sauvegarder le fichier
-    const filepath = join(uploadsDir, filename)
-    await writeFile(filepath, buffer)
+    // Convertir le fichier en buffer
+    const bytes = await file.arrayBuffer()
+    const buffer = Buffer.from(bytes)
 
-    // Retourner l'URL publique
-    const publicUrl = `/uploads/${filename}`
+    // Upload vers Supabase Storage
+    const { data, error } = await supabaseAdmin.storage
+      .from('images')
+      .upload(filePath, buffer, {
+        contentType: file.type,
+        upsert: false
+      })
+
+    if (error) {
+      console.error('Erreur Supabase Storage:', error)
+      return NextResponse.json(
+        { error: `Erreur lors de l'upload: ${error.message}` },
+        { status: 500 }
+      )
+    }
+
+    // Récupérer l'URL publique
+    const { data: urlData } = supabaseAdmin.storage
+      .from('images')
+      .getPublicUrl(filePath)
+
+    const publicUrl = urlData.publicUrl
 
     return NextResponse.json({ url: publicUrl }, { status: 200 })
   } catch (error: any) {
