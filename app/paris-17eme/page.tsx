@@ -17,13 +17,39 @@ export const metadata: Metadata = {
   title: 'Serrurier pas cher Paris 17ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
   description: 'Serrurier pas cher Paris 17ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 95€. Artisan serrurier qualifié 17ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 35 35 51 58',
   keywords: 'serrurier Paris 17ème, serrurier pas cher Paris 17ème, dépannage serrurier Paris 17ème, ouverture de porte Paris 17ème, urgence serrurerie Paris 17ème, artisan serrurier Paris 17ème, serrurerie 24h Paris 17ème, serrurier urgence Paris 17ème, prix serrurier Paris 17ème',
+  authors: [{ name: 'Serrurier pas cher Paris' }],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
+    type: 'website',
+    locale: 'fr_FR',
+    url: 'https://serrurier-pas-cher.paris/paris-17eme',
     title: 'Serrurier pas cher Paris 17ème – Dépannage 24h/24',
     description: 'Serrurier pas cher Paris 17ème. Dépannage serrurier urgent, ouverture de porte dès 95€, artisan serrurier qualifié 17ème arrondissement.',
-    url: 'https://serrurier-pas-cher.paris/paris-17eme',
+    siteName: 'Serrurier pas cher Paris',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Serrurier pas cher Paris 17ème – Dépannage 24h/24',
+    description: 'Serrurier pas cher Paris 17ème. Dépannage serrurier urgent, ouverture de porte dès 95€.',
   },
   alternates: {
     canonical: 'https://serrurier-pas-cher.paris/paris-17eme',
+  },
+  other: {
+    'geo.region': 'FR-75',
+    'geo.placename': 'Paris 17ème',
+    'geo.position': '48.8846;2.3217',
+    'ICBM': '48.8846, 2.3217',
   },
 };
 

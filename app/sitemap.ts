@@ -1,15 +1,16 @@
 import { MetadataRoute } from 'next'
+import { prisma } from '@/lib/prisma'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://serrurier-pas-cher.paris'
   const date = new Date()
   
   // Page principale
-  const pages = [
+  const pages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified: date,
-      changeFrequency: 'monthly' as const,
+      changeFrequency: 'weekly',
       priority: 1,
     },
   ]
@@ -25,9 +26,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
     pages.push({
       url: `${baseUrl}/${slug}`,
       lastModified: date,
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
+      changeFrequency: 'weekly',
+      priority: 0.9,
     })
+  }
+  
+  // Ajouter les articles de blog publiés
+  try {
+    const blogs = await prisma.blog.findMany({
+      where: {
+        published: true,
+      },
+      select: {
+        slug: true,
+        updatedAt: true,
+      },
+      orderBy: {
+        updatedAt: 'desc',
+      },
+    })
+
+    blogs.forEach((blog) => {
+      pages.push({
+        url: `${baseUrl}/blog/${blog.slug}`,
+        lastModified: blog.updatedAt,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+      })
+    })
+  } catch (error) {
+    console.error('Erreur lors de la récupération des blogs pour le sitemap:', error)
   }
   
   return pages
