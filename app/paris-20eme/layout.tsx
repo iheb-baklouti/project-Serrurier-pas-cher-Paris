@@ -21,7 +21,7 @@ export default function Paris20emeLayout({
             image: 'https://serrurier-pas-cher.paris/logo.png',
             '@id': 'https://serrurier-pas-cher.paris/paris-20eme',
             url: 'https://serrurier-pas-cher.paris/paris-20eme',
-            telephone: '+33635355158',
+            telephone: '+33635355158', // Sera remplacé dynamiquement par DynamicStructuredData
             priceRange: '€€',
             address: {
               '@type': 'PostalAddress',

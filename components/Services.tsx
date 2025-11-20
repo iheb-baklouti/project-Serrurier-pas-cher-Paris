@@ -3,8 +3,10 @@
 import React from 'react';
 import { Key, Lock, Clock, Shield, Wrench, Chrome as Home } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { useContactInfo } from '@/lib/useContactInfo';
 
 const Services = () => {
+  const { contact_phone, getPhoneLink } = useContactInfo();
   const services = [
     {
       icon: Key,
@@ -91,7 +93,7 @@ const Services = () => {
                     <span className="text-blue-600 dark:text-blue-400 font-semibold">{service.price}</span>
                     <button 
                       className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors"
-                      onClick={() => window.open('tel:0635355158', '_self')}
+                      onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
                     >
                       En savoir plus →
                     </button>
@@ -115,7 +117,7 @@ const Services = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
                 className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
-                onClick={() => window.open('tel:0635355158', '_self')}
+                onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
               >
                 <Clock className="h-5 w-5" />
                 Intervention immédiate

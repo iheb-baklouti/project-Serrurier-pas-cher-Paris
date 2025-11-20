@@ -3,8 +3,10 @@
 import React from 'react';
 import { Star, Quote } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { useContactInfo } from '@/lib/useContactInfo';
 
 const Testimonials = () => {
+  const { contact_phone, getPhoneLink } = useContactInfo();
   const testimonials = [
     {
       name: "Marie L.",
@@ -133,7 +135,7 @@ const Testimonials = () => {
             <div className="mt-8">
               <button 
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-                onClick={() => window.open('tel:+330635355158', '_self')}
+                onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
               >
                 Rejoignez nos clients satisfaits
               </button>

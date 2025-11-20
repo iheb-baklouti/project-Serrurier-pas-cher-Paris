@@ -23,6 +23,7 @@ import { usePathname } from 'next/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination as SwiperPagination, Keyboard, Mousewheel, Autoplay } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
+import { useContactInfo } from '@/lib/useContactInfo';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -101,6 +102,7 @@ const Blog = ({ linkedPage, take = 100 }: BlogProps) => {
 
     // Les articles sont déjà filtrés côté serveur, donc pas besoin de filtrage côté client
     const filteredArticles = articles
+    const { contact_phone, contact_whatsapp, getPhoneLink, getWhatsAppLink } = useContactInfo();
 
     const formatDate = (dateString?: string | null) => {
         if (!dateString) return ''
@@ -211,14 +213,14 @@ const Blog = ({ linkedPage, take = 100 }: BlogProps) => {
                                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                     <button
                                         className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
-                                        onClick={() => window.open('tel:+330635355158', '_self')}
+                                        onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
                                     >
                                         <Phone className="h-5 w-5"/>
                                         Appeler maintenant
                                     </button>
                                     <button
                                         className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-600 dark:hover:text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 hover:shadow-lg transform hover:scale-105"
-                                        onClick={() => window.open('https://wa.me/330635355158?text=Bonjour, j\'ai une question suite à la lecture de votre article', '_blank')}
+                                        onClick={() => window.open(getWhatsAppLink(contact_whatsapp, "Bonjour, j'ai une question suite à la lecture de votre article"), '_blank')}
                                     >
                                         <MessageSquare className="h-5 w-5"/>
                                         WhatsApp
@@ -503,7 +505,7 @@ const Blog = ({ linkedPage, take = 100 }: BlogProps) => {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button
                                 className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white flex items-center gap-2"
-                                onClick={() => window.open('tel:+330635355158', '_self')}
+                                onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
                             >
                                 <Shield className="h-5 w-5"/>
                                 Conseil gratuit

@@ -12,6 +12,7 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import ScrollToTop from '@/components/ScrollToTop';
+import DynamicStructuredData from '@/components/DynamicStructuredData';
 
 export const metadata: Metadata = {
   title: 'Serrurier pas cher Paris 20ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
@@ -56,6 +57,7 @@ export const metadata: Metadata = {
 export default function Paris20eme() {
   return (
     <main className="min-h-screen">
+      <DynamicStructuredData arrondissement={20} />
       <Header />
       <HeroArrondissement arrondissement={20} />
       <Services />
