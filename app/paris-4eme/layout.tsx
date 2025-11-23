@@ -21,7 +21,7 @@ export default function Paris4emeLayout({
             image: 'https://serrurier-pas-cher.paris/logo.png',
             '@id': 'https://serrurier-pas-cher.paris/paris-4eme',
             url: 'https://serrurier-pas-cher.paris/paris-4eme',
-            telephone: '+33635355158',
+            telephone: '+33627558855',
             priceRange: '€€',
             address: {
               '@type': 'PostalAddress',

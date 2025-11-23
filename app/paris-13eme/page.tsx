@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
   // Fallback si pas de métadonnées en BDD
   return {
     title: 'Serrurier pas cher Paris 13ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 13ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 13ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 35 35 51 58',
+    description: 'Serrurier pas cher Paris 13ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 13ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
     keywords: 'serrurier Paris 13ème, serrurier pas cher Paris 13ème, dépannage serrurier Paris 13ème, ouverture de porte Paris 13ème, urgence serrurerie Paris 13ème, artisan serrurier Paris 13ème, serrurerie 24h Paris 13ème, serrurier urgence Paris 13ème, prix serrurier Paris 13ème',
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {

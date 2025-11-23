@@ -10,8 +10,8 @@ interface ContactInfo {
 
 const defaultContactInfo: ContactInfo = {
   contact_email: 'spcp.paris@gmail.com',
-  contact_phone: '06 35 35 51 58',
-  contact_whatsapp: '33635355158'
+  contact_phone: '06 27 55 88 55',
+  contact_whatsapp: '33627558855'
 }
 
 export function useContactInfo() {

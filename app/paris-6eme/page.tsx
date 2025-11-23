@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
   // Fallback si pas de métadonnées en BDD
   return {
     title: 'Serrurier pas cher Paris 6ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 6ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 6ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 35 35 51 58',
+    description: 'Serrurier pas cher Paris 6ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 6ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
     keywords: 'serrurier Paris 6ème, serrurier pas cher Paris 6ème, dépannage serrurier Paris 6ème, ouverture de porte Paris 6ème, urgence serrurerie Paris 6ème, artisan serrurier Paris 6ème, serrurerie 24h Paris 6ème, serrurier urgence Paris 6ème, prix serrurier Paris 6ème',
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {

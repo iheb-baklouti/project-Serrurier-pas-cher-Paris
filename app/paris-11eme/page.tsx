@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
   // Fallback si pas de métadonnées en BDD
   return {
     title: 'Serrurier pas cher Paris 11ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 11ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 11ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 35 35 51 58',
+    description: 'Serrurier pas cher Paris 11ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 11ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
     keywords: 'serrurier Paris 11ème, serrurier pas cher Paris 11ème, dépannage serrurier Paris 11ème, ouverture de porte Paris 11ème, urgence serrurerie Paris 11ème, artisan serrurier Paris 11ème, serrurerie 24h Paris 11ème, serrurier urgence Paris 11ème, prix serrurier Paris 11ème',
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {

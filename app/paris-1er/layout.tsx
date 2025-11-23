@@ -22,7 +22,7 @@ export default function Paris1erLayout({
             image: 'https://serrurier-pas-cher.paris/logo.png',
             '@id': 'https://serrurier-pas-cher.paris/paris-1er',
             url: 'https://serrurier-pas-cher.paris/paris-1er',
-            telephone: '+33635355158',
+            telephone: '+33627558855',
             priceRange: '€€',
             address: {
               '@type': 'PostalAddress',

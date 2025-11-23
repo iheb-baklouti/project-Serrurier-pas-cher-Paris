@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
     // Fallback si pas de métadonnées en BDD
     return {
         title: 'Serrurier pas cher Paris | Dépannage Urgent 24h/24 | Tarifs Transparents',
-        description: 'Serrurier pas cher Paris ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié. Urgence serrurerie Paris. Devis gratuit ☎️ 06 35 35 51 58',
+        description: 'Serrurier pas cher Paris ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié. Urgence serrurerie Paris. Devis gratuit ☎️ 06 27 55 88 55',
         keywords: 'AMD serrurier Paris, dépannage serrurier Paris, ouverture de porte Paris, urgence serrurerie Paris, artisan serrurier Paris, serrurerie 24h Paris, serrurier urgence, dépannage serrure Paris, tarifs serrurier Paris',
         authors: [{name: 'Serrurier pas cher Paris'}],
         creator: 'Serrurier pas cher Paris',

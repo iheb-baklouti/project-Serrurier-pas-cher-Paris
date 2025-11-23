@@ -21,7 +21,7 @@ export default function Paris15emeLayout({
             image: 'https://serrurier-pas-cher.paris/logo.png',
             '@id': 'https://serrurier-pas-cher.paris/paris-15eme',
             url: 'https://serrurier-pas-cher.paris/paris-15eme',
-            telephone: '+33635355158',
+            telephone: '+33627558855',
             priceRange: '€€',
             address: {
               '@type': 'PostalAddress',

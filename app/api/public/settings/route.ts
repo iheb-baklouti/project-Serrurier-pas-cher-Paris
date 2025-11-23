@@ -35,8 +35,8 @@ export async function GET() {
     // Important: on vérifie si la clé existe dans settingsMap, pas si la valeur est truthy
     const result = {
       contact_email: settingsMap.hasOwnProperty('contact_email') ? settingsMap.contact_email : 'spcp.paris@gmail.com',
-      contact_phone: settingsMap.hasOwnProperty('contact_phone') ? settingsMap.contact_phone : '06 35 35 51 58',
-      contact_whatsapp: settingsMap.hasOwnProperty('contact_whatsapp') ? settingsMap.contact_whatsapp : '33635355158'
+      contact_phone: settingsMap.hasOwnProperty('contact_phone') ? settingsMap.contact_phone : '06 27 55 88 55',
+      contact_whatsapp: settingsMap.hasOwnProperty('contact_whatsapp') ? settingsMap.contact_whatsapp : '33627558855'
     }
 
     console.log('Résultat final retourné par l\'API:', JSON.stringify(result, null, 2))
@@ -55,8 +55,8 @@ export async function GET() {
     // En cas d'erreur, retourner les valeurs par défaut
     return NextResponse.json({
       contact_email: 'spcp.paris@gmail.com',
-      contact_phone: '06 35 35 51 58',
-      contact_whatsapp: '33635355158'
+      contact_phone: '06 27 55 88 55',
+      contact_whatsapp: '33627558855'
     }, {
       headers: {
         'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',

@@ -21,7 +21,7 @@ export default function Paris8emeLayout({
             image: 'https://serrurier-pas-cher.paris/logo.png',
             '@id': 'https://serrurier-pas-cher.paris/paris-8eme',
             url: 'https://serrurier-pas-cher.paris/paris-8eme',
-            telephone: '+33635355158',
+            telephone: '+33627558855',
             priceRange: '€€',
             address: {
               '@type': 'PostalAddress',

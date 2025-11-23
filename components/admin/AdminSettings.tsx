@@ -134,7 +134,7 @@ export default function AdminSettings() {
                 id="contact_phone"
                 type="tel"
                 {...register('contact_phone')}
-                placeholder="06 35 35 51 58"
+                placeholder="06 27 55 88 55"
               />
             </div>
 
@@ -147,10 +147,10 @@ export default function AdminSettings() {
                 id="contact_whatsapp"
                 type="tel"
                 {...register('contact_whatsapp')}
-                placeholder="33635355158"
+                placeholder="33627558855"
               />
               <p className="text-sm text-gray-500">
-                Format international sans le + (ex: 33635355158)
+                Format international sans le + (ex: 33627558855)
               </p>
             </div>
 

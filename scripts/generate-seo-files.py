@@ -49,7 +49,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 
 export const metadata: Metadata = {{
   title: 'Serrurier pas cher Paris {name} – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-  description: 'Serrurier pas cher Paris {name} ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 95€. Artisan serrurier qualifié {name} arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 35 35 51 58',
+  description: 'Serrurier pas cher Paris {name} ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 95€. Artisan serrurier qualifié {name} arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
   keywords: 'serrurier Paris {name}, serrurier pas cher Paris {name}, dépannage serrurier Paris {name}, ouverture de porte Paris {name}, urgence serrurerie Paris {name}, artisan serrurier Paris {name}, serrurerie 24h Paris {name}, serrurier urgence Paris {name}, prix serrurier Paris {name}',
   authors: [{{ name: 'Serrurier pas cher Paris' }}],
   robots: {{
@@ -131,7 +131,7 @@ export default function Paris{fn}Layout({{
             image: 'https://serrurier-pas-cher.paris/logo.png',
             '@id': 'https://serrurier-pas-cher.paris/{slug}',
             url: 'https://serrurier-pas-cher.paris/{slug}',
-            telephone: '+33635355158',
+            telephone: '+33627558855',
             priceRange: '€€',
             address: {{
               '@type': 'PostalAddress',

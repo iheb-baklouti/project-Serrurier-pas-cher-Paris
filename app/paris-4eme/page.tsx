@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
   // Fallback si pas de métadonnées en BDD
   return {
     title: 'Serrurier pas cher Paris 4ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 4ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 4ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 35 35 51 58',
+    description: 'Serrurier pas cher Paris 4ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 4ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
     keywords: 'serrurier Paris 4ème, serrurier pas cher Paris 4ème, dépannage serrurier Paris 4ème, ouverture de porte Paris 4ème, urgence serrurerie Paris 4ème, artisan serrurier Paris 4ème, serrurerie 24h Paris 4ème, serrurier urgence Paris 4ème, prix serrurier Paris 4ème',
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {

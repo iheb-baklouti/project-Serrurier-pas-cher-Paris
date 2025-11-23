@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
   // Fallback si pas de métadonnées en BDD
   return {
     title: 'Serrurier pas cher Paris 1er – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 1er ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 1er arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 35 35 51 58',
+    description: 'Serrurier pas cher Paris 1er ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 1er arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
     keywords: 'serrurier Paris 1er, serrurier pas cher Paris 1er, dépannage serrurier Paris 1er, ouverture de porte Paris 1er, urgence serrurerie Paris 1er, artisan serrurier Paris 1er, serrurerie 24h Paris 1er, serrurier urgence Paris 1er, prix serrurier Paris 1er',
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {
