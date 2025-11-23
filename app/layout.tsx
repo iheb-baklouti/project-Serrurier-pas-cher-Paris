@@ -31,11 +31,13 @@ export async function generateMetadata(): Promise<Metadata> {
             siteName: 'Serrurier pas cher Paris',
             title: 'Serrurier pas cher Paris | Dépannage Urgent 24h/24',
             description: 'Serrurier pas cher Paris. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié. Urgence serrurerie Paris.',
+            images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
         },
         twitter: {
             card: 'summary_large_image',
             title: 'Serrurier pas cher Paris | Dépannage Urgent 24h/24',
             description: 'Serrurier pas cher Paris. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié.',
+            images: ['https://serrurier-pas-cher.paris/icon.svg'],
         },
         viewport: 'width=device-width, initial-scale=1',
     };

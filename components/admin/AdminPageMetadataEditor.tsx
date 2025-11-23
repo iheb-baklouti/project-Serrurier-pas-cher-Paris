@@ -208,6 +208,9 @@ export default function AdminPageMetadataEditor({ metadataId }: AdminPageMetadat
                   {...register('title')}
                   placeholder="Titre de la page (50-60 caractères recommandés)"
                 />
+                <p className="text-xs text-gray-500 mt-1">
+                  Apparaît dans les résultats Google (en bleu). Ex: "Serrurier pas cher Paris 1er – Dépannage 24h/24"
+                </p>
                 {errors.title && (
                   <p className="text-red-600 text-sm mt-1">{errors.title.message}</p>
                 )}
@@ -221,6 +224,9 @@ export default function AdminPageMetadataEditor({ metadataId }: AdminPageMetadat
                   placeholder="Description de la page (150-160 caractères recommandés)"
                   rows={3}
                 />
+                <p className="text-xs text-gray-500 mt-1">
+                  Apparaît sous le titre dans Google (en gris). Inclure le prix (35€) et le téléphone.
+                </p>
                 {errors.description && (
                   <p className="text-red-600 text-sm mt-1">{errors.description.message}</p>
                 )}
@@ -249,6 +255,9 @@ export default function AdminPageMetadataEditor({ metadataId }: AdminPageMetadat
           <Card>
             <CardHeader>
               <CardTitle>Open Graph (Facebook, LinkedIn)</CardTitle>
+              <p className="text-sm text-gray-500 mt-2">
+                Contrôle l'affichage quand quelqu'un partage votre lien sur Facebook ou LinkedIn
+              </p>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
@@ -275,8 +284,11 @@ export default function AdminPageMetadataEditor({ metadataId }: AdminPageMetadat
                 <Input
                   id="ogImage"
                   {...register('ogImage')}
-                  placeholder="URL de l'image (1200x630px recommandé)"
+                  placeholder="https://serrurier-pas-cher.paris/icon.svg (1200x630px recommandé)"
                 />
+                <p className="text-xs text-gray-500 mt-1">
+                  Si vide, le logo par défaut sera utilisé automatiquement
+                </p>
               </div>
             </CardContent>
           </Card>
@@ -284,6 +296,9 @@ export default function AdminPageMetadataEditor({ metadataId }: AdminPageMetadat
           <Card>
             <CardHeader>
               <CardTitle>Twitter Card</CardTitle>
+              <p className="text-sm text-gray-500 mt-2">
+                Contrôle l'affichage quand quelqu'un partage votre lien sur Twitter
+              </p>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
@@ -310,8 +325,11 @@ export default function AdminPageMetadataEditor({ metadataId }: AdminPageMetadat
                 <Input
                   id="twitterImage"
                   {...register('twitterImage')}
-                  placeholder="URL de l'image (1200x675px recommandé)"
+                  placeholder="https://serrurier-pas-cher.paris/icon.svg (1200x675px recommandé)"
                 />
+                <p className="text-xs text-gray-500 mt-1">
+                  Si vide, le logo par défaut sera utilisé automatiquement
+                </p>
               </div>
             </CardContent>
           </Card>
