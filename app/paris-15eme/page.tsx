@@ -16,7 +16,7 @@ import DynamicStructuredData from '@/components/DynamicStructuredData';
 
 export const metadata: Metadata = {
   title: 'Serrurier pas cher Paris 15ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-  description: 'Serrurier pas cher Paris 15ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 95€. Artisan serrurier qualifié 15ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 35 35 51 58',
+  description: 'Serrurier pas cher Paris 15ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 15ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 35 35 51 58',
   keywords: 'serrurier Paris 15ème, serrurier pas cher Paris 15ème, dépannage serrurier Paris 15ème, ouverture de porte Paris 15ème, urgence serrurerie Paris 15ème, artisan serrurier Paris 15ème, serrurerie 24h Paris 15ème, serrurier urgence Paris 15ème, prix serrurier Paris 15ème',
   authors: [{ name: 'Serrurier pas cher Paris' }],
   robots: {
@@ -35,13 +35,13 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     url: 'https://serrurier-pas-cher.paris/paris-15eme',
     title: 'Serrurier pas cher Paris 15ème – Dépannage 24h/24',
-    description: 'Serrurier pas cher Paris 15ème. Dépannage serrurier urgent, ouverture de porte dès 95€, artisan serrurier qualifié 15ème arrondissement.',
+    description: 'Serrurier pas cher Paris 15ème. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 15ème arrondissement.',
     siteName: 'Serrurier pas cher Paris',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Serrurier pas cher Paris 15ème – Dépannage 24h/24',
-    description: 'Serrurier pas cher Paris 15ème. Dépannage serrurier urgent, ouverture de porte dès 95€.',
+    description: 'Serrurier pas cher Paris 15ème. Dépannage serrurier urgent, ouverture de porte dès 35€.',
   },
   alternates: {
     canonical: 'https://serrurier-pas-cher.paris/paris-15eme',

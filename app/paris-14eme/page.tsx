@@ -16,7 +16,7 @@ import DynamicStructuredData from '@/components/DynamicStructuredData';
 
 export const metadata: Metadata = {
   title: 'Serrurier pas cher Paris 14ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-  description: 'Serrurier pas cher Paris 14ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 95€. Artisan serrurier qualifié 14ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 35 35 51 58',
+  description: 'Serrurier pas cher Paris 14ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 14ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 35 35 51 58',
   keywords: 'serrurier Paris 14ème, serrurier pas cher Paris 14ème, dépannage serrurier Paris 14ème, ouverture de porte Paris 14ème, urgence serrurerie Paris 14ème, artisan serrurier Paris 14ème, serrurerie 24h Paris 14ème, serrurier urgence Paris 14ème, prix serrurier Paris 14ème',
   authors: [{ name: 'Serrurier pas cher Paris' }],
   robots: {
@@ -35,13 +35,13 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     url: 'https://serrurier-pas-cher.paris/paris-14eme',
     title: 'Serrurier pas cher Paris 14ème – Dépannage 24h/24',
-    description: 'Serrurier pas cher Paris 14ème. Dépannage serrurier urgent, ouverture de porte dès 95€, artisan serrurier qualifié 14ème arrondissement.',
+    description: 'Serrurier pas cher Paris 14ème. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 14ème arrondissement.',
     siteName: 'Serrurier pas cher Paris',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Serrurier pas cher Paris 14ème – Dépannage 24h/24',
-    description: 'Serrurier pas cher Paris 14ème. Dépannage serrurier urgent, ouverture de porte dès 95€.',
+    description: 'Serrurier pas cher Paris 14ème. Dépannage serrurier urgent, ouverture de porte dès 35€.',
   },
   alternates: {
     canonical: 'https://serrurier-pas-cher.paris/paris-14eme',

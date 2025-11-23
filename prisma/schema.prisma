@@ -58,3 +58,22 @@ model Settings {
 
   @@map("settings")
 }
+
+model PageMetadata {
+  id          String   @id @default(cuid())
+  pagePath    String   @unique @db.VarChar(100) // "principal", "paris-1er", "paris-2eme", etc.
+  title       String   @db.VarChar(255)
+  description String   @db.Text
+  keywords    String?  @db.Text
+  ogTitle     String?  @db.VarChar(255)
+  ogDescription String? @db.Text
+  ogImage     String?  @db.VarChar(500)
+  twitterTitle String? @db.VarChar(255)
+  twitterDescription String? @db.Text
+  twitterImage String? @db.VarChar(500)
+  canonical  String?  @db.VarChar(500)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("page_metadata")
+}

@@ -11,8 +11,8 @@ const Services = () => {
     {
       icon: Key,
       title: "Ouverture de porte",
-      description: "Porte claquée dès 95€, porte fermée à clé dès 139€. Porte blindée claquée dès 129€, fermée à clé dès 179€.",
-      price: "Dès 95€ TTC",
+      description: "Porte claquée dès 35€, porte fermée à clé dès 139€. Porte blindée claquée dès 129€, fermée à clé dès 179€.",
+      price: "Dès 35€ TTC",
       urgent: true
     },
     {

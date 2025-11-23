@@ -16,7 +16,7 @@ import DynamicStructuredData from '@/components/DynamicStructuredData';
 
 export const metadata: Metadata = {
   title: 'Serrurier pas cher Paris 8ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-  description: 'Serrurier pas cher Paris 8ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 95€. Artisan serrurier qualifié 8ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 35 35 51 58',
+  description: 'Serrurier pas cher Paris 8ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 8ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 35 35 51 58',
   keywords: 'serrurier Paris 8ème, serrurier pas cher Paris 8ème, dépannage serrurier Paris 8ème, ouverture de porte Paris 8ème, urgence serrurerie Paris 8ème, artisan serrurier Paris 8ème, serrurerie 24h Paris 8ème, serrurier urgence Paris 8ème, prix serrurier Paris 8ème',
   authors: [{ name: 'Serrurier pas cher Paris' }],
   robots: {
@@ -35,13 +35,13 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     url: 'https://serrurier-pas-cher.paris/paris-8eme',
     title: 'Serrurier pas cher Paris 8ème – Dépannage 24h/24',
-    description: 'Serrurier pas cher Paris 8ème. Dépannage serrurier urgent, ouverture de porte dès 95€, artisan serrurier qualifié 8ème arrondissement.',
+    description: 'Serrurier pas cher Paris 8ème. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 8ème arrondissement.',
     siteName: 'Serrurier pas cher Paris',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Serrurier pas cher Paris 8ème – Dépannage 24h/24',
-    description: 'Serrurier pas cher Paris 8ème. Dépannage serrurier urgent, ouverture de porte dès 95€.',
+    description: 'Serrurier pas cher Paris 8ème. Dépannage serrurier urgent, ouverture de porte dès 35€.',
   },
   alternates: {
     canonical: 'https://serrurier-pas-cher.paris/paris-8eme',

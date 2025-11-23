@@ -24,7 +24,7 @@ const Hero = () => {
               </h1>
               
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-lg">
-                Dépannage serrurier 24h/24 • Ouverture de porte dès 95€ • Artisan serrurier qualifié
+                Dépannage serrurier 24h/24 • Ouverture de porte dès 35€ • Artisan serrurier qualifié
                 Urgence serrurerie Paris - Tarifs transparents et compétitifs
               </p>
             </div>
@@ -100,7 +100,7 @@ const Hero = () => {
             </div>
             <div className="absolute -bottom-4 -left-4 bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600">
               <div className="text-sm text-gray-600 dark:text-gray-300">Tarif dès</div>
-              <div className="text-lg font-bold text-blue-600">95€</div>
+              <div className="text-lg font-bold text-blue-600">35€</div>
             </div>
           </div>
         </div>

@@ -11,7 +11,8 @@ import {
   Home,
   LogOut,
   Shield,
-  X
+  X,
+  Tag
 } from 'lucide-react'
 import { signOut } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
@@ -22,6 +23,7 @@ const menuItems = [
   { href: '/admin', label: 'Tableau de bord', icon: LayoutDashboard },
   { href: '/admin/blogs', label: 'Blogs', icon: FileText },
   { href: '/admin/faqs', label: 'FAQ', icon: HelpCircle },
+  { href: '/admin/page-metadata', label: 'Métadonnées', icon: Tag },
   { href: '/admin/settings', label: 'Paramètres', icon: Settings },
   { href: '/admin/account', label: 'Compte', icon: Shield },
 ]

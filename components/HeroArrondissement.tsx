@@ -24,7 +24,7 @@ const HeroArrondissement = ({ arrondissement }: HeroArrondissementProps) => {
   const descriptions = [
     `Serrurier pas cher Paris ${arrondissement} : intervention rapide en moins de 30 minutes pour toute urgence de serrurerie. Porte claquée, clé cassée, changement de serrure - nous intervenons 24h/24 dans le ${nomArrondissement} arrondissement de Paris.`,
     `Vous cherchez un serrurier pas cher à Paris ${arrondissement} ? Notre équipe d'artisans certifiés intervient rapidement pour tout dépannage urgent : ouverture de porte, réparation de serrure, installation de serrures haute sécurité.`,
-    `Serrurier d'urgence Paris ${arrondissement} disponible 24h/24 et 7j/7. Ouverture de porte dès 95€, changement de serrure, dépannage immédiat dans le ${nomArrondissement} arrondissement.`
+    `Serrurier d'urgence Paris ${arrondissement} disponible 24h/24 et 7j/7. Ouverture de porte dès 35€, changement de serrure, dépannage immédiat dans le ${nomArrondissement} arrondissement.`
   ];
 
   const description = descriptions[arrondissement % descriptions.length];
@@ -122,7 +122,7 @@ const HeroArrondissement = ({ arrondissement }: HeroArrondissementProps) => {
             </div>
             <div className="absolute -bottom-4 -left-4 bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600">
               <div className="text-sm text-gray-600 dark:text-gray-300">Tarif dès</div>
-              <div className="text-lg font-bold text-blue-600">95€</div>
+              <div className="text-lg font-bold text-blue-600">35€</div>
             </div>
           </div>
         </div>
