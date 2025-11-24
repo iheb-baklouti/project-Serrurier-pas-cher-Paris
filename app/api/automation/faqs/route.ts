@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const faq = await prisma.faq.create({
+    const faq = await prisma.fAQ.create({
       data: {
         question,
         answer,
