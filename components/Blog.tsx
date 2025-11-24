@@ -498,21 +498,9 @@ const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
                   </div>
                 )}
 
-                {articles.length > 0 && (
-                  <div className="mt-12 text-center">
-                    <Link
-                      href={viewAllHref}
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
-                    >
-                      <BookOpen className="h-5 w-5" />
-                      Afficher d&apos;autres articles
-                    </Link>
-                  </div>
-                )}
-
                 {/* Bouton Afficher d'autres articles */}
                 {filteredArticles.length >= 3 && (
-                  <div className="mt-12 text-center">
+                  <div className="mt-6 text-center">
                     <Link
                       href={viewAllHref}
                       className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
