@@ -85,7 +85,13 @@ const DynamicStructuredData = ({ arrondissement }: DynamicStructuredDataProps) =
           },
         ],
       },
-      aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '127' },
+      aggregateRating: { 
+        '@type': 'AggregateRating', 
+        ratingValue: 4.8, 
+        reviewCount: 127,
+        bestRating: 5,
+        worstRating: 1
+      },
     };
 
     // Créer le JSON-LD BreadcrumbList

@@ -31,6 +31,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   }
   
+  // Ajouter la page blog principale
+  pages.push({
+    url: `${baseUrl}/blog`,
+    lastModified: date,
+    changeFrequency: 'daily',
+    priority: 0.8,
+  })
+
+  // Ajouter les pages blog par arrondissement
+  for (let i = 1; i <= 20; i++) {
+    let slug: string;
+    if (i === 1) slug = 'paris-1er';
+    else if (i === 2) slug = 'paris-2eme';
+    else if (i === 3) slug = 'paris-3eme';
+    else slug = `paris-${i}eme`;
+    
+    pages.push({
+      url: `${baseUrl}/blog?linkedPage=${slug}`,
+      lastModified: date,
+      changeFrequency: 'daily',
+      priority: 0.75,
+    })
+  }
+
   // Ajouter les articles de blog publiés
   try {
     const blogs = await prisma.blog.findMany({
