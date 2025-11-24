@@ -96,7 +96,9 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Logo size="sm" />
+            <Link href="/">
+              <Logo size="sm" />
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -120,8 +122,8 @@ const Header = () => {
               Contact
             </button>
             
-            {/* Menu déroulant Arrondissements */}
-            <DropdownMenu>
+            {/* Menu déroulant Arrondissements - MASQUÉ TEMPORAIREMENT */}
+            {/* <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors outline-none focus:outline-none">
                 <MapPin className="h-4 w-4" />
                 <span>
@@ -134,7 +136,6 @@ const Header = () => {
                   <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 px-2 py-1 mb-2 uppercase tracking-wide">
                     Paris par arrondissement
                   </div>
-                  {/* Bouton "Tous les arrondissements" */}
                   <DropdownMenuItem asChild className="p-0 mb-2">
                     <Link 
                       href="/"
@@ -168,7 +169,7 @@ const Header = () => {
                   </div>
                 </div>
               </DropdownMenuContent>
-            </DropdownMenu>
+            </DropdownMenu> */}
           </nav>
 
           {/* Phone CTA + Theme Toggle */}
@@ -208,13 +209,12 @@ const Header = () => {
                 Contact
               </button>
               
-              {/* Section Arrondissements Mobile */}
-              <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
+              {/* Section Arrondissements Mobile - MASQUÉE TEMPORAIREMENT */}
+              {/* <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
                 <div className="px-3 py-2 font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
                   <MapPin className="h-4 w-4" />
                   {selectedArrondissement ? getArrondissementName(selectedArrondissement) : 'Arrondissements Paris'}
                 </div>
-                {/* Bouton "Tous les arrondissements" Mobile */}
                 <Link
                   href="/"
                   className={`block px-3 py-2 text-sm rounded transition-colors text-center mb-2 mx-3 font-medium ${
@@ -245,7 +245,7 @@ const Header = () => {
                     );
                   })}
                 </div>
-              </div>
+              </div> */}
               
               <div className="px-3 py-2 flex items-center gap-2 border-t border-gray-200 dark:border-gray-700 mt-2 pt-2">
                 <ThemeToggle />

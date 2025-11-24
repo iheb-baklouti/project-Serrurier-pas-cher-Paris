@@ -20,6 +20,7 @@ import {
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card';
 import {Button} from '@/components/ui/button';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination as SwiperPagination, Keyboard, Mousewheel, Autoplay } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
@@ -49,7 +50,7 @@ interface BlogProps {
   take?: number;
 }
 
-const Blog = ({ linkedPage, take = 100 }: BlogProps) => {
+const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
     const pathname = usePathname();
     const [selectedCategory, setSelectedCategory] = useState('tous');
     const [articles, setArticles] = useState<BlogItem[]>([]);
@@ -103,6 +104,7 @@ const Blog = ({ linkedPage, take = 100 }: BlogProps) => {
     // Les articles sont déjà filtrés côté serveur, donc pas besoin de filtrage côté client
     const filteredArticles = articles
     const { contact_phone, contact_whatsapp, getPhoneLink, getWhatsAppLink } = useContactInfo();
+    const viewAllHref = pageKey === 'principal' ? '/blog' : `/blog?linkedPage=${encodeURIComponent(pageKey)}`;
 
     const formatDate = (dateString?: string | null) => {
         if (!dateString) return ''
@@ -413,10 +415,13 @@ const Blog = ({ linkedPage, take = 100 }: BlogProps) => {
                                     <User className="h-4 w-4"/>
                                     {article.author || 'Admin'}
                                   </div>
-                                  <div className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-medium text-sm group-hover:gap-2 transition-all">
+                                  <Link
+                                    href={`/blog/${article.slug}`}
+                                    className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-medium text-sm group-hover:gap-2 transition-all"
+                                  >
                                     Lire l'article
                                     <ArrowRight className="h-4 w-4"/>
-                                  </div>
+                                  </Link>
                                 </div>
                               </CardContent>
                             </div>
@@ -489,6 +494,31 @@ const Blog = ({ linkedPage, take = 100 }: BlogProps) => {
                 ) : (
                   <div className="text-center py-12 text-gray-600 dark:text-gray-400">
                     Aucun article disponible pour le moment.
+                  </div>
+                )}
+
+                {articles.length > 0 && (
+                  <div className="mt-12 text-center">
+                    <Link
+                      href={viewAllHref}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
+                    >
+                      <BookOpen className="h-5 w-5" />
+                      Afficher d&apos;autres articles
+                    </Link>
+                  </div>
+                )}
+
+                {/* Bouton Afficher d'autres articles */}
+                {filteredArticles.length >= 3 && (
+                  <div className="mt-12 text-center">
+                    <Link
+                      href={viewAllHref}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+                    >
+                      <BookOpen className="h-5 w-5" />
+                      Afficher d'autres articles
+                    </Link>
                   </div>
                 )}
 
