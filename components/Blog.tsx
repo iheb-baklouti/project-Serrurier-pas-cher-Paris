@@ -43,6 +43,7 @@ interface BlogItem {
   image?: string | null;
   linkedPage: string;
   updatedAt?: string;
+  slug?: string;
 }
 
 interface BlogProps {
