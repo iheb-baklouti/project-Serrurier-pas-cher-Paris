@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "prisma generate --schema=./prisma/schema.prisma && next build",
     "start": "next start",
     "lint": "next lint",
     "export": "next export",
-    "postinstall": "prisma generate",
+    "postinstall": "prisma generate || echo 'Prisma generate failed, continuing...'",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
     "db:generate": "prisma generate",

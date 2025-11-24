@@ -31,6 +31,8 @@ model Blog {
   image       String?  @db.VarChar(500)
   category    String?  @db.VarChar(100)
   linkedPage  String   @default("principal") @db.VarChar(50) // "principal", "paris-1", "paris-2", etc.
+  readTime    String?  @db.VarChar(50) // "5 min", "10 min", etc.
+  author      String?  @db.VarChar(255)
   published   Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
