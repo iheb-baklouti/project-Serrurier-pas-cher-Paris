@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Phone, Menu, X, ChevronDown, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -17,11 +17,11 @@ import { useContactInfo } from '@/lib/useContactInfo';
 
 const HeaderPhoneButton = () => {
   const { contact_phone, getPhoneLink } = useContactInfo();
-  
+
   return (
     <div className="hidden md:flex items-center gap-3">
       <ThemeToggle />
-      <Button 
+      <Button
         className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white flex items-center gap-2"
         onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
       >
@@ -37,11 +37,11 @@ const Header = () => {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  
+
   // Extraire le numéro d'arrondissement de l'URL (support des anciens et nouveaux slugs)
   const arrondissementMatch = pathname?.match(/\/paris-(?:1er|2eme|3eme|\d+eme|\d+)/);
   let selectedArrondissement: number | null = null;
-  
+
   if (pathname?.includes('/paris-1er')) {
     selectedArrondissement = 1;
   } else if (pathname?.includes('/paris-2eme')) {
@@ -78,19 +78,25 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const router = useRouter();
+
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (pathname === '/') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        setIsMenuOpen(false);
+      }
+    } else {
       setIsMenuOpen(false);
+      router.push(`/#${sectionId}`);
     }
   };
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white dark:bg-gray-900 shadow-lg' : 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm'
-      }`}
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white dark:bg-gray-900 shadow-lg' : 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -121,7 +127,7 @@ const Header = () => {
             <button onClick={() => scrollToSection('contact')} className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
               Contact
             </button>
-            
+
             {/* Menu déroulant Arrondissements - MASQUÉ TEMPORAIREMENT */}
             {/* <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center gap-1 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors outline-none focus:outline-none">
@@ -208,7 +214,7 @@ const Header = () => {
               <button onClick={() => scrollToSection('contact')} className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors w-full text-left">
                 Contact
               </button>
-              
+
               {/* Section Arrondissements Mobile - MASQUÉE TEMPORAIREMENT */}
               {/* <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
                 <div className="px-3 py-2 font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
@@ -246,12 +252,12 @@ const Header = () => {
                   })}
                 </div>
               </div> */}
-              
+
               <div className="px-3 py-2 flex items-center gap-2 border-t border-gray-200 dark:border-gray-700 mt-2 pt-2">
                 <ThemeToggle />
               </div>
               <div className="px-3 py-2">
-                <Button 
+                <Button
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-2"
                   onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
                 >
