@@ -116,7 +116,7 @@ const FAQList = () => {
                             {openIndex === index && (
                                 <div className="px-6 pb-5 pt-0">
                                     <div className="h-px w-full bg-gray-100 mb-4" />
-                                    <p className="text-gray-600 leading-relaxed">
+                                    <p className="text-gray-600 leading-relaxed whitespace-pre-wrap text-base">
                                         {faq.answer}
                                     </p>
                                 </div>
@@ -152,8 +152,8 @@ const FAQList = () => {
                                 key={p}
                                 onClick={() => setPage(p)}
                                 className={`w-8 h-8 rounded-lg text-sm font-medium transition-colors ${page === p
-                                        ? 'bg-blue-600 text-white'
-                                        : 'text-gray-700 hover:bg-gray-100'
+                                    ? 'bg-blue-600 text-white'
+                                    : 'text-gray-700 hover:bg-gray-100'
                                     }`}
                             >
                                 {p}

@@ -119,7 +119,7 @@ const FAQ = ({ linkedPage, take = 20, showMoreButton = false }: FAQProps) => {
                 </button>
                 {openIndex === index && (
                   <div className="px-6 pb-4">
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-gray-600 leading-relaxed whitespace-pre-wrap text-base">
                       {faq.answer}
                     </p>
                   </div>

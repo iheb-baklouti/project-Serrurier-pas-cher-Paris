@@ -83,7 +83,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                   </h1>
 
                   {blog.image && (
-                    <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg">
+                    <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg mb-8">
                       <img
                         src={blog.image}
                         alt={blog.title}
@@ -96,7 +96,16 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
                 {/* Content */}
                 <div
-                  className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-xl prose-strong:text-gray-900 dark:prose-strong:text-white"
+                  className="prose prose-lg dark:prose-invert max-w-none 
+                    prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-white 
+                    prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
+                    prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-p:my-6
+                    prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
+                    prose-img:rounded-xl prose-img:shadow-md
+                    prose-strong:text-gray-900 dark:prose-strong:text-white prose-strong:font-bold
+                    prose-ul:list-disc prose-ul:pl-6 prose-li:marker:text-blue-600
+                    prose-ol:list-decimal prose-ol:pl-6
+                    [&>p]:mb-6 [&>h2]:mt-12 [&>h2]:mb-6 [&>h3]:mt-8 [&>h3]:mb-4"
                   dangerouslySetInnerHTML={{ __html: blog.content }}
                 />
 
@@ -171,4 +180,3 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     </>
   );
 }
-
