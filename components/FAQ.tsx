@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { ChevronDown, ChevronUp, CircleHelp as HelpCircle } from 'lucide-react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useContactInfo } from '@/lib/useContactInfo';
 
 interface FAQItem {
@@ -17,27 +17,29 @@ interface FAQItem {
 interface FAQProps {
   linkedPage?: string;
   take?: number;
+  showMoreButton?: boolean;
 }
 
-const FAQ = ({ linkedPage, take = 20 }: FAQProps) => {
+const FAQ = ({ linkedPage, take = 20, showMoreButton = false }: FAQProps) => {
   const pathname = usePathname();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [faqs, setFaqs] = useState<FAQItem[]>([])
   const [loading, setLoading] = useState(true)
   const { contact_phone, contact_whatsapp, getPhoneLink, getWhatsAppLink } = useContactInfo();
+  const router = useRouter();
 
   const pageKey = useMemo(() => {
     if (linkedPage) return linkedPage;
-    
+
     // Support des nouveaux slugs (paris-1er, paris-2eme, paris-3eme, paris-Xeme) et anciens (paris-X)
     if (pathname?.includes('/paris-1er')) return 'paris-1er';
     if (pathname?.includes('/paris-2eme')) return 'paris-2eme';
     if (pathname?.includes('/paris-3eme')) return 'paris-3eme';
-    
+
     // Support pour paris-Xeme (4 à 20)
     const emeMatch = pathname?.match(/\/paris-(\d+)eme/);
     if (emeMatch) return `paris-${emeMatch[1]}eme`;
-    
+
     const match = pathname?.match(/\/paris-(\d+)/);
     return match ? `paris-${match[1]}` : 'principal';
   }, [pathname, linkedPage]);
@@ -46,11 +48,15 @@ const FAQ = ({ linkedPage, take = 20 }: FAQProps) => {
     const fetchFaqs = async () => {
       setLoading(true)
       try {
-        const res = await fetch(`/api/public/faqs?page=${encodeURIComponent(pageKey)}&take=${take}`, { cache: 'no-store' })
+        // Si c'est le widget (showMoreButton=true), on veut les plus récents
+        const sortParam = showMoreButton ? '&sort=recent' : '';
+        const res = await fetch(`/api/public/faqs?page=${encodeURIComponent(pageKey)}&take=${take}${sortParam}`, { cache: 'no-store' })
         if (res.ok) {
-          const data: FAQItem[] = await res.json()
-          setFaqs(data)
-          setOpenIndex(data.length ? 0 : null)
+          const json = await res.json()
+          // Support both old (array) and new (object with data) formats for safety during migration
+          const data = Array.isArray(json) ? json : json.data
+          setFaqs(data || [])
+          setOpenIndex(data && data.length ? 0 : null)
         }
       } catch {
         // ignore
@@ -59,7 +65,7 @@ const FAQ = ({ linkedPage, take = 20 }: FAQProps) => {
       }
     }
     fetchFaqs()
-  }, [pageKey, take])
+  }, [pageKey, take, showMoreButton])
 
   const SkeletonItem = () => (
     <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
@@ -90,7 +96,7 @@ const FAQ = ({ linkedPage, take = 20 }: FAQProps) => {
 
         {loading ? (
           <div className="space-y-4">
-            {Array.from({ length: 6 }).map((_, i) => (
+            {Array.from({ length: Math.min(take, 6) }).map((_, i) => (
               <SkeletonItem key={i} />
             ))}
           </div>
@@ -123,6 +129,17 @@ const FAQ = ({ linkedPage, take = 20 }: FAQProps) => {
           </div>
         )}
 
+        {showMoreButton && (
+          <div className="mt-8 text-center">
+            <button
+              onClick={() => router.push('/faq')}
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 transition-colors"
+            >
+              Afficher plus de FAQ
+            </button>
+          </div>
+        )}
+
         {/* CTA après FAQ */}
         <div className="mt-16 text-center">
           <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
@@ -133,13 +150,13 @@ const FAQ = ({ linkedPage, take = 20 }: FAQProps) => {
               Notre équipe est à votre disposition pour répondre à toutes vos questions spécifiques.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <button
                 className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
                 onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
               >
                 Appelez-nous maintenant
               </button>
-              <button 
+              <button
                 className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-6 py-3 rounded-lg font-semibold transition-colors"
                 onClick={() => window.open(getWhatsAppLink(contact_whatsapp, "Bonjour, j'ai une question sur vos services"), '_blank')}
               >

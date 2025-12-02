@@ -20,7 +20,7 @@ export default function Home() {
       <WhyChooseUs />
       <Testimonials />
       <Blog />
-      <FAQ />
+      <FAQ take={5} showMoreButton={true} />
       <Contact />
       <Footer />
       <WhatsAppButton />

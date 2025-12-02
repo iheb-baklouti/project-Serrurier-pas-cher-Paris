@@ -4,17 +4,23 @@ import { prisma } from '@/lib/prisma'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://serrurier-pas-cher.paris'
   const date = new Date()
-  
+
   // Page principale
   const pages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified: date,
-      changeFrequency: 'weekly',
+      changeFrequency: 'daily',
       priority: 1,
     },
+    {
+      url: `${baseUrl}/faq`,
+      lastModified: date,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
   ]
-  
+
   // Ajouter les 20 pages d'arrondissement
   for (let i = 1; i <= 20; i++) {
     let slug: string;
@@ -22,21 +28,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     else if (i === 2) slug = 'paris-2eme';
     else if (i === 3) slug = 'paris-3eme';
     else slug = `paris-${i}eme`;
-    
+
     pages.push({
       url: `${baseUrl}/${slug}`,
       lastModified: date,
-      changeFrequency: 'weekly',
+      changeFrequency: 'daily',
       priority: 0.9,
     })
   }
-  
+
   // Ajouter la page blog principale
   pages.push({
     url: `${baseUrl}/blog`,
     lastModified: date,
     changeFrequency: 'daily',
-    priority: 0.8,
+    priority: 0.9,
   })
 
   // Ajouter les pages blog par arrondissement
@@ -46,12 +52,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     else if (i === 2) slug = 'paris-2eme';
     else if (i === 3) slug = 'paris-3eme';
     else slug = `paris-${i}eme`;
-    
+
     pages.push({
       url: `${baseUrl}/blog?linkedPage=${slug}`,
       lastModified: date,
       changeFrequency: 'daily',
-      priority: 0.75,
+      priority: 0.8,
     })
   }
 
@@ -74,13 +80,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       pages.push({
         url: `${baseUrl}/blog/${blog.slug}`,
         lastModified: blog.updatedAt,
-        changeFrequency: 'monthly',
-        priority: 0.7,
+        changeFrequency: 'weekly',
+        priority: 0.8,
       })
     })
   } catch (error) {
     console.error('Erreur lors de la récupération des blogs pour le sitemap:', error)
   }
-  
+
   return pages
 }

@@ -96,7 +96,7 @@ export default function Paris4eme() {
       <WhyChooseUs />
       <Testimonials />
       <Blog />
-      <FAQ />
+      <FAQ take={5} showMoreButton={true} />
       <Contact />
       <Footer />
       <WhatsAppButton />
