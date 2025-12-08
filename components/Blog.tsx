@@ -301,8 +301,8 @@ const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${selectedCategory === category.id
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-600 hover:text-blue-600 dark:hover:text-blue-400'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-600 hover:text-blue-600 dark:hover:text-blue-400'
                   }`}
               >
                 <IconComponent className="h-4 w-4" />
@@ -415,17 +415,13 @@ const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
                             <User className="h-4 w-4" />
                             {article.author || 'Admin'}
                           </div>
-                          <div
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              setSelectedArticle(article.id);
-                            }}
-                            className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-medium text-sm group-hover:gap-2 transition-all cursor-pointer"
+                          <Link
+                            href={`/blog/${article.slug}`}
+                            className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-medium text-sm group-hover:gap-2 transition-all"
                           >
                             Lire l'article
                             <ArrowRight className="h-4 w-4" />
-                          </div>
+                          </Link>
                         </div>
                       </CardContent>
                     </div>

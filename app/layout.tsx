@@ -7,6 +7,7 @@ import { getPageMetadata } from '@/lib/getPageMetadata';
 
 import Script from 'next/script';
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export async function generateMetadata(): Promise<Metadata> {
     const metadata = await getPageMetadata('principal');
@@ -87,6 +88,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode; }
                     </ThemeProvider>
                 </Providers>
                 <Analytics />
+                <SpeedInsights />
             </body>
         </html>
     );
