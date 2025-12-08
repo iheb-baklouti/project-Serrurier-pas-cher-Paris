@@ -29,16 +29,16 @@ export async function getPageMetadata(pagePath: string): Promise<Metadata | null
         siteName: 'Serrurier pas cher Paris',
         title: metadata.ogTitle || metadata.title,
         description: metadata.ogDescription || metadata.description,
-        images: metadata.ogImage 
-          ? [{ url: metadata.ogImage }] 
+        images: metadata.ogImage
+          ? [{ url: metadata.ogImage }]
           : [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
       },
       twitter: {
         card: 'summary_large_image',
         title: metadata.twitterTitle || metadata.title,
         description: metadata.twitterDescription || metadata.description,
-        images: metadata.twitterImage 
-          ? [metadata.twitterImage] 
+        images: metadata.twitterImage
+          ? [metadata.twitterImage]
           : ['https://serrurier-pas-cher.paris/icon.svg'],
       },
       alternates: {
