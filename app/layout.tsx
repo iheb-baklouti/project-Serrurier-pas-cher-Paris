@@ -6,6 +6,7 @@ import { Providers } from '@/components/providers';
 import { getPageMetadata } from '@/lib/getPageMetadata';
 
 import Script from 'next/script';
+import { Analytics } from "@vercel/analytics/next";
 
 export async function generateMetadata(): Promise<Metadata> {
     const metadata = await getPageMetadata('principal');
@@ -85,6 +86,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode; }
                         <Toaster closeButton />
                     </ThemeProvider>
                 </Providers>
+                <Analytics />
             </body>
         </html>
     );
