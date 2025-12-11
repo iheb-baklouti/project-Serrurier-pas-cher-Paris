@@ -379,7 +379,8 @@ const Contact = ({ arrondissement }: ContactProps = {}) => {
                 {arrondissementContent ? `Quartiers desservis : ${arrondissementContent.quartiers.join(', ')}` : 'Intervention rapide 24h/24'}
               </p>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700">
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 relative bg-gray-100 dark:bg-gray-800 min-h-[450px]">
+              {/* Google Maps iframe - URL simplifiée qui fonctionne sans clé API */}
               <iframe
                 width="100%"
                 height="450"
@@ -387,9 +388,21 @@ const Contact = ({ arrondissement }: ContactProps = {}) => {
                 loading="lazy"
                 allowFullScreen
                 referrerPolicy="no-referrer-when-downgrade"
-                src={`https://maps.google.com/maps?q=${arrondissementData.latitude},${arrondissementData.longitude}&hl=fr&z=${mapZoom}&output=embed`}
+                src={`https://maps.google.com/maps?q=${arrondissementData.latitude},${arrondissementData.longitude}&hl=fr&z=${mapZoom}&ie=UTF8&iwloc=B&output=embed`}
                 title={`Carte Google Maps - Serrurier Paris ${arrondissementData.name}`}
               />
+              {/* Lien vers Google Maps en cas de problème d'affichage */}
+              <div className="absolute bottom-4 right-4 z-10">
+                <a
+                  href={`https://www.google.com/maps?q=${arrondissementData.latitude},${arrondissementData.longitude}&hl=fr&z=${mapZoom}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg flex items-center gap-2 transition-colors"
+                >
+                  <MapPin className="h-4 w-4" />
+                  Ouvrir dans Google Maps
+                </a>
+              </div>
             </div>
             {arrondissementContent && arrondissementContent.stationsMetro.length > 0 && (
               <div className="mt-4 text-center">

@@ -82,20 +82,42 @@ const Hero = () => {
 
           {/* Image */}
           <div className="relative lg:order-2">
-            <div className="bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/50 dark:to-blue-800/50 rounded-2xl p-8 h-96 flex items-center justify-center">
-              <div className="text-center">
+            <div className="bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/50 dark:to-blue-800/50 rounded-2xl p-8 h-96 flex items-center justify-center relative overflow-hidden">
+              {/* Animation de fond */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 left-0 w-32 h-32 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-0 right-0 w-40 h-40 bg-blue-400 rounded-full blur-3xl animate-pulse delay-1000"></div>
+              </div>
+              
+              <div className="text-center relative z-10">
                 <a
                   href={process.env.NEXT_PUBLIC_SCANNER_URL || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white dark:bg-gray-800 rounded-full p-6 w-32 h-32 mx-auto flex flex-col items-center justify-center shadow-lg mb-4 hover:scale-105 transition-transform cursor-pointer group"
+                  className="bg-white dark:bg-gray-800 rounded-full p-8 w-40 h-40 mx-auto flex flex-col items-center justify-center shadow-2xl mb-6 hover:scale-110 transition-all duration-300 cursor-pointer group relative border-4 border-blue-500 hover:border-blue-600 hover:shadow-blue-500/50 animate-bounce-slow"
                 >
-                  <Camera className="h-12 w-12 text-blue-600 mb-2 group-hover:text-blue-700" />
-                  <span className="text-xs font-bold text-blue-600 uppercase">Scanner</span>
+                  {/* Effet de brillance */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  {/* Icône avec animation */}
+                  <div className="relative z-10">
+                    <Camera className="h-16 w-16 text-blue-600 mb-3 group-hover:text-blue-700 group-hover:scale-110 transition-all duration-300" />
+                    <span className="text-sm font-bold text-blue-600 uppercase tracking-wide group-hover:text-blue-700 transition-colors">
+                      Scanner
+                    </span>
+                  </div>
+                  
+                  {/* Badge "Nouveau" */}
+                  <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse">
+                    NEW
+                  </div>
                 </a>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 uppercase max-w-xs mx-auto">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 uppercase max-w-xs mx-auto leading-tight">
                   SCANNEZ VOTRE SERRURE POUR UN DEVIS & UNE INTERVENTION
                 </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+                  ⚡ Devis instantané en 30 secondes
+                </p>
               </div>
             </div>
 
