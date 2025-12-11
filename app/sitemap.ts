@@ -84,7 +84,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         pages.push({
           url: `${baseUrl}/blog/${encodeURIComponent(normalizedSlug)}`,
           lastModified: blog.updatedAt,
-          changeFrequency: 'weekly',
+          changeFrequency: 'daily',
           priority: 0.8,
         })
       }
