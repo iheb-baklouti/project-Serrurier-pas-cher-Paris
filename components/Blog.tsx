@@ -92,10 +92,15 @@ const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
         const res = await fetch(`/api/public/blogs?page=${encodeURIComponent(pageKey)}&take=${take}${categoryParam}`, { cache: 'no-store' })
         if (res.ok) {
           const data = await res.json()
-          setArticles(data.blogs || [])
+          // S'assurer que tous les articles ont un slug
+          const blogsWithSlug = (data.blogs || []).map((blog: BlogItem) => ({
+            ...blog,
+            slug: blog.slug || blog.id // Fallback sur l'ID si pas de slug
+          }))
+          setArticles(blogsWithSlug)
         }
       } catch (e) {
-        // ignore
+        console.error('Erreur lors du chargement des articles:', e);
       } finally {
         setLoading(false)
       }
@@ -371,24 +376,36 @@ const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
               } as React.CSSProperties}
             >
               {filteredArticles.map((article) => {
-                const articleUrl = article.slug ? `/blog/${article.slug}` : null;
-                const handleArticleClick = (e: React.MouseEvent) => {
-                  e.preventDefault();
-                  if (articleUrl) {
-                    router.push(articleUrl);
-                  } else {
-                    setSelectedArticle(article.id);
-                  }
-                };
+                // S'assurer que le slug existe - utiliser l'ID comme fallback si nécessaire
+                const articleSlug = article.slug || article.id;
+                // Construire l'URL absolue pour éviter les problèmes de navigation
+                const articleUrl = articleSlug ? `/blog/${articleSlug}` : null;
                 
                 return (
                   <SwiperSlide key={article.id} className="!h-auto">
                     <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 group bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 min-h-[500px]">
                       <div className="flex flex-col h-full">
-                        {article.image && (
+                        {article.image && articleUrl ? (
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              if (articleSlug) {
+                                router.push(articleUrl);
+                              }
+                            }}
+                            className="relative overflow-hidden rounded-t-lg flex-shrink-0 block w-full text-left p-0 border-0 bg-transparent"
+                          >
+                            <img
+                              src={article.image}
+                              alt={article.title}
+                              className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+                              loading="lazy"
+                            />
+                          </button>
+                        ) : article.image ? (
                           <div 
                             className="relative overflow-hidden rounded-t-lg flex-shrink-0 cursor-pointer"
-                            onClick={handleArticleClick}
+                            onClick={() => setSelectedArticle(article.id)}
                           >
                             <img
                               src={article.image}
@@ -397,7 +414,7 @@ const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
                               loading="lazy"
                             />
                           </div>
-                        )}
+                        ) : null}
 
                         <CardHeader className="flex-shrink-0">
                           <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-2">
@@ -415,12 +432,30 @@ const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
                             )}
                           </div>
 
-                          <CardTitle 
-                            className="text-xl group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-gray-900 dark:text-white line-clamp-2 min-h-[3.5rem] cursor-pointer hover:underline"
-                            onClick={handleArticleClick}
-                          >
-                            {article.title}
-                          </CardTitle>
+                          {articleUrl ? (
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                if (articleSlug) {
+                                  router.push(articleUrl);
+                                } else {
+                                  console.error('Article sans slug:', article.id);
+                                }
+                              }}
+                              className="text-left w-full p-0 border-0 bg-transparent"
+                            >
+                              <CardTitle className="text-xl group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-gray-900 dark:text-white line-clamp-2 min-h-[3.5rem] cursor-pointer hover:underline">
+                                {article.title}
+                              </CardTitle>
+                            </button>
+                          ) : (
+                            <CardTitle 
+                              className="text-xl group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-gray-900 dark:text-white line-clamp-2 min-h-[3.5rem] cursor-pointer hover:underline"
+                              onClick={() => setSelectedArticle(article.id)}
+                            >
+                              {article.title}
+                            </CardTitle>
+                          )}
                         </CardHeader>
 
                         <CardContent className="flex flex-col flex-grow">
@@ -438,9 +473,14 @@ const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
                                 onClick={(e) => {
                                   e.preventDefault();
                                   e.stopPropagation();
-                                  router.push(articleUrl);
+                                  if (articleSlug) {
+                                    // Utiliser router.push pour une navigation fiable depuis n'importe quelle page
+                                    router.push(articleUrl);
+                                  } else {
+                                    console.error('Article sans slug:', article.id);
+                                  }
                                 }}
-                                className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-medium text-sm group-hover:gap-2 transition-all hover:underline"
+                                className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-medium text-sm group-hover:gap-2 transition-all hover:underline bg-transparent border-0 p-0"
                               >
                                 Lire l'article
                                 <ArrowRight className="h-4 w-4" />
