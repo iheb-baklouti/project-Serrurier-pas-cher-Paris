@@ -158,3 +158,17 @@
 .article-content blockquote {
   @apply border-l-4 border-blue-500 pl-4 italic text-gray-600 dark:text-gray-400 mb-6;
 }
+
+/* Styles pour Leaflet */
+.leaflet-container {
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+}
+
+.leaflet-popup-content {
+  margin: 12px;
+  font-size: 14px;
+}

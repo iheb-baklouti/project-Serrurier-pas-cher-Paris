@@ -9,6 +9,7 @@ import { useContactInfo } from '@/lib/useContactInfo';
 import { usePathname } from 'next/navigation';
 import { getArrondissementData } from '@/lib/arrondissementData';
 import { getArrondissementContent } from '@/lib/arrondissementContent';
+import MapLeaflet from '@/components/MapLeaflet';
 
 interface ContactProps {
   arrondissement?: number;
@@ -379,20 +380,16 @@ const Contact = ({ arrondissement }: ContactProps = {}) => {
                 {arrondissementContent ? `Quartiers desservis : ${arrondissementContent.quartiers.join(', ')}` : 'Intervention rapide 24h/24'}
               </p>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 relative bg-gray-100 dark:bg-gray-800 min-h-[450px]">
-              {/* Google Maps iframe - URL simplifiée qui fonctionne sans clé API */}
-              <iframe
-                width="100%"
-                height="450"
-                style={{ border: 0 }}
-                loading="lazy"
-                allowFullScreen
-                referrerPolicy="no-referrer-when-downgrade"
-                src={`https://maps.google.com/maps?q=${arrondissementData.latitude},${arrondissementData.longitude}&hl=fr&z=${mapZoom}&ie=UTF8&iwloc=B&output=embed`}
-                title={`Carte Google Maps - Serrurier Paris ${arrondissementData.name}`}
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 relative bg-gray-100 dark:bg-gray-800">
+              {/* Carte Leaflet - Solution gratuite et open-source */}
+              <MapLeaflet
+                latitude={arrondissementData.latitude}
+                longitude={arrondissementData.longitude}
+                zoom={mapZoom}
+                title={`Serrurier Paris ${arrondissementData.name} - Zone d'intervention`}
               />
-              {/* Lien vers Google Maps en cas de problème d'affichage */}
-              <div className="absolute bottom-4 right-4 z-10">
+              {/* Lien vers Google Maps pour navigation */}
+              <div className="absolute bottom-4 right-4 z-[1000]">
                 <a
                   href={`https://www.google.com/maps?q=${arrondissementData.latitude},${arrondissementData.longitude}&hl=fr&z=${mapZoom}`}
                   target="_blank"
