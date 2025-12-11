@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination as SwiperPagination, Keyboard, Mousewheel, Autoplay } from 'swiper/modules';
@@ -53,6 +53,7 @@ interface BlogProps {
 
 const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
   const pathname = usePathname();
+  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState('tous');
   const [articles, setArticles] = useState<BlogItem[]>([]);
   const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
@@ -369,65 +370,101 @@ const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
                 '--swiper-slide-height': 'auto'
               } as React.CSSProperties}
             >
-              {filteredArticles.map((article) => (
-                <SwiperSlide key={article.id} className="!h-auto">
-                  <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 cursor-pointer group bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 min-h-[500px]">
-                    <div onClick={() => setSelectedArticle(article.id)} className="flex flex-col h-full">
-                      {article.image && (
-                        <div className="relative overflow-hidden rounded-t-lg flex-shrink-0">
-                          <img
-                            src={article.image}
-                            alt={article.title}
-                            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                            loading="lazy"
-                          />
-                        </div>
-                      )}
-
-                      <CardHeader className="flex-shrink-0">
-                        <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-2">
-                          {article.updatedAt && (
-                            <div className="flex items-center gap-1">
-                              <Calendar className="h-4 w-4" />
-                              {formatDate(article.updatedAt)}
-                            </div>
-                          )}
-                          {article.readTime && (
-                            <div className="flex items-center gap-1">
-                              <Clock className="h-4 w-4" />
-                              {article.readTime}
-                            </div>
-                          )}
-                        </div>
-
-                        <CardTitle className="text-xl group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-gray-900 dark:text-white line-clamp-2 min-h-[3.5rem]">
-                          {article.title}
-                        </CardTitle>
-                      </CardHeader>
-
-                      <CardContent className="flex flex-col flex-grow">
-                        <CardDescription className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 flex-grow">
-                          {article.excerpt || ''}
-                        </CardDescription>
-
-                        <div className="flex items-center justify-between mt-auto">
-                          <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                            <User className="h-4 w-4" />
-                            {article.author || 'Admin'}
-                          </div>
-                          <Link
-                            href={`/blog/${article.slug}`}
-                            className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-medium text-sm group-hover:gap-2 transition-all"
+              {filteredArticles.map((article) => {
+                const articleUrl = article.slug ? `/blog/${article.slug}` : null;
+                const handleArticleClick = (e: React.MouseEvent) => {
+                  e.preventDefault();
+                  if (articleUrl) {
+                    router.push(articleUrl);
+                  } else {
+                    setSelectedArticle(article.id);
+                  }
+                };
+                
+                return (
+                  <SwiperSlide key={article.id} className="!h-auto">
+                    <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 group bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 min-h-[500px]">
+                      <div className="flex flex-col h-full">
+                        {article.image && (
+                          <div 
+                            className="relative overflow-hidden rounded-t-lg flex-shrink-0 cursor-pointer"
+                            onClick={handleArticleClick}
                           >
-                            Lire l'article
-                            <ArrowRight className="h-4 w-4" />
-                          </Link>
-                        </div>
-                      </CardContent>
-                    </div>
-                  </Card>
-                </SwiperSlide>
-              ))}
+                            <img
+                              src={article.image}
+                              alt={article.title}
+                              className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                              loading="lazy"
+                            />
+                          </div>
+                        )}
+
+                        <CardHeader className="flex-shrink-0">
+                          <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-2">
+                            {article.updatedAt && (
+                              <div className="flex items-center gap-1">
+                                <Calendar className="h-4 w-4" />
+                                {formatDate(article.updatedAt)}
+                              </div>
+                            )}
+                            {article.readTime && (
+                              <div className="flex items-center gap-1">
+                                <Clock className="h-4 w-4" />
+                                {article.readTime}
+                              </div>
+                            )}
+                          </div>
+
+                          <CardTitle 
+                            className="text-xl group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-gray-900 dark:text-white line-clamp-2 min-h-[3.5rem] cursor-pointer hover:underline"
+                            onClick={handleArticleClick}
+                          >
+                            {article.title}
+                          </CardTitle>
+                        </CardHeader>
+
+                        <CardContent className="flex flex-col flex-grow">
+                          <CardDescription className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 flex-grow">
+                            {article.excerpt || ''}
+                          </CardDescription>
+
+                          <div className="flex items-center justify-between mt-auto">
+                            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                              <User className="h-4 w-4" />
+                              {article.author || 'Admin'}
+                            </div>
+                            {articleUrl ? (
+                              <button
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  router.push(articleUrl);
+                                }}
+                                className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-medium text-sm group-hover:gap-2 transition-all hover:underline"
+                              >
+                                Lire l'article
+                                <ArrowRight className="h-4 w-4" />
+                              </button>
+                            ) : (
+                              <button
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  setSelectedArticle(article.id);
+                                }}
+                                className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-medium text-sm group-hover:gap-2 transition-all hover:underline"
+                              >
+                                Lire l'article
+                                <ArrowRight className="h-4 w-4" />
+                              </button>
+                            )}
+                          </div>
+                        </CardContent>
+                      </div>
+                    </Card>
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
 
             {/* Boutons de navigation personnalisés */}

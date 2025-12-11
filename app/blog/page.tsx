@@ -73,7 +73,9 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col"
               >
                 {blog.image && (
-                  <img src={blog.image} alt={blog.title} className="w-full h-48 object-cover" loading="lazy" />
+                  <Link href={`/blog/${blog.slug}`}>
+                    <img src={blog.image} alt={blog.title} className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300 cursor-pointer" loading="lazy" />
+                  </Link>
                 )}
                 <div className="flex flex-col flex-grow p-6">
                   <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-3">
@@ -93,9 +95,11 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                     )}
                   </div>
 
-                  <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3 line-clamp-2">
-                    {blog.title}
-                  </h2>
+                  <Link href={`/blog/${blog.slug}`}>
+                    <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3 line-clamp-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer">
+                      {blog.title}
+                    </h2>
+                  </Link>
                   <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 flex-grow">
                     {blog.excerpt || ''}
                   </p>
@@ -107,9 +111,10 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                     </span>
                     <Link
                       href={`/blog/${blog.slug}`}
-                      className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
+                      className="text-blue-600 dark:text-blue-400 font-semibold hover:underline flex items-center gap-1"
                     >
-                      Lire l&apos;article →
+                      Lire l&apos;article
+                      <span>→</span>
                     </Link>
                   </div>
                 </div>
