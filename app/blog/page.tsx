@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { BookOpen, Calendar, Clock, User } from 'lucide-react';
-import { fetchBlogsByPage, canonicalLinkedPageSlug } from '@/lib/blogs';
+import { fetchBlogsByPage, canonicalLinkedPageSlug, normalizeSlug } from '@/lib/blogs';
 import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -73,7 +73,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col"
               >
                 {blog.image && (
-                  <Link href={`/blog/${blog.slug}`}>
+                  <Link href={`/blog/${encodeURIComponent(normalizeSlug(blog.slug))}`}>
                     <img src={blog.image} alt={blog.title} className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300 cursor-pointer" loading="lazy" />
                   </Link>
                 )}
@@ -95,7 +95,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                     )}
                   </div>
 
-                  <Link href={`/blog/${blog.slug}`}>
+                  <Link href={`/blog/${encodeURIComponent(normalizeSlug(blog.slug))}`}>
                     <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3 line-clamp-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer">
                       {blog.title}
                     </h2>
@@ -110,7 +110,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                       {blog.author || 'Équipe Serrurier Paris'}
                     </span>
                     <Link
-                      href={`/blog/${blog.slug}`}
+                      href={`/blog/${encodeURIComponent(normalizeSlug(blog.slug))}`}
                       className="text-blue-600 dark:text-blue-400 font-semibold hover:underline flex items-center gap-1"
                     >
                       Lire l&apos;article

@@ -93,10 +93,55 @@ export async function fetchBlogsByPage({
   };
 }
 
+/**
+ * Normalise un slug pour qu'il soit compatible avec les URLs
+ * Enlève les hashtags, espaces, et caractères spéciaux
+ * Gère correctement les accents français
+ */
+export function normalizeSlug(slug: string): string {
+  if (!slug) return '';
+  
+  return slug
+    .toLowerCase()
+    .trim()
+    // Normaliser les caractères Unicode (enlever les accents)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    // Enlever les hashtags
+    .replace(/#/g, '')
+    // Remplacer les espaces multiples par un seul tiret
+    .replace(/\s+/g, '-')
+    // Enlever les caractères spéciaux sauf les tirets et les lettres/chiffres
+    .replace(/[^a-z0-9-]/g, '')
+    // Enlever les tirets multiples
+    .replace(/-+/g, '-')
+    // Enlever les tirets au début et à la fin
+    .replace(/^-+|-+$/g, '');
+}
+
+/**
+ * Trouve un blog par son slug, en essayant d'abord le slug exact,
+ * puis en normalisant le slug pour trouver une correspondance
+ */
 export async function fetchBlogBySlug(slug: string) {
-  const blog = await prisma.blog.findUnique({
+  // D'abord, essayer avec le slug exact
+  let blog = await prisma.blog.findUnique({
     where: { slug },
   });
+  
+  // Si pas trouvé, normaliser le slug et chercher
+  if (!blog) {
+    const normalizedSlug = normalizeSlug(slug);
+    if (normalizedSlug) {
+      // Chercher tous les blogs et trouver celui dont le slug normalisé correspond
+      const allBlogs = await prisma.blog.findMany({
+        where: { published: true },
+      });
+      
+      blog = allBlogs.find(b => normalizeSlug(b.slug) === normalizedSlug) || null;
+    }
+  }
+  
   return blog;
 }
 

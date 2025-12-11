@@ -21,6 +21,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { normalizeSlug } from '@/lib/blogs';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination as SwiperPagination, Keyboard, Mousewheel, Autoplay } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
@@ -376,10 +377,11 @@ const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
               } as React.CSSProperties}
             >
               {filteredArticles.map((article) => {
-                // S'assurer que le slug existe - utiliser l'ID comme fallback si nécessaire
-                const articleSlug = article.slug || article.id;
-                // Construire l'URL absolue pour éviter les problèmes de navigation
-                const articleUrl = articleSlug ? `/blog/${articleSlug}` : null;
+                // Normaliser le slug pour qu'il soit compatible avec les URLs
+                // Enlever les hashtags, espaces, etc.
+                const articleSlug = article.slug ? normalizeSlug(article.slug) : article.id;
+                // Construire l'URL avec le slug normalisé
+                const articleUrl = articleSlug ? `/blog/${encodeURIComponent(articleSlug)}` : null;
                 
                 return (
                   <SwiperSlide key={article.id} className="!h-auto">
