@@ -35,17 +35,17 @@ export async function generateMetadata(): Promise<Metadata> {
       other: {
         'geo.region': 'FR-75',
         'geo.placename': 'Paris 16ème',
-        'geo.position': '48.8500;2.2669',
-        'ICBM': '48.8500, 2.2669',
+        'geo.position': '48.8534;2.265',
+        'ICBM': '48.8534, 2.265',
       },
     };
   }
   
   // Fallback si pas de métadonnées en BDD
   return {
-    title: 'Serrurier pas cher Paris 16ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 16ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 16ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
-    keywords: 'serrurier Paris 16ème, serrurier pas cher Paris 16ème, dépannage serrurier Paris 16ème, ouverture de porte Paris 16ème, urgence serrurerie Paris 16ème, artisan serrurier Paris 16ème, serrurerie 24h Paris 16ème, serrurier urgence Paris 16ème, prix serrurier Paris 16ème',
+    title: "Serrurier Paris 16ème – Auteuil, Passy | Dépannage 24h/24",
+    description: "Serrurier pas cher Paris 16ème ⚡ Intervention rapide Auteuil, Passy, Trocadéro. Serrurier d'urgence près métro Trocadéro, Passy, Auteuil. Ouverture porte claquée dès 95€, changement cylindre, installation serrure. Service 24h/24, 7j/7. Devis gratuit ☎️ 06 27 55 88 55",
+    keywords: "serrurier Paris 16ème, serrurier pas cher Paris 16ème, serrurier Auteuil, serrurier Passy, serrurier Trocadéro, serrurier Porte Dauphine, serrurier Trocadéro, serrurier Passy, serrurier Auteuil, dépannage serrurier Paris 16ème, ouverture de porte Paris 16ème, urgence serrurerie Paris 16ème, artisan serrurier Paris 16ème, serrurerie 24h Paris 16ème, serrurier urgence Paris 16ème, prix serrurier Paris 16ème",
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {
       index: true,
@@ -62,15 +62,15 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       locale: 'fr_FR',
       url: 'https://serrurier-pas-cher.paris/paris-16eme',
-      title: 'Serrurier pas cher Paris 16ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 16ème. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 16ème arrondissement.',
+      title: "Serrurier Paris 16ème – Auteuil, Passy | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 16ème. Intervention rapide Auteuil, Passy. Dépannage serrurier urgent près métro Trocadéro, Passy. Ouverture de porte dès 95€, artisan serrurier qualifié 16ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
+      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 16ème - Auteuil" }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Serrurier pas cher Paris 16ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 16ème. Dépannage serrurier urgent, ouverture de porte dès 35€.',
+      title: "Serrurier Paris 16ème – Auteuil, Passy | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 16ème. Intervention rapide Auteuil, Passy. Dépannage serrurier urgent, ouverture de porte dès 95€.",
       images: ['https://serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
@@ -79,8 +79,8 @@ export async function generateMetadata(): Promise<Metadata> {
     other: {
       'geo.region': 'FR-75',
       'geo.placename': 'Paris 16ème',
-      'geo.position': '48.8500;2.2669',
-      'ICBM': '48.8500, 2.2669',
+      'geo.position': '48.8534;2.265',
+      'ICBM': '48.8534, 2.265',
     },
   };
 }
@@ -97,7 +97,7 @@ export default function Paris16eme() {
       <Testimonials />
       <Blog />
       <FAQ take={5} showMoreButton={true} />
-      <Contact />
+      <Contact arrondissement={16} />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />

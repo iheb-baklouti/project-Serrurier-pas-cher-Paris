@@ -43,9 +43,9 @@ export async function generateMetadata(): Promise<Metadata> {
   
   // Fallback si pas de métadonnées en BDD
   return {
-    title: 'Serrurier pas cher Paris 13ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 13ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 13ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
-    keywords: 'serrurier Paris 13ème, serrurier pas cher Paris 13ème, dépannage serrurier Paris 13ème, ouverture de porte Paris 13ème, urgence serrurerie Paris 13ème, artisan serrurier Paris 13ème, serrurerie 24h Paris 13ème, serrurier urgence Paris 13ème, prix serrurier Paris 13ème',
+    title: "Serrurier Paris 13ème – Gobelins, Butte-aux-Cailles | Dépannage 24h/24",
+    description: "Serrurier pas cher Paris 13ème ⚡ Intervention rapide Gobelins, Butte-aux-Cailles, Chinatown. Serrurier d'urgence près métro Place d'Italie, Tolbiac, Bibliothèque François Mitterrand. Ouverture porte claquée dès 95€, changement cylindre, installation serrure. Service 24h/24, 7j/7. Devis gratuit ☎️ 06 27 55 88 55",
+    keywords: "serrurier Paris 13ème, serrurier pas cher Paris 13ème, serrurier Gobelins, serrurier Butte-aux-Cailles, serrurier Chinatown, serrurier Bibliothèque, serrurier Place d'Italie, serrurier Tolbiac, serrurier Bibliothèque François Mitterrand, dépannage serrurier Paris 13ème, ouverture de porte Paris 13ème, urgence serrurerie Paris 13ème, artisan serrurier Paris 13ème, serrurerie 24h Paris 13ème, serrurier urgence Paris 13ème, prix serrurier Paris 13ème",
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {
       index: true,
@@ -62,15 +62,15 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       locale: 'fr_FR',
       url: 'https://serrurier-pas-cher.paris/paris-13eme',
-      title: 'Serrurier pas cher Paris 13ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 13ème. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 13ème arrondissement.',
+      title: "Serrurier Paris 13ème – Gobelins, Butte-aux-Cailles | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 13ème. Intervention rapide Gobelins, Butte-aux-Cailles. Dépannage serrurier urgent près métro Place d'Italie, Tolbiac. Ouverture de porte dès 95€, artisan serrurier qualifié 13ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
+      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 13ème - Gobelins" }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Serrurier pas cher Paris 13ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 13ème. Dépannage serrurier urgent, ouverture de porte dès 35€.',
+      title: "Serrurier Paris 13ème – Gobelins, Butte-aux-Cailles | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 13ème. Intervention rapide Gobelins, Butte-aux-Cailles. Dépannage serrurier urgent, ouverture de porte dès 95€.",
       images: ['https://serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
@@ -97,7 +97,7 @@ export default function Paris13eme() {
       <Testimonials />
       <Blog />
       <FAQ take={5} showMoreButton={true} />
-      <Contact />
+      <Contact arrondissement={13} />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />

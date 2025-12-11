@@ -35,17 +35,17 @@ export async function generateMetadata(): Promise<Metadata> {
       other: {
         'geo.region': 'FR-75',
         'geo.placename': 'Paris 9ème',
-        'geo.position': '48.8722;2.3378',
-        'ICBM': '48.8722, 2.3378',
+        'geo.position': '48.875;2.3397',
+        'ICBM': '48.875, 2.3397',
       },
     };
   }
   
   // Fallback si pas de métadonnées en BDD
   return {
-    title: 'Serrurier pas cher Paris 9ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 9ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 9ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
-    keywords: 'serrurier Paris 9ème, serrurier pas cher Paris 9ème, dépannage serrurier Paris 9ème, ouverture de porte Paris 9ème, urgence serrurerie Paris 9ème, artisan serrurier Paris 9ème, serrurerie 24h Paris 9ème, serrurier urgence Paris 9ème, prix serrurier Paris 9ème',
+    title: "Serrurier Paris 9ème – Opéra, Pigalle | Dépannage 24h/24",
+    description: "Serrurier pas cher Paris 9ème ⚡ Intervention rapide Opéra, Pigalle, Grands Boulevards. Serrurier d'urgence près métro Opéra, Chaussée d'Antin, Richelieu-Drouot. Ouverture porte claquée dès 95€, changement cylindre, installation serrure. Service 24h/24, 7j/7. Devis gratuit ☎️ 06 27 55 88 55",
+    keywords: "serrurier Paris 9ème, serrurier pas cher Paris 9ème, serrurier Opéra, serrurier Pigalle, serrurier Grands Boulevards, serrurier Faubourg Montmartre, serrurier Opéra, serrurier Chaussée d'Antin, serrurier Richelieu-Drouot, dépannage serrurier Paris 9ème, ouverture de porte Paris 9ème, urgence serrurerie Paris 9ème, artisan serrurier Paris 9ème, serrurerie 24h Paris 9ème, serrurier urgence Paris 9ème, prix serrurier Paris 9ème",
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {
       index: true,
@@ -62,15 +62,15 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       locale: 'fr_FR',
       url: 'https://serrurier-pas-cher.paris/paris-9eme',
-      title: 'Serrurier pas cher Paris 9ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 9ème. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 9ème arrondissement.',
+      title: "Serrurier Paris 9ème – Opéra, Pigalle | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 9ème. Intervention rapide Opéra, Pigalle. Dépannage serrurier urgent près métro Opéra, Chaussée d'Antin. Ouverture de porte dès 95€, artisan serrurier qualifié 9ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
+      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 9ème - Opéra" }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Serrurier pas cher Paris 9ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 9ème. Dépannage serrurier urgent, ouverture de porte dès 35€.',
+      title: "Serrurier Paris 9ème – Opéra, Pigalle | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 9ème. Intervention rapide Opéra, Pigalle. Dépannage serrurier urgent, ouverture de porte dès 95€.",
       images: ['https://serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
@@ -79,8 +79,8 @@ export async function generateMetadata(): Promise<Metadata> {
     other: {
       'geo.region': 'FR-75',
       'geo.placename': 'Paris 9ème',
-      'geo.position': '48.8722;2.3378',
-      'ICBM': '48.8722, 2.3378',
+      'geo.position': '48.875;2.3397',
+      'ICBM': '48.875, 2.3397',
     },
   };
 }
@@ -97,7 +97,7 @@ export default function Paris9eme() {
       <Testimonials />
       <Blog />
       <FAQ take={5} showMoreButton={true} />
-      <Contact />
+      <Contact arrondissement={9} />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />

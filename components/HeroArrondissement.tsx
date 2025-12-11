@@ -3,6 +3,8 @@
 import { Phone, Clock, MapPin, Star, Camera } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useContactInfo } from '@/lib/useContactInfo';
+import { getArrondissementContent } from '@/lib/arrondissementContent';
+import { getArrondissementData } from '@/lib/arrondissementData';
 
 interface HeroArrondissementProps {
   arrondissement: number;
@@ -10,24 +12,12 @@ interface HeroArrondissementProps {
 
 const HeroArrondissement = ({ arrondissement }: HeroArrondissementProps) => {
   const { contact_phone, contact_whatsapp, getPhoneLink, getWhatsAppLink } = useContactInfo();
-  // Nom spécifique de l'arrondissement
-  const nomsArrondissements: { [key: number]: string } = {
-    1: '1er', 2: '2ème', 3: '3ème', 4: '4ème', 5: '5ème',
-    6: '6ème', 7: '7ème', 8: '8ème', 9: '9ème', 10: '10ème',
-    11: '11ème', 12: '12ème', 13: '13ème', 14: '14ème', 15: '15ème',
-    16: '16ème', 17: '17ème', 18: '18ème', 19: '19ème', 20: '20ème'
-  };
+  const content = getArrondissementContent(arrondissement);
+  const arrondissementData = getArrondissementData(arrondissement);
+  const nomArrondissement = arrondissementData.name;
 
-  const nomArrondissement = nomsArrondissements[arrondissement] || `${arrondissement}ème`;
-
-  // Descriptions variées pour chaque arrondissement
-  const descriptions = [
-    `Serrurier Paris ${arrondissement} : intervention rapide en moins de 30 minutes pour toute urgence de serrurerie. Porte claquée, clé cassée, changement de serrure - nous intervenons 24h/24 dans le ${nomArrondissement} arrondissement de Paris.`,
-    `Vous cherchez un serrurier pas cher à Paris ${arrondissement} ? Notre équipe d'artisans certifiés intervient rapidement pour tout dépannage urgent : ouverture de porte, réparation de serrure, installation de serrures haute sécurité.`,
-    `Serrurier d'urgence Paris ${arrondissement} disponible 24h/24 et 7j/7. Ouverture de porte dès 35€, changement de serrure, dépannage immédiat dans le ${nomArrondissement} arrondissement.`
-  ];
-
-  const description = descriptions[arrondissement % descriptions.length];
+  // Description unique et spécifique pour chaque arrondissement
+  const description = `Serrurier Paris ${arrondissement} : intervention rapide en moins de 30 minutes pour toute urgence de serrurerie dans les quartiers ${content.quartiers.slice(0, 3).join(', ')}. Porte claquée, clé cassée, changement de serrure - nous intervenons 24h/24 dans le ${nomArrondissement} arrondissement, près des stations ${content.stationsMetro.slice(0, 3).join(', ')}.`;
 
   return (
     <section id="accueil" className="pt-16 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
@@ -43,7 +33,9 @@ const HeroArrondissement = ({ arrondissement }: HeroArrondissementProps) => {
 
               <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
                 Serrurier pas cher Paris {arrondissement}
-                <span className="text-blue-600 dark:text-blue-400 block">Dépannage rapide 24h/24</span>
+                <span className="text-blue-600 dark:text-blue-400 block">
+                  {content.quartiers[0]}, {content.quartiers[1]} - Dépannage rapide 24h/24
+                </span>
               </h1>
 
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-lg">
@@ -104,20 +96,42 @@ const HeroArrondissement = ({ arrondissement }: HeroArrondissementProps) => {
 
           {/* Image */}
           <div className="relative lg:order-2">
-            <div className="bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/50 dark:to-blue-800/50 rounded-2xl p-8 h-96 flex items-center justify-center">
-              <div className="text-center">
+            <div className="bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/50 dark:to-blue-800/50 rounded-2xl p-8 h-96 flex items-center justify-center relative overflow-hidden">
+              {/* Animation de fond */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 left-0 w-32 h-32 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-0 right-0 w-40 h-40 bg-blue-400 rounded-full blur-3xl animate-pulse delay-1000"></div>
+              </div>
+              
+              <div className="text-center relative z-10">
                 <a
                   href={process.env.NEXT_PUBLIC_SCANNER_URL || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white dark:bg-gray-800 rounded-full p-6 w-32 h-32 mx-auto flex flex-col items-center justify-center shadow-lg mb-4 hover:scale-105 transition-transform cursor-pointer group"
+                  className="bg-white dark:bg-gray-800 rounded-full p-8 w-40 h-40 mx-auto flex flex-col items-center justify-center shadow-2xl mb-6 hover:scale-110 transition-all duration-300 cursor-pointer group relative border-4 border-blue-500 hover:border-blue-600 hover:shadow-blue-500/50 animate-bounce-slow"
                 >
-                  <Camera className="h-12 w-12 text-blue-600 mb-2 group-hover:text-blue-700" />
-                  <span className="text-xs font-bold text-blue-600 uppercase">Scanner</span>
+                  {/* Effet de brillance */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  {/* Icône avec animation */}
+                  <div className="relative z-10">
+                    <Camera className="h-16 w-16 text-blue-600 mb-3 group-hover:text-blue-700 group-hover:scale-110 transition-all duration-300" />
+                    <span className="text-sm font-bold text-blue-600 uppercase tracking-wide group-hover:text-blue-700 transition-colors">
+                      Scanner
+                    </span>
+                  </div>
+                  
+                  {/* Badge "Nouveau" */}
+                  <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse">
+                    NEW
+                  </div>
                 </a>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 uppercase max-w-xs mx-auto">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 uppercase max-w-xs mx-auto leading-tight">
                   SCANNEZ VOTRE SERRURE POUR UN DEVIS & UNE INTERVENTION
                 </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+                  ⚡ Devis instantané en 30 secondes
+                </p>
               </div>
             </div>
 

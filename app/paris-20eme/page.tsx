@@ -35,17 +35,17 @@ export async function generateMetadata(): Promise<Metadata> {
       other: {
         'geo.region': 'FR-75',
         'geo.placename': 'Paris 20ème',
-        'geo.position': '48.8630;2.3984',
-        'ICBM': '48.8630, 2.3984',
+        'geo.position': '48.863;2.3984',
+        'ICBM': '48.863, 2.3984',
       },
     };
   }
   
   // Fallback si pas de métadonnées en BDD
   return {
-    title: 'Serrurier pas cher Paris 20ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 20ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 20ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
-    keywords: 'serrurier Paris 20ème, serrurier pas cher Paris 20ème, dépannage serrurier Paris 20ème, ouverture de porte Paris 20ème, urgence serrurerie Paris 20ème, artisan serrurier Paris 20ème, serrurerie 24h Paris 20ème, serrurier urgence Paris 20ème, prix serrurier Paris 20ème',
+    title: "Serrurier Paris 20ème – Ménilmontant, Belleville | Dépannage 24h/24",
+    description: "Serrurier pas cher Paris 20ème ⚡ Intervention rapide Ménilmontant, Belleville, Père Lachaise. Serrurier d'urgence près métro Ménilmontant, Père Lachaise, Gambetta. Ouverture porte claquée dès 95€, changement cylindre, installation serrure. Service 24h/24, 7j/7. Devis gratuit ☎️ 06 27 55 88 55",
+    keywords: "serrurier Paris 20ème, serrurier pas cher Paris 20ème, serrurier Ménilmontant, serrurier Belleville, serrurier Père Lachaise, serrurier Charonne, serrurier Ménilmontant, serrurier Père Lachaise, serrurier Gambetta, dépannage serrurier Paris 20ème, ouverture de porte Paris 20ème, urgence serrurerie Paris 20ème, artisan serrurier Paris 20ème, serrurerie 24h Paris 20ème, serrurier urgence Paris 20ème, prix serrurier Paris 20ème",
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {
       index: true,
@@ -62,15 +62,15 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       locale: 'fr_FR',
       url: 'https://serrurier-pas-cher.paris/paris-20eme',
-      title: 'Serrurier pas cher Paris 20ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 20ème. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 20ème arrondissement.',
+      title: "Serrurier Paris 20ème – Ménilmontant, Belleville | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 20ème. Intervention rapide Ménilmontant, Belleville. Dépannage serrurier urgent près métro Ménilmontant, Père Lachaise. Ouverture de porte dès 95€, artisan serrurier qualifié 20ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
+      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 20ème - Ménilmontant" }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Serrurier pas cher Paris 20ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 20ème. Dépannage serrurier urgent, ouverture de porte dès 35€.',
+      title: "Serrurier Paris 20ème – Ménilmontant, Belleville | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 20ème. Intervention rapide Ménilmontant, Belleville. Dépannage serrurier urgent, ouverture de porte dès 95€.",
       images: ['https://serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
@@ -79,8 +79,8 @@ export async function generateMetadata(): Promise<Metadata> {
     other: {
       'geo.region': 'FR-75',
       'geo.placename': 'Paris 20ème',
-      'geo.position': '48.8630;2.3984',
-      'ICBM': '48.8630, 2.3984',
+      'geo.position': '48.863;2.3984',
+      'ICBM': '48.863, 2.3984',
     },
   };
 }
@@ -97,7 +97,7 @@ export default function Paris20eme() {
       <Testimonials />
       <Blog />
       <FAQ take={5} showMoreButton={true} />
-      <Contact />
+      <Contact arrondissement={20} />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />

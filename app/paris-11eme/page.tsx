@@ -35,17 +35,17 @@ export async function generateMetadata(): Promise<Metadata> {
       other: {
         'geo.region': 'FR-75',
         'geo.placename': 'Paris 11ème',
-        'geo.position': '48.8592;2.3790',
-        'ICBM': '48.8592, 2.3790',
+        'geo.position': '48.8592;2.3797',
+        'ICBM': '48.8592, 2.3797',
       },
     };
   }
   
   // Fallback si pas de métadonnées en BDD
   return {
-    title: 'Serrurier pas cher Paris 11ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 11ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 11ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
-    keywords: 'serrurier Paris 11ème, serrurier pas cher Paris 11ème, dépannage serrurier Paris 11ème, ouverture de porte Paris 11ème, urgence serrurerie Paris 11ème, artisan serrurier Paris 11ème, serrurerie 24h Paris 11ème, serrurier urgence Paris 11ème, prix serrurier Paris 11ème',
+    title: "Serrurier Paris 11ème – Bastille, Oberkampf | Dépannage 24h/24",
+    description: "Serrurier pas cher Paris 11ème ⚡ Intervention rapide Bastille, Oberkampf, Nation. Serrurier d'urgence près métro Bastille, Nation, Oberkampf. Ouverture porte claquée dès 95€, changement cylindre, installation serrure. Service 24h/24, 7j/7. Devis gratuit ☎️ 06 27 55 88 55",
+    keywords: "serrurier Paris 11ème, serrurier pas cher Paris 11ème, serrurier Bastille, serrurier Oberkampf, serrurier Nation, serrurier Roquette, serrurier Bastille, serrurier Nation, serrurier Oberkampf, dépannage serrurier Paris 11ème, ouverture de porte Paris 11ème, urgence serrurerie Paris 11ème, artisan serrurier Paris 11ème, serrurerie 24h Paris 11ème, serrurier urgence Paris 11ème, prix serrurier Paris 11ème",
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {
       index: true,
@@ -62,15 +62,15 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       locale: 'fr_FR',
       url: 'https://serrurier-pas-cher.paris/paris-11eme',
-      title: 'Serrurier pas cher Paris 11ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 11ème. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 11ème arrondissement.',
+      title: "Serrurier Paris 11ème – Bastille, Oberkampf | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 11ème. Intervention rapide Bastille, Oberkampf. Dépannage serrurier urgent près métro Bastille, Nation. Ouverture de porte dès 95€, artisan serrurier qualifié 11ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
+      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 11ème - Bastille" }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Serrurier pas cher Paris 11ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 11ème. Dépannage serrurier urgent, ouverture de porte dès 35€.',
+      title: "Serrurier Paris 11ème – Bastille, Oberkampf | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 11ème. Intervention rapide Bastille, Oberkampf. Dépannage serrurier urgent, ouverture de porte dès 95€.",
       images: ['https://serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
@@ -79,8 +79,8 @@ export async function generateMetadata(): Promise<Metadata> {
     other: {
       'geo.region': 'FR-75',
       'geo.placename': 'Paris 11ème',
-      'geo.position': '48.8592;2.3790',
-      'ICBM': '48.8592, 2.3790',
+      'geo.position': '48.8592;2.3797',
+      'ICBM': '48.8592, 2.3797',
     },
   };
 }
@@ -97,7 +97,7 @@ export default function Paris11eme() {
       <Testimonials />
       <Blog />
       <FAQ take={5} showMoreButton={true} />
-      <Contact />
+      <Contact arrondissement={11} />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />

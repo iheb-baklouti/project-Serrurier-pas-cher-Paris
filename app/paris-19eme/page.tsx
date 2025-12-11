@@ -43,9 +43,9 @@ export async function generateMetadata(): Promise<Metadata> {
   
   // Fallback si pas de métadonnées en BDD
   return {
-    title: 'Serrurier pas cher Paris 19ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 19ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 19ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
-    keywords: 'serrurier Paris 19ème, serrurier pas cher Paris 19ème, dépannage serrurier Paris 19ème, ouverture de porte Paris 19ème, urgence serrurerie Paris 19ème, artisan serrurier Paris 19ème, serrurerie 24h Paris 19ème, serrurier urgence Paris 19ème, prix serrurier Paris 19ème',
+    title: "Serrurier Paris 19ème – Buttes-Chaumont, Belleville | Dépannage 24h/24",
+    description: "Serrurier pas cher Paris 19ème ⚡ Intervention rapide Buttes-Chaumont, Belleville, La Villette. Serrurier d'urgence près métro Belleville, Buttes Chaumont, Jaurès. Ouverture porte claquée dès 95€, changement cylindre, installation serrure. Service 24h/24, 7j/7. Devis gratuit ☎️ 06 27 55 88 55",
+    keywords: "serrurier Paris 19ème, serrurier pas cher Paris 19ème, serrurier Buttes-Chaumont, serrurier Belleville, serrurier La Villette, serrurier Canal de l'Ourcq, serrurier Belleville, serrurier Buttes Chaumont, serrurier Jaurès, dépannage serrurier Paris 19ème, ouverture de porte Paris 19ème, urgence serrurerie Paris 19ème, artisan serrurier Paris 19ème, serrurerie 24h Paris 19ème, serrurier urgence Paris 19ème, prix serrurier Paris 19ème",
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {
       index: true,
@@ -62,15 +62,15 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       locale: 'fr_FR',
       url: 'https://serrurier-pas-cher.paris/paris-19eme',
-      title: 'Serrurier pas cher Paris 19ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 19ème. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 19ème arrondissement.',
+      title: "Serrurier Paris 19ème – Buttes-Chaumont, Belleville | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 19ème. Intervention rapide Buttes-Chaumont, Belleville. Dépannage serrurier urgent près métro Belleville, Buttes Chaumont. Ouverture de porte dès 95€, artisan serrurier qualifié 19ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
+      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 19ème - Buttes-Chaumont" }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Serrurier pas cher Paris 19ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 19ème. Dépannage serrurier urgent, ouverture de porte dès 35€.',
+      title: "Serrurier Paris 19ème – Buttes-Chaumont, Belleville | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 19ème. Intervention rapide Buttes-Chaumont, Belleville. Dépannage serrurier urgent, ouverture de porte dès 95€.",
       images: ['https://serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
@@ -97,7 +97,7 @@ export default function Paris19eme() {
       <Testimonials />
       <Blog />
       <FAQ take={5} showMoreButton={true} />
-      <Contact />
+      <Contact arrondissement={19} />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />

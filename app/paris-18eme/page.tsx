@@ -35,17 +35,17 @@ export async function generateMetadata(): Promise<Metadata> {
       other: {
         'geo.region': 'FR-75',
         'geo.placename': 'Paris 18ème',
-        'geo.position': '48.8932;2.3484',
-        'ICBM': '48.8932, 2.3484',
+        'geo.position': '48.8932;2.3447',
+        'ICBM': '48.8932, 2.3447',
       },
     };
   }
   
   // Fallback si pas de métadonnées en BDD
   return {
-    title: 'Serrurier pas cher Paris 18ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 18ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 18ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
-    keywords: 'serrurier Paris 18ème, serrurier pas cher Paris 18ème, dépannage serrurier Paris 18ème, ouverture de porte Paris 18ème, urgence serrurerie Paris 18ème, artisan serrurier Paris 18ème, serrurerie 24h Paris 18ème, serrurier urgence Paris 18ème, prix serrurier Paris 18ème',
+    title: "Serrurier Paris 18ème – Montmartre, Pigalle | Dépannage 24h/24",
+    description: "Serrurier pas cher Paris 18ème ⚡ Intervention rapide Montmartre, Pigalle, Goutte d'Or. Serrurier d'urgence près métro Abbesses, Pigalle, Anvers. Ouverture porte claquée dès 95€, changement cylindre, installation serrure. Service 24h/24, 7j/7. Devis gratuit ☎️ 06 27 55 88 55",
+    keywords: "serrurier Paris 18ème, serrurier pas cher Paris 18ème, serrurier Montmartre, serrurier Pigalle, serrurier Goutte d'Or, serrurier La Chapelle, serrurier Abbesses, serrurier Pigalle, serrurier Anvers, dépannage serrurier Paris 18ème, ouverture de porte Paris 18ème, urgence serrurerie Paris 18ème, artisan serrurier Paris 18ème, serrurerie 24h Paris 18ème, serrurier urgence Paris 18ème, prix serrurier Paris 18ème",
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {
       index: true,
@@ -62,15 +62,15 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       locale: 'fr_FR',
       url: 'https://serrurier-pas-cher.paris/paris-18eme',
-      title: 'Serrurier pas cher Paris 18ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 18ème. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 18ème arrondissement.',
+      title: "Serrurier Paris 18ème – Montmartre, Pigalle | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 18ème. Intervention rapide Montmartre, Pigalle. Dépannage serrurier urgent près métro Abbesses, Pigalle. Ouverture de porte dès 95€, artisan serrurier qualifié 18ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
+      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 18ème - Montmartre" }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Serrurier pas cher Paris 18ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 18ème. Dépannage serrurier urgent, ouverture de porte dès 35€.',
+      title: "Serrurier Paris 18ème – Montmartre, Pigalle | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 18ème. Intervention rapide Montmartre, Pigalle. Dépannage serrurier urgent, ouverture de porte dès 95€.",
       images: ['https://serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
@@ -79,8 +79,8 @@ export async function generateMetadata(): Promise<Metadata> {
     other: {
       'geo.region': 'FR-75',
       'geo.placename': 'Paris 18ème',
-      'geo.position': '48.8932;2.3484',
-      'ICBM': '48.8932, 2.3484',
+      'geo.position': '48.8932;2.3447',
+      'ICBM': '48.8932, 2.3447',
     },
   };
 }
@@ -97,7 +97,7 @@ export default function Paris18eme() {
       <Testimonials />
       <Blog />
       <FAQ take={5} showMoreButton={true} />
-      <Contact />
+      <Contact arrondissement={18} />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />

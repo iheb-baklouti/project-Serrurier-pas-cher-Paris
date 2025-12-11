@@ -43,9 +43,9 @@ export async function generateMetadata(): Promise<Metadata> {
   
   // Fallback si pas de métadonnées en BDD
   return {
-    title: 'Serrurier pas cher Paris 4ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 4ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 4ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
-    keywords: 'serrurier Paris 4ème, serrurier pas cher Paris 4ème, dépannage serrurier Paris 4ème, ouverture de porte Paris 4ème, urgence serrurerie Paris 4ème, artisan serrurier Paris 4ème, serrurerie 24h Paris 4ème, serrurier urgence Paris 4ème, prix serrurier Paris 4ème',
+    title: "Serrurier Paris 4ème – Marais, Notre-Dame | Dépannage 24h/24",
+    description: "Serrurier pas cher Paris 4ème ⚡ Intervention rapide Marais, Notre-Dame, Hôtel de Ville. Serrurier d'urgence près métro Hôtel de Ville, Châtelet, Saint-Paul. Ouverture porte claquée dès 95€, changement cylindre, installation serrure. Service 24h/24, 7j/7. Devis gratuit ☎️ 06 27 55 88 55",
+    keywords: "serrurier Paris 4ème, serrurier pas cher Paris 4ème, serrurier Marais, serrurier Notre-Dame, serrurier Hôtel de Ville, serrurier Île de la Cité, serrurier Hôtel de Ville, serrurier Châtelet, serrurier Saint-Paul, dépannage serrurier Paris 4ème, ouverture de porte Paris 4ème, urgence serrurerie Paris 4ème, artisan serrurier Paris 4ème, serrurerie 24h Paris 4ème, serrurier urgence Paris 4ème, prix serrurier Paris 4ème",
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {
       index: true,
@@ -62,15 +62,15 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       locale: 'fr_FR',
       url: 'https://serrurier-pas-cher.paris/paris-4eme',
-      title: 'Serrurier pas cher Paris 4ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 4ème. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 4ème arrondissement.',
+      title: "Serrurier Paris 4ème – Marais, Notre-Dame | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 4ème. Intervention rapide Marais, Notre-Dame. Dépannage serrurier urgent près métro Hôtel de Ville, Châtelet. Ouverture de porte dès 95€, artisan serrurier qualifié 4ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
+      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 4ème - Marais" }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Serrurier pas cher Paris 4ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 4ème. Dépannage serrurier urgent, ouverture de porte dès 35€.',
+      title: "Serrurier Paris 4ème – Marais, Notre-Dame | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 4ème. Intervention rapide Marais, Notre-Dame. Dépannage serrurier urgent, ouverture de porte dès 95€.",
       images: ['https://serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
@@ -97,7 +97,7 @@ export default function Paris4eme() {
       <Testimonials />
       <Blog />
       <FAQ take={5} showMoreButton={true} />
-      <Contact />
+      <Contact arrondissement={4} />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />

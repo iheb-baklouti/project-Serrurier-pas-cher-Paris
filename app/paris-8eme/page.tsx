@@ -43,9 +43,9 @@ export async function generateMetadata(): Promise<Metadata> {
   
   // Fallback si pas de métadonnées en BDD
   return {
-    title: 'Serrurier pas cher Paris 8ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 8ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 8ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
-    keywords: 'serrurier Paris 8ème, serrurier pas cher Paris 8ème, dépannage serrurier Paris 8ème, ouverture de porte Paris 8ème, urgence serrurerie Paris 8ème, artisan serrurier Paris 8ème, serrurerie 24h Paris 8ème, serrurier urgence Paris 8ème, prix serrurier Paris 8ème',
+    title: "Serrurier Paris 8ème – Champs-Élysées, Madeleine | Dépannage 24h/24",
+    description: "Serrurier pas cher Paris 8ème ⚡ Intervention rapide Champs-Élysées, Madeleine, Concorde. Serrurier d'urgence près métro Champs-Élysées-Clemenceau, Concorde, Madeleine. Ouverture porte claquée dès 95€, changement cylindre, installation serrure. Service 24h/24, 7j/7. Devis gratuit ☎️ 06 27 55 88 55",
+    keywords: "serrurier Paris 8ème, serrurier pas cher Paris 8ème, serrurier Champs-Élysées, serrurier Madeleine, serrurier Concorde, serrurier Faubourg Saint-Honoré, serrurier Champs-Élysées-Clemenceau, serrurier Concorde, serrurier Madeleine, dépannage serrurier Paris 8ème, ouverture de porte Paris 8ème, urgence serrurerie Paris 8ème, artisan serrurier Paris 8ème, serrurerie 24h Paris 8ème, serrurier urgence Paris 8ème, prix serrurier Paris 8ème",
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {
       index: true,
@@ -62,15 +62,15 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       locale: 'fr_FR',
       url: 'https://serrurier-pas-cher.paris/paris-8eme',
-      title: 'Serrurier pas cher Paris 8ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 8ème. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 8ème arrondissement.',
+      title: "Serrurier Paris 8ème – Champs-Élysées, Madeleine | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 8ème. Intervention rapide Champs-Élysées, Madeleine. Dépannage serrurier urgent près métro Champs-Élysées-Clemenceau, Concorde. Ouverture de porte dès 95€, artisan serrurier qualifié 8ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
+      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 8ème - Champs-Élysées" }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Serrurier pas cher Paris 8ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 8ème. Dépannage serrurier urgent, ouverture de porte dès 35€.',
+      title: "Serrurier Paris 8ème – Champs-Élysées, Madeleine | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 8ème. Intervention rapide Champs-Élysées, Madeleine. Dépannage serrurier urgent, ouverture de porte dès 95€.",
       images: ['https://serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
@@ -97,7 +97,7 @@ export default function Paris8eme() {
       <Testimonials />
       <Blog />
       <FAQ take={5} showMoreButton={true} />
-      <Contact />
+      <Contact arrondissement={8} />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />

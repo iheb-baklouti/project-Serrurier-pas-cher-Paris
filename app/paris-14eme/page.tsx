@@ -43,9 +43,9 @@ export async function generateMetadata(): Promise<Metadata> {
   
   // Fallback si pas de métadonnées en BDD
   return {
-    title: 'Serrurier pas cher Paris 14ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 14ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 14ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
-    keywords: 'serrurier Paris 14ème, serrurier pas cher Paris 14ème, dépannage serrurier Paris 14ème, ouverture de porte Paris 14ème, urgence serrurerie Paris 14ème, artisan serrurier Paris 14ème, serrurerie 24h Paris 14ème, serrurier urgence Paris 14ème, prix serrurier Paris 14ème',
+    title: "Serrurier Paris 14ème – Montparnasse, Pernety | Dépannage 24h/24",
+    description: "Serrurier pas cher Paris 14ème ⚡ Intervention rapide Montparnasse, Pernety, Alésia. Serrurier d'urgence près métro Montparnasse-Bienvenüe, Alésia, Pernety. Ouverture porte claquée dès 95€, changement cylindre, installation serrure. Service 24h/24, 7j/7. Devis gratuit ☎️ 06 27 55 88 55",
+    keywords: "serrurier Paris 14ème, serrurier pas cher Paris 14ème, serrurier Montparnasse, serrurier Pernety, serrurier Alésia, serrurier Plaisance, serrurier Montparnasse-Bienvenüe, serrurier Alésia, serrurier Pernety, dépannage serrurier Paris 14ème, ouverture de porte Paris 14ème, urgence serrurerie Paris 14ème, artisan serrurier Paris 14ème, serrurerie 24h Paris 14ème, serrurier urgence Paris 14ème, prix serrurier Paris 14ème",
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {
       index: true,
@@ -62,15 +62,15 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       locale: 'fr_FR',
       url: 'https://serrurier-pas-cher.paris/paris-14eme',
-      title: 'Serrurier pas cher Paris 14ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 14ème. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 14ème arrondissement.',
+      title: "Serrurier Paris 14ème – Montparnasse, Pernety | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 14ème. Intervention rapide Montparnasse, Pernety. Dépannage serrurier urgent près métro Montparnasse-Bienvenüe, Alésia. Ouverture de porte dès 95€, artisan serrurier qualifié 14ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
+      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 14ème - Montparnasse" }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Serrurier pas cher Paris 14ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 14ème. Dépannage serrurier urgent, ouverture de porte dès 35€.',
+      title: "Serrurier Paris 14ème – Montparnasse, Pernety | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 14ème. Intervention rapide Montparnasse, Pernety. Dépannage serrurier urgent, ouverture de porte dès 95€.",
       images: ['https://serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
@@ -97,7 +97,7 @@ export default function Paris14eme() {
       <Testimonials />
       <Blog />
       <FAQ take={5} showMoreButton={true} />
-      <Contact />
+      <Contact arrondissement={14} />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />

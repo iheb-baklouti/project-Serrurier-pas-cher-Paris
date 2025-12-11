@@ -35,17 +35,17 @@ export async function generateMetadata(): Promise<Metadata> {
       other: {
         'geo.region': 'FR-75',
         'geo.placename': 'Paris 10ème',
-        'geo.position': '48.8722;2.3624',
-        'ICBM': '48.8722, 2.3624',
+        'geo.position': '48.8756;2.3622',
+        'ICBM': '48.8756, 2.3622',
       },
     };
   }
   
   // Fallback si pas de métadonnées en BDD
   return {
-    title: 'Serrurier pas cher Paris 10ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 10ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 10ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
-    keywords: 'serrurier Paris 10ème, serrurier pas cher Paris 10ème, dépannage serrurier Paris 10ème, ouverture de porte Paris 10ème, urgence serrurerie Paris 10ème, artisan serrurier Paris 10ème, serrurerie 24h Paris 10ème, serrurier urgence Paris 10ème, prix serrurier Paris 10ème',
+    title: "Serrurier Paris 10ème – Canal Saint-Martin, République | Dépannage 24h/24",
+    description: "Serrurier pas cher Paris 10ème ⚡ Intervention rapide Canal Saint-Martin, République, Gare du Nord. Serrurier d'urgence près métro République, Gare du Nord, Gare de l'Est. Ouverture porte claquée dès 95€, changement cylindre, installation serrure. Service 24h/24, 7j/7. Devis gratuit ☎️ 06 27 55 88 55",
+    keywords: "serrurier Paris 10ème, serrurier pas cher Paris 10ème, serrurier Canal Saint-Martin, serrurier République, serrurier Gare du Nord, serrurier Gare de l'Est, serrurier République, serrurier Gare du Nord, serrurier Gare de l'Est, dépannage serrurier Paris 10ème, ouverture de porte Paris 10ème, urgence serrurerie Paris 10ème, artisan serrurier Paris 10ème, serrurerie 24h Paris 10ème, serrurier urgence Paris 10ème, prix serrurier Paris 10ème",
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {
       index: true,
@@ -62,15 +62,15 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       locale: 'fr_FR',
       url: 'https://serrurier-pas-cher.paris/paris-10eme',
-      title: 'Serrurier pas cher Paris 10ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 10ème. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 10ème arrondissement.',
+      title: "Serrurier Paris 10ème – Canal Saint-Martin, République | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 10ème. Intervention rapide Canal Saint-Martin, République. Dépannage serrurier urgent près métro République, Gare du Nord. Ouverture de porte dès 95€, artisan serrurier qualifié 10ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
+      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 10ème - Canal Saint-Martin" }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Serrurier pas cher Paris 10ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 10ème. Dépannage serrurier urgent, ouverture de porte dès 35€.',
+      title: "Serrurier Paris 10ème – Canal Saint-Martin, République | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 10ème. Intervention rapide Canal Saint-Martin, République. Dépannage serrurier urgent, ouverture de porte dès 95€.",
       images: ['https://serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
@@ -79,8 +79,8 @@ export async function generateMetadata(): Promise<Metadata> {
     other: {
       'geo.region': 'FR-75',
       'geo.placename': 'Paris 10ème',
-      'geo.position': '48.8722;2.3624',
-      'ICBM': '48.8722, 2.3624',
+      'geo.position': '48.8756;2.3622',
+      'ICBM': '48.8756, 2.3622',
     },
   };
 }
@@ -97,7 +97,7 @@ export default function Paris10eme() {
       <Testimonials />
       <Blog />
       <FAQ take={5} showMoreButton={true} />
-      <Contact />
+      <Contact arrondissement={10} />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />

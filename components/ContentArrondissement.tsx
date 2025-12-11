@@ -1,8 +1,10 @@
 'use client';
 
-import { Phone, Clock, Euro, Shield, CheckCircle, Wrench } from 'lucide-react';
+import { Phone, Clock, Euro, Shield, CheckCircle, Wrench, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useContactInfo } from '@/lib/useContactInfo';
+import { getArrondissementContent } from '@/lib/arrondissementContent';
+import { getArrondissementData } from '@/lib/arrondissementData';
 
 interface ContentArrondissementProps {
   arrondissement: number;
@@ -10,30 +12,14 @@ interface ContentArrondissementProps {
 
 const ContentArrondissement = ({ arrondissement }: ContentArrondissementProps) => {
   const { contact_phone, contact_whatsapp, getPhoneLink, getWhatsAppLink } = useContactInfo();
-  const nomsArrondissements: { [key: number]: string } = {
-    1: '1er', 2: '2ème', 3: '3ème', 4: '4ème', 5: '5ème',
-    6: '6ème', 7: '7ème', 8: '8ème', 9: '9ème', 10: '10ème',
-    11: '11ème', 12: '12ème', 13: '13ème', 14: '14ème', 15: '15ème',
-    16: '16ème', 17: '17ème', 18: '18ème', 19: '19ème', 20: '20ème'
-  };
+  const content = getArrondissementContent(arrondissement);
+  const arrondissementData = getArrondissementData(arrondissement);
+  const nomArrondissement = arrondissementData.name;
 
-  const nomArrondissement = nomsArrondissements[arrondissement] || `${arrondissement}ème`;
+  // Contenu unique et spécifique pour chaque arrondissement
+  const contenuServices = `Notre serrurier pas cher intervient dans le ${nomArrondissement} arrondissement de Paris, notamment dans les quartiers ${content.quartiers.slice(0, 3).join(', ')}. Que vous habitiez près de ${content.stationsMetro.slice(0, 2).join(' ou ')}, ou dans les rues ${content.rues.slice(0, 2).join(' ou ')}, notre artisan serrurier qualifié est à votre service 24h/24 et 7j/7 pour tous vos besoins de dépannage serrurerie : ouverture de porte suite à un claquement de porte, changement de serrure suite à une perte de clés, ou réparation de serrure défectueuse.`;
 
-  // Contenu varié pour chaque arrondissement
-  const contenusServices = [
-    `Notre serrurier pas cher intervient dans le ${nomArrondissement} arrondissement de Paris pour tous vos besoins de dépannage serrurerie. Que vous ayez besoin d'une ouverture de porte suite à un claquement de porte, d'un changement de serrure suite à une perte de clés, ou d'une réparation de serrure défectueuse, notre artisan serrurier qualifié est à votre service 24h/24 et 7j/7.`,
-    `Besoin d'un dépannage serrurier urgent à Paris ${arrondissement} ? Nous intervenons rapidement pour toute urgence de serrurerie : ouverture de porte claquée, changement de cylindre, réparation de serrure, installation de serrures haute sécurité. Nos tarifs sont transparents et compétitifs, avec des prix dès 95€ pour une ouverture de porte standard.`,
-    `Serrurier professionnel dans le ${nomArrondissement} arrondissement de Paris, nous proposons une large gamme de services : ouverture de porte 24h/24, dépannage serrurerie, changement de serrure, installation de serrures multipoints, blindage de porte. Nos artisans serruriers certifiés maîtrisent toutes les techniques modernes pour garantir une intervention rapide et efficace.`
-  ];
-
-  const contenusPourquoi = [
-    `Choisir notre serrurier à Paris ${arrondissement}, c'est opter pour un service d'excellence avec intervention rapide 24h/24. Nous intervenons dans tout le ${nomArrondissement} arrondissement en moins de 30 minutes en moyenne. Nos tarifs sont transparents et compétitifs, sans frais cachés. De plus, nos artisans serruriers sont certifiés et expérimentés, avec une garantie sur toutes nos interventions.`,
-    `Notre équipe de serruriers professionnels est spécialisée dans l'intervention d'urgence à Paris ${arrondissement}. Nous vous garantissons une disponibilité totale, y compris les weekends et jours fériés. Avec plus de 10 ans d'expérience, nous maîtrisons toutes les techniques de dépannage serrurerie pour résoudre rapidement votre problème, qu'il s'agisse d'une porte claquée, d'une clé cassée ou d'un changement de serrure.`,
-    `Pourquoi faire appel à notre serrurier pas cher Paris ${arrondissement} ? Parce que nous offrons un service complet avec intervention rapide, tarifs transparents dès 95€, artisans qualifiés et certifiés, garantie sur toutes les interventions, et disponibilité 7j/7 et 24h/24. Nous intervenons dans tout le ${nomArrondissement} arrondissement pour tous vos besoins de serrurerie.`
-  ];
-
-  const contenuServices = contenusServices[arrondissement % contenusServices.length];
-  const contenuPourquoi = contenusPourquoi[arrondissement % contenusPourquoi.length];
+  const contenuPourquoi = `Choisir notre serrurier à Paris ${arrondissement}, c'est opter pour un service d'excellence avec intervention rapide 24h/24 dans les quartiers ${content.quartiers.slice(0, 2).join(' et ')}. Nous intervenons dans tout le ${nomArrondissement} arrondissement, près des stations ${content.stationsMetro.slice(0, 3).join(', ')}, en moins de 30 minutes en moyenne. Nos tarifs sont transparents et compétitifs, sans frais cachés. De plus, nos artisans serruriers sont certifiés et expérimentés, avec une garantie sur toutes nos interventions.`;
 
   const avantages = [
     { icon: Clock, title: 'Intervention rapide 24h/24 et 7j/7', desc: 'Disponibilité totale pour vos urgences' },
@@ -56,13 +42,43 @@ const ContentArrondissement = ({ arrondissement }: ContentArrondissementProps) =
             </p>
           </div>
 
+          {/* Section Quartiers et Stations */}
+          <div className="mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-6 rounded-lg border border-blue-200 dark:border-blue-800">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+              <MapPin className="h-5 w-5 text-blue-600" />
+              Zones d'intervention dans le {nomArrondissement} arrondissement
+            </h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Quartiers desservis :</h4>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  {content.quartiers.join(', ')}
+                </p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Stations de métro proches :</h4>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  {content.stationsMetro.join(', ')}
+                </p>
+              </div>
+            </div>
+            {content.rues.length > 0 && (
+              <div className="mt-4">
+                <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Rues principales :</h4>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  {content.rues.slice(0, 5).join(', ')}
+                </p>
+              </div>
+            )}
+          </div>
+
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg border border-blue-200 dark:border-blue-800">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                 Ouverture de porte Paris {arrondissement}
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Porte claquée dès 95€, porte fermée à clé dès 139€. Porte blindée claquée dès 129€, fermée à clé dès 179€. Intervention rapide dans le {nomArrondissement} arrondissement.
+                Porte claquée dès 95€, porte fermée à clé dès 139€. Porte blindée claquée dès 129€, fermée à clé dès 179€. Intervention rapide dans le {nomArrondissement} arrondissement, notamment près de {content.stationsMetro.slice(0, 2).join(' et ')}.
               </p>
               <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-2">
                 <li>Porte standard claquée : dès 95€</li>
@@ -77,7 +93,7 @@ const ContentArrondissement = ({ arrondissement }: ContentArrondissementProps) =
                 Dépannage serrurerie Paris {arrondissement}
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Changement de cylindre 80€-150€. Réparation/réglage de porte 100€-200€. Tous types de serrures et toutes marques.
+                Changement de cylindre 80€-150€. Réparation/réglage de porte 100€-200€. Tous types de serrures et toutes marques. Intervention dans les quartiers {content.quartiers.slice(0, 2).join(' et ')}.
               </p>
               <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-2">
                 <li>Changement de cylindre : 80€-150€</li>
@@ -119,14 +135,57 @@ const ContentArrondissement = ({ arrondissement }: ContentArrondissementProps) =
             })}
           </div>
 
+          {/* Section FAQ spécifique à l'arrondissement 
+          <div className="mb-8 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              Questions fréquentes - Serrurier Paris {arrondissement}
+            </h3>
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                  Combien de temps pour une intervention dans le {nomArrondissement} arrondissement ?
+                </h4>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  Nous intervenons en moyenne en moins de 30 minutes dans le {nomArrondissement} arrondissement, notamment près des stations {content.stationsMetro.slice(0, 2).join(' et ')}. Notre équipe est répartie dans tout Paris pour garantir une intervention rapide.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                  Intervenez-vous dans les quartiers {content.quartiers.slice(0, 2).join(' et ')} ?
+                </h4>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  Oui, nous intervenons dans tous les quartiers du {nomArrondissement} arrondissement, y compris {content.quartiers.join(', ')}. Notre serrurier est disponible 24h/24 et 7j/7 pour tous vos besoins de dépannage serrurerie.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                  Quels sont vos tarifs pour une ouverture de porte dans le {nomArrondissement} arrondissement ?
+                </h4>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  Nos tarifs sont transparents et compétitifs : porte standard claquée dès 95€, porte fermée à clé dès 139€, porte blindée dès 129€. Tous nos tarifs sont affichés sans surprise, avec devis gratuit avant intervention.
+                </p>
+              </div>
+              {content.pointsInteret.length > 0 && (
+                <div>
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                    Intervenez-vous près de {content.pointsInteret[0]} ?
+                  </h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    Oui, nous intervenons rapidement près de {content.pointsInteret.slice(0, 2).join(' et ')}, ainsi que dans toutes les rues du {nomArrondissement} arrondissement. Notre serrurier est à votre service pour toute urgence de serrurerie.
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+*/}
           {/* CTA Section */}
           <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-white text-center">
             <h3 className="text-2xl font-bold mb-4">
               Contactez votre serrurier à Paris {arrondissement}
             </h3>
             <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-              Besoin d'une intervention d'urgence ? Appelez-nous maintenant ou demandez un devis gratuit. 
-              Notre équipe intervient rapidement dans tout le {nomArrondissement} arrondissement de Paris.
+              Besoin d'une intervention d'urgence {content.faqContext} ? Appelez-nous maintenant ou demandez un devis gratuit. 
+              Notre équipe intervient rapidement dans tout le {nomArrondissement} arrondissement de Paris, notamment près de {content.stationsMetro.slice(0, 2).join(' et ')}.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 

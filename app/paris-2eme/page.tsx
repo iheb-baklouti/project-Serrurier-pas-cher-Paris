@@ -35,17 +35,17 @@ export async function generateMetadata(): Promise<Metadata> {
       other: {
         'geo.region': 'FR-75',
         'geo.placename': 'Paris 2ème',
-        'geo.position': '48.8698;2.3412',
-        'ICBM': '48.8698, 2.3412',
+        'geo.position': '48.8698;2.3413',
+        'ICBM': '48.8698, 2.3413',
       },
     };
   }
   
   // Fallback si pas de métadonnées en BDD
   return {
-    title: 'Serrurier pas cher Paris 2ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 2ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 2ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
-    keywords: 'serrurier Paris 2ème, serrurier pas cher Paris 2ème, dépannage serrurier Paris 2ème, ouverture de porte Paris 2ème, urgence serrurerie Paris 2ème, artisan serrurier Paris 2ème, serrurerie 24h Paris 2ème, serrurier urgence Paris 2ème, prix serrurier Paris 2ème',
+    title: "Serrurier Paris 2ème – Bourse, Sentier | Dépannage 24h/24",
+    description: "Serrurier pas cher Paris 2ème ⚡ Intervention rapide Bourse, Sentier, Montorgueil. Serrurier d'urgence près métro Bourse, Sentier, Réaumur-Sébastopol. Ouverture porte claquée dès 95€, changement cylindre, installation serrure. Service 24h/24, 7j/7. Devis gratuit ☎️ 06 27 55 88 55",
+    keywords: "serrurier Paris 2ème, serrurier pas cher Paris 2ème, serrurier Bourse, serrurier Sentier, serrurier Montorgueil, serrurier Bourse, serrurier Sentier, serrurier Réaumur-Sébastopol, dépannage serrurier Paris 2ème, ouverture de porte Paris 2ème, urgence serrurerie Paris 2ème, artisan serrurier Paris 2ème, serrurerie 24h Paris 2ème, serrurier urgence Paris 2ème, prix serrurier Paris 2ème",
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {
       index: true,
@@ -62,15 +62,15 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       locale: 'fr_FR',
       url: 'https://serrurier-pas-cher.paris/paris-2eme',
-      title: 'Serrurier pas cher Paris 2ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 2ème. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 2ème arrondissement.',
+      title: "Serrurier Paris 2ème – Bourse, Sentier | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 2ème. Intervention rapide Bourse, Sentier. Dépannage serrurier urgent près métro Bourse, Sentier. Ouverture de porte dès 95€, artisan serrurier qualifié 2ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
+      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 2ème - Bourse" }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Serrurier pas cher Paris 2ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 2ème. Dépannage serrurier urgent, ouverture de porte dès 35€.',
+      title: "Serrurier Paris 2ème – Bourse, Sentier | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 2ème. Intervention rapide Bourse, Sentier. Dépannage serrurier urgent, ouverture de porte dès 95€.",
       images: ['https://serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
@@ -79,8 +79,8 @@ export async function generateMetadata(): Promise<Metadata> {
     other: {
       'geo.region': 'FR-75',
       'geo.placename': 'Paris 2ème',
-      'geo.position': '48.8698;2.3412',
-      'ICBM': '48.8698, 2.3412',
+      'geo.position': '48.8698;2.3413',
+      'ICBM': '48.8698, 2.3413',
     },
   };
 }
@@ -97,11 +97,10 @@ export default function Paris2eme() {
       <Testimonials />
       <Blog />
       <FAQ take={5} showMoreButton={true} />
-      <Contact />
+      <Contact arrondissement={2} />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />
     </main>
   );
 }
-

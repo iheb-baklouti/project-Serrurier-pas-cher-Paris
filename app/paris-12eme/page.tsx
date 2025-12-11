@@ -35,17 +35,17 @@ export async function generateMetadata(): Promise<Metadata> {
       other: {
         'geo.region': 'FR-75',
         'geo.placename': 'Paris 12ème',
-        'geo.position': '48.8449;2.3732',
-        'ICBM': '48.8449, 2.3732',
+        'geo.position': '48.8448;2.37',
+        'ICBM': '48.8448, 2.37',
       },
     };
   }
   
   // Fallback si pas de métadonnées en BDD
   return {
-    title: 'Serrurier pas cher Paris 12ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 12ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 12ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
-    keywords: 'serrurier Paris 12ème, serrurier pas cher Paris 12ème, dépannage serrurier Paris 12ème, ouverture de porte Paris 12ème, urgence serrurerie Paris 12ème, artisan serrurier Paris 12ème, serrurerie 24h Paris 12ème, serrurier urgence Paris 12ème, prix serrurier Paris 12ème',
+    title: "Serrurier Paris 12ème – Bercy, Gare de Lyon | Dépannage 24h/24",
+    description: "Serrurier pas cher Paris 12ème ⚡ Intervention rapide Bercy, Gare de Lyon, Nation. Serrurier d'urgence près métro Gare de Lyon, Nation, Bercy. Ouverture porte claquée dès 95€, changement cylindre, installation serrure. Service 24h/24, 7j/7. Devis gratuit ☎️ 06 27 55 88 55",
+    keywords: "serrurier Paris 12ème, serrurier pas cher Paris 12ème, serrurier Bercy, serrurier Gare de Lyon, serrurier Nation, serrurier Reuilly, serrurier Gare de Lyon, serrurier Nation, serrurier Bercy, dépannage serrurier Paris 12ème, ouverture de porte Paris 12ème, urgence serrurerie Paris 12ème, artisan serrurier Paris 12ème, serrurerie 24h Paris 12ème, serrurier urgence Paris 12ème, prix serrurier Paris 12ème",
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {
       index: true,
@@ -62,15 +62,15 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       locale: 'fr_FR',
       url: 'https://serrurier-pas-cher.paris/paris-12eme',
-      title: 'Serrurier pas cher Paris 12ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 12ème. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 12ème arrondissement.',
+      title: "Serrurier Paris 12ème – Bercy, Gare de Lyon | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 12ème. Intervention rapide Bercy, Gare de Lyon. Dépannage serrurier urgent près métro Gare de Lyon, Nation. Ouverture de porte dès 95€, artisan serrurier qualifié 12ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
+      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 12ème - Bercy" }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Serrurier pas cher Paris 12ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 12ème. Dépannage serrurier urgent, ouverture de porte dès 35€.',
+      title: "Serrurier Paris 12ème – Bercy, Gare de Lyon | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 12ème. Intervention rapide Bercy, Gare de Lyon. Dépannage serrurier urgent, ouverture de porte dès 95€.",
       images: ['https://serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
@@ -79,8 +79,8 @@ export async function generateMetadata(): Promise<Metadata> {
     other: {
       'geo.region': 'FR-75',
       'geo.placename': 'Paris 12ème',
-      'geo.position': '48.8449;2.3732',
-      'ICBM': '48.8449, 2.3732',
+      'geo.position': '48.8448;2.37',
+      'ICBM': '48.8448, 2.37',
     },
   };
 }
@@ -97,7 +97,7 @@ export default function Paris12eme() {
       <Testimonials />
       <Blog />
       <FAQ take={5} showMoreButton={true} />
-      <Contact />
+      <Contact arrondissement={12} />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />

@@ -43,9 +43,9 @@ export async function generateMetadata(): Promise<Metadata> {
   
   // Fallback si pas de métadonnées en BDD
   return {
-    title: 'Serrurier pas cher Paris 17ème – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 17ème ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 17ème arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
-    keywords: 'serrurier Paris 17ème, serrurier pas cher Paris 17ème, dépannage serrurier Paris 17ème, ouverture de porte Paris 17ème, urgence serrurerie Paris 17ème, artisan serrurier Paris 17ème, serrurerie 24h Paris 17ème, serrurier urgence Paris 17ème, prix serrurier Paris 17ème',
+    title: "Serrurier Paris 17ème – Batignolles, Monceau | Dépannage 24h/24",
+    description: "Serrurier pas cher Paris 17ème ⚡ Intervention rapide Batignolles, Monceau, Ternes. Serrurier d'urgence près métro Villiers, Monceau, Ternes. Ouverture porte claquée dès 95€, changement cylindre, installation serrure. Service 24h/24, 7j/7. Devis gratuit ☎️ 06 27 55 88 55",
+    keywords: "serrurier Paris 17ème, serrurier pas cher Paris 17ème, serrurier Batignolles, serrurier Monceau, serrurier Ternes, serrurier Clichy, serrurier Villiers, serrurier Monceau, serrurier Ternes, dépannage serrurier Paris 17ème, ouverture de porte Paris 17ème, urgence serrurerie Paris 17ème, artisan serrurier Paris 17ème, serrurerie 24h Paris 17ème, serrurier urgence Paris 17ème, prix serrurier Paris 17ème",
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {
       index: true,
@@ -62,15 +62,15 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       locale: 'fr_FR',
       url: 'https://serrurier-pas-cher.paris/paris-17eme',
-      title: 'Serrurier pas cher Paris 17ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 17ème. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 17ème arrondissement.',
+      title: "Serrurier Paris 17ème – Batignolles, Monceau | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 17ème. Intervention rapide Batignolles, Monceau. Dépannage serrurier urgent près métro Villiers, Monceau. Ouverture de porte dès 95€, artisan serrurier qualifié 17ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
+      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 17ème - Batignolles" }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Serrurier pas cher Paris 17ème – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 17ème. Dépannage serrurier urgent, ouverture de porte dès 35€.',
+      title: "Serrurier Paris 17ème – Batignolles, Monceau | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 17ème. Intervention rapide Batignolles, Monceau. Dépannage serrurier urgent, ouverture de porte dès 95€.",
       images: ['https://serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
@@ -97,7 +97,7 @@ export default function Paris17eme() {
       <Testimonials />
       <Blog />
       <FAQ take={5} showMoreButton={true} />
-      <Contact />
+      <Contact arrondissement={17} />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />

@@ -6,8 +6,16 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useContactInfo } from '@/lib/useContactInfo';
+import { usePathname } from 'next/navigation';
+import { getArrondissementData } from '@/lib/arrondissementData';
+import { getArrondissementContent } from '@/lib/arrondissementContent';
 
-const Contact = () => {
+interface ContactProps {
+  arrondissement?: number;
+}
+
+const Contact = ({ arrondissement }: ContactProps = {}) => {
+  const pathname = usePathname();
   const { contact_phone, contact_whatsapp, contact_email, getPhoneLink, getWhatsAppLink } = useContactInfo();
   const [formData, setFormData] = useState({
     name: '',
@@ -18,6 +26,23 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [emailClient, setEmailClient] = useState('');
+
+  // Détecter l'arrondissement depuis l'URL si non fourni
+  let detectedArrondissement = arrondissement;
+  if (!detectedArrondissement && pathname) {
+    const match = pathname.match(/\/paris-(\d+)/);
+    if (match) {
+      detectedArrondissement = parseInt(match[1]);
+    }
+  }
+
+  // Obtenir les données de l'arrondissement si disponible
+  const arrondissementData = detectedArrondissement ? getArrondissementData(detectedArrondissement) : null;
+  const arrondissementContent = detectedArrondissement ? getArrondissementContent(detectedArrondissement) : null;
+  const mapCenter = arrondissementData 
+    ? `${arrondissementData.latitude},${arrondissementData.longitude}`
+    : '48.8566,2.3522'; // Paris centre par défaut
+  const mapZoom = arrondissementData ? 15 : 12;
 
   // Détecter le client email préféré de l'utilisateur
   useEffect(() => {
@@ -178,8 +203,21 @@ const Contact = () => {
                   <MapPin className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Zone d'intervention</h4>
-                    <p className="text-gray-600 dark:text-gray-300">Paris et proche banlieue</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Tous arrondissements couverts</p>
+                    {arrondissementData && arrondissementContent ? (
+                      <>
+                        <p className="text-gray-600 dark:text-gray-300">
+                          Paris {arrondissementData.name} arrondissement ({arrondissementData.postalCode})
+                        </p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                          Quartiers : {arrondissementContent.quartiers.slice(0, 3).join(', ')}
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <p className="text-gray-600 dark:text-gray-300">Paris et proche banlieue</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">Tous arrondissements couverts</p>
+                      </>
+                    )}
                   </div>
                 </div>
 
@@ -329,6 +367,39 @@ const Contact = () => {
             )}
           </div>
         </div>
+
+        {/* Carte Google Maps */}
+        {arrondissementData && (
+          <div className="mt-16">
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Notre zone d'intervention dans le {arrondissementData.name} arrondissement
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                {arrondissementContent ? `Quartiers desservis : ${arrondissementContent.quartiers.join(', ')}` : 'Intervention rapide 24h/24'}
+              </p>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700">
+              <iframe
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                src={`https://maps.google.com/maps?q=${arrondissementData.latitude},${arrondissementData.longitude}&hl=fr&z=${mapZoom}&output=embed`}
+                title={`Carte Google Maps - Serrurier Paris ${arrondissementData.name}`}
+              />
+            </div>
+            {arrondissementContent && arrondissementContent.stationsMetro.length > 0 && (
+              <div className="mt-4 text-center">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <strong>Stations de métro proches :</strong> {arrondissementContent.stationsMetro.slice(0, 5).join(', ')}
+                </p>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Section urgence */}
         <div className="mt-16">

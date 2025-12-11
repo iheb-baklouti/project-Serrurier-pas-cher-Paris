@@ -43,9 +43,9 @@ export async function generateMetadata(): Promise<Metadata> {
   
   // Fallback si pas de métadonnées en BDD
   return {
-    title: 'Serrurier pas cher Paris 1er – Dépannage 24h/24 et 7j/7 | Intervention rapide',
-    description: 'Serrurier pas cher Paris 1er ⚡ Dépannage serrurier urgent 24h/24, ouverture de porte dès 35€. Artisan serrurier qualifié 1er arrondissement. Urgence serrurerie. Devis gratuit ☎️ 06 27 55 88 55',
-    keywords: 'serrurier Paris 1er, serrurier pas cher Paris 1er, dépannage serrurier Paris 1er, ouverture de porte Paris 1er, urgence serrurerie Paris 1er, artisan serrurier Paris 1er, serrurerie 24h Paris 1er, serrurier urgence Paris 1er, prix serrurier Paris 1er',
+    title: "Serrurier Paris 1er – Louvre, Palais-Royal | Dépannage 24h/24",
+    description: "Serrurier pas cher Paris 1er ⚡ Intervention rapide Louvre, Palais-Royal, Les Halles. Serrurier d'urgence près métro Louvre-Rivoli, Palais Royal-Musée du Louvre, Châtelet-Les Halles. Ouverture porte claquée dès 95€, changement cylindre, installation serrure. Service 24h/24, 7j/7. Devis gratuit ☎️ 06 27 55 88 55",
+    keywords: "serrurier Paris 1er, serrurier pas cher Paris 1er, serrurier Louvre, serrurier Palais-Royal, serrurier Les Halles, serrurier Place Vendôme, serrurier Louvre-Rivoli, serrurier Palais Royal-Musée du Louvre, serrurier Châtelet-Les Halles, dépannage serrurier Paris 1er, ouverture de porte Paris 1er, urgence serrurerie Paris 1er, artisan serrurier Paris 1er, serrurerie 24h Paris 1er, serrurier urgence Paris 1er, prix serrurier Paris 1er",
     authors: [{ name: 'Serrurier pas cher Paris' }],
     robots: {
       index: true,
@@ -62,15 +62,15 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       locale: 'fr_FR',
       url: 'https://serrurier-pas-cher.paris/paris-1er',
-      title: 'Serrurier pas cher Paris 1er – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 1er. Dépannage serrurier urgent, ouverture de porte dès 35€, artisan serrurier qualifié 1er arrondissement.',
+      title: "Serrurier Paris 1er – Louvre, Palais-Royal | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 1er. Intervention rapide Louvre, Palais-Royal. Dépannage serrurier urgent près métro Louvre-Rivoli, Palais Royal-Musée du Louvre. Ouverture de porte dès 95€, artisan serrurier qualifié 1er arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
+      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 1er - Louvre" }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Serrurier pas cher Paris 1er – Dépannage 24h/24',
-      description: 'Serrurier pas cher Paris 1er. Dépannage serrurier urgent, ouverture de porte dès 35€.',
+      title: "Serrurier Paris 1er – Louvre, Palais-Royal | Dépannage 24h/24",
+      description: "Serrurier pas cher Paris 1er. Intervention rapide Louvre, Palais-Royal. Dépannage serrurier urgent, ouverture de porte dès 95€.",
       images: ['https://serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
@@ -97,11 +97,10 @@ export default function Paris1er() {
       <Testimonials />
       <Blog />
       <FAQ take={5} showMoreButton={true} />
-      <Contact />
+      <Contact arrondissement={1} />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />
     </main>
   );
 }
-
