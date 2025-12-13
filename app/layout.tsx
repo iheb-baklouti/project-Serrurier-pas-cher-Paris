@@ -74,6 +74,25 @@ export default function RootLayout({ children, }: { children: React.ReactNode; }
           gtag('js', new Date());
 
           gtag('config', 'AW-17776892300');
+          
+          // Fonction de conversion Google Ads pour les appels directs
+          function gtag_report_conversion(url) {
+            var callback = function () {
+              if (typeof(url) != 'undefined') {
+                window.location = url;
+              }
+            };
+            gtag('event', 'conversion', {
+              'send_to': 'AW-17776892300/4tPcCO7JvNAbEIyz15xC',
+              'value': 1.0,
+              'currency': 'EUR',
+              'event_callback': callback
+            });
+            return false;
+          }
+          
+          // Exposer la fonction globalement
+          window.gtag_report_conversion = gtag_report_conversion;
         `}
                 </Script>
                 <Providers>

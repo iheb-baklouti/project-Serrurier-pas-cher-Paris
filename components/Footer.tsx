@@ -28,7 +28,14 @@ const Footer = () => {
                 <Phone className="h-5 w-5 text-blue-400" />
                 <div>
                   <div className="font-semibold">Urgence 24h/24</div>
-                  <a href={`tel:${getPhoneLink(contact_phone)}`} className="text-xl font-bold text-blue-400 hover:text-blue-300">
+                  <a 
+                    href={`tel:${getPhoneLink(contact_phone)}`} 
+                    className="text-xl font-bold text-blue-400 hover:text-blue-300"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handlePhoneClick(contact_phone);
+                    }}
+                  >
                     {contact_phone}
                   </a>
                 </div>

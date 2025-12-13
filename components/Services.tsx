@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useContactInfo } from '@/lib/useContactInfo';
 
 const Services = () => {
-  const { contact_phone, getPhoneLink } = useContactInfo();
+  const { contact_phone, handlePhoneClick } = useContactInfo();
   const services = [
     {
       icon: Key,
@@ -93,7 +93,7 @@ const Services = () => {
                     <span className="text-blue-600 dark:text-blue-400 font-semibold">{service.price}</span>
                     <button 
                       className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors"
-                      onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
+                      onClick={() => handlePhoneClick(contact_phone)}
                     >
                       En savoir plus →
                     </button>

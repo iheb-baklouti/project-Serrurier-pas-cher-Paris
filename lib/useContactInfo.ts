@@ -79,11 +79,25 @@ export function useContactInfo() {
     return baseUrl
   }
 
+  // Fonction pour gérer les clics sur le téléphone avec conversion Google Ads
+  const handlePhoneClick = (phone: string) => {
+    const phoneLink = `tel:${getPhoneLink(phone)}`
+    
+    // Vérifier si la fonction gtag_report_conversion existe (Google Ads)
+    if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+      (window as any).gtag_report_conversion(phoneLink)
+    } else {
+      // Fallback si Google Ads n'est pas chargé
+      window.open(phoneLink, '_self')
+    }
+  }
+
   return {
     ...contactInfo,
     loading,
     getPhoneLink,
-    getWhatsAppLink
+    getWhatsAppLink,
+    handlePhoneClick
   }
 }
 

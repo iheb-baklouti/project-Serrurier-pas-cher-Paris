@@ -17,7 +17,7 @@ interface ContactProps {
 
 const Contact = ({ arrondissement }: ContactProps = {}) => {
   const pathname = usePathname();
-  const { contact_phone, contact_whatsapp, contact_email, getPhoneLink, getWhatsAppLink } = useContactInfo();
+  const { contact_phone, contact_whatsapp, contact_email, handlePhoneClick, getWhatsAppLink } = useContactInfo();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -160,7 +160,7 @@ const Contact = ({ arrondissement }: ContactProps = {}) => {
                     <p className="text-gray-600 dark:text-gray-300 text-sm">Disponible 24h/24, 7j/7</p>
                     <Button 
                       className="mt-3 bg-blue-600 hover:bg-blue-700"
-                      onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
+                      onClick={() => handlePhoneClick(contact_phone)}
                     >
                       Appeler maintenant
                     </Button>
@@ -353,7 +353,7 @@ const Contact = ({ arrondissement }: ContactProps = {}) => {
                     <Button 
                       variant="outline"
                       className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
-                      onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
+                      onClick={() => handlePhoneClick(contact_phone)}
                     >
                       <Phone className="h-4 w-4 mr-2" />
                       Appeler

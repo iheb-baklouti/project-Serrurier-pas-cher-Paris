@@ -64,7 +64,7 @@ const HeroArrondissement = ({ arrondissement }: HeroArrondissementProps) => {
               <Button
                 size="lg"
                 className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white text-lg px-8 py-4 h-auto"
-                onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
+                onClick={() => handlePhoneClick(contact_phone)}
               >
                 <Phone className="h-5 w-5 mr-2" />
                 Appeler maintenant

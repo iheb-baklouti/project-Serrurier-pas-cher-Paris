@@ -6,7 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { useContactInfo } from '@/lib/useContactInfo';
 
 const Testimonials = () => {
-  const { contact_phone, getPhoneLink } = useContactInfo();
+  const { contact_phone, handlePhoneClick } = useContactInfo();
   const testimonials = [
     {
       name: "Marie L.",
@@ -135,7 +135,7 @@ const Testimonials = () => {
             <div className="mt-8">
               <button 
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-                onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
+                onClick={() => handlePhoneClick(contact_phone)}
               >
                 Rejoignez nos clients satisfaits
               </button>

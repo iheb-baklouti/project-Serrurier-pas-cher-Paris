@@ -11,7 +11,7 @@ interface ContentArrondissementProps {
 }
 
 const ContentArrondissement = ({ arrondissement }: ContentArrondissementProps) => {
-  const { contact_phone, contact_whatsapp, getPhoneLink, getWhatsAppLink } = useContactInfo();
+  const { contact_phone, contact_whatsapp, handlePhoneClick, getWhatsAppLink } = useContactInfo();
   const content = getArrondissementContent(arrondissement);
   const arrondissementData = getArrondissementData(arrondissement);
   const nomArrondissement = arrondissementData.name;
@@ -191,7 +191,7 @@ const ContentArrondissement = ({ arrondissement }: ContentArrondissementProps) =
               <Button 
                 size="lg"
                 className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold"
-                onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
+                onClick={() => handlePhoneClick(contact_phone)}
               >
                 <Phone className="h-5 w-5 mr-2" />
                 Appelez-nous : {contact_phone}

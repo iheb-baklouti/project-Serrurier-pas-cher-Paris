@@ -30,7 +30,7 @@ const FAQList = () => {
     const [search, setSearch] = useState('');
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const { contact_phone, contact_whatsapp, getPhoneLink, getWhatsAppLink } = useContactInfo();
+    const { contact_phone, contact_whatsapp, handlePhoneClick, getWhatsAppLink } = useContactInfo();
 
     const take = 10;
 
@@ -182,7 +182,7 @@ const FAQList = () => {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <button
                             className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg shadow-blue-600/20 transition-all hover:scale-105"
-                            onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
+                            onClick={() => handlePhoneClick(contact_phone)}
                         >
                             Appeler {contact_phone}
                         </button>

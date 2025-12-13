@@ -111,7 +111,7 @@ const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
 
   // Les articles sont déjà filtrés côté serveur, donc pas besoin de filtrage côté client
   const filteredArticles = articles
-  const { contact_phone, contact_whatsapp, getPhoneLink, getWhatsAppLink } = useContactInfo();
+  const { contact_phone, contact_whatsapp, handlePhoneClick, getPhoneLink, getWhatsAppLink } = useContactInfo();
   const viewAllHref = pageKey === 'principal' ? '/blog' : `/blog?linkedPage=${encodeURIComponent(pageKey)}`;
 
   const formatDate = (dateString?: string | null) => {
@@ -223,7 +223,7 @@ const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button
                     className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
-                    onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
+                    onClick={() => handlePhoneClick(contact_phone)}
                   >
                     <Phone className="h-5 w-5" />
                     Appeler maintenant
@@ -602,7 +602,7 @@ const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white flex items-center gap-2"
-                onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
+                onClick={() => handlePhoneClick(contact_phone)}
               >
                 <Shield className="h-5 w-5" />
                 Conseil gratuit

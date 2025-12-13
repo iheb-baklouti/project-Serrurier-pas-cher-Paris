@@ -25,7 +25,7 @@ const FAQ = ({ linkedPage, take = 20, showMoreButton = false }: FAQProps) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [faqs, setFaqs] = useState<FAQItem[]>([])
   const [loading, setLoading] = useState(true)
-  const { contact_phone, contact_whatsapp, getPhoneLink, getWhatsAppLink } = useContactInfo();
+  const { contact_phone, contact_whatsapp, handlePhoneClick, getWhatsAppLink } = useContactInfo();
   const router = useRouter();
 
   const pageKey = useMemo(() => {
@@ -152,7 +152,7 @@ const FAQ = ({ linkedPage, take = 20, showMoreButton = false }: FAQProps) => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-                onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
+                onClick={() => handlePhoneClick(contact_phone)}
               >
                 Appelez-nous maintenant
               </button>

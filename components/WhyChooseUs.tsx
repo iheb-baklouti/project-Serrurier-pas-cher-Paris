@@ -4,7 +4,7 @@ import { CircleCheck as CheckCircle, Clock, Euro, Users, Shield, Phone } from 'l
 import { useContactInfo } from '@/lib/useContactInfo';
 
 const WhyChooseUs = () => {
-  const { contact_phone, getPhoneLink } = useContactInfo();
+  const { contact_phone, handlePhoneClick } = useContactInfo();
   const reasons = [
     {
       icon: Euro,
@@ -114,7 +114,7 @@ const WhyChooseUs = () => {
             </p>
             <button 
               className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors inline-flex items-center gap-2"
-              onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
+              onClick={() => handlePhoneClick(contact_phone)}
             >
               <Phone className="h-5 w-5" />
               Appelez maintenant : {contact_phone}
