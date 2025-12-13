@@ -77,10 +77,25 @@ export default function RootLayout({ children, }: { children: React.ReactNode; }
           gtag('config', 'AW-17776892300');
           
           // Fonction de conversion Google Ads pour les appels directs
+          // Compatible iOS et Android
           function gtag_report_conversion(url) {
             var callback = function () {
               if (typeof(url) != 'undefined') {
-                window.location = url;
+                // Détecter iOS pour utiliser la méthode la plus compatible
+                var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+                
+                if (isIOS) {
+                  // Sur iOS, créer un lien temporaire et le cliquer (méthode la plus fiable)
+                  var link = document.createElement('a');
+                  link.href = url;
+                  link.style.display = 'none';
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                } else {
+                  // Sur Android et autres, utiliser window.location.href
+                  window.location.href = url;
+                }
               }
             };
             gtag('event', 'conversion', {

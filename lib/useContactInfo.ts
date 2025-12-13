@@ -66,8 +66,21 @@ export function useContactInfo() {
   }, [])
 
   // Fonction utilitaire pour formater le numéro de téléphone pour tel:
+  // Compatible iOS et Android
   const getPhoneLink = (phone: string) => {
-    return phone.replace(/\s/g, '')
+    // Enlever tous les espaces et caractères non numériques sauf +
+    let cleaned = phone.replace(/\s/g, '').replace(/[^\d+]/g, '')
+    
+    // Si le numéro commence par 0, le remplacer par +33 pour le format international
+    // Cela améliore la compatibilité iOS
+    if (cleaned.startsWith('0')) {
+      cleaned = '+33' + cleaned.substring(1)
+    } else if (!cleaned.startsWith('+')) {
+      // Si pas de + et pas de 0, ajouter +33 (format français)
+      cleaned = '+33' + cleaned
+    }
+    
+    return cleaned
   }
 
   // Fonction utilitaire pour formater le numéro WhatsApp
@@ -80,15 +93,42 @@ export function useContactInfo() {
   }
 
   // Fonction pour gérer les clics sur le téléphone avec conversion Google Ads
+  // Compatible iOS et Android
   const handlePhoneClick = (phone: string) => {
-    const phoneLink = `tel:${getPhoneLink(phone)}`
+    const phoneNumber = getPhoneLink(phone)
+    const phoneLink = `tel:${phoneNumber}`
     
     // Vérifier si la fonction gtag_report_conversion existe (Google Ads)
     if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-      (window as any).gtag_report_conversion(phoneLink)
+      // Pour iOS, utiliser window.location.href au lieu de window.open
+      // car window.open peut ne pas fonctionner avec tel: sur iOS
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+      
+      if (isIOS) {
+        // Sur iOS, utiliser window.location.href pour une meilleure compatibilité
+        (window as any).gtag_report_conversion(phoneLink)
+        // Le callback de gtag_report_conversion gérera la redirection
+      } else {
+        // Sur Android et autres, utiliser window.open
+        (window as any).gtag_report_conversion(phoneLink)
+      }
     } else {
       // Fallback si Google Ads n'est pas chargé
-      window.open(phoneLink, '_self')
+      // Détecter iOS pour utiliser la méthode appropriée
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+      
+      if (isIOS) {
+        // Sur iOS, utiliser window.location.href ou créer un lien temporaire
+        const link = document.createElement('a')
+        link.href = phoneLink
+        link.style.display = 'none'
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+      } else {
+        // Sur Android et autres, utiliser window.location.href (plus fiable que window.open)
+        window.location.href = phoneLink
+      }
     }
   }
 
