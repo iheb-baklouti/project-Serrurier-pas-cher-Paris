@@ -425,7 +425,7 @@ const Contact = ({ arrondissement }: ContactProps = {}) => {
             <Button 
               size="lg"
               className="bg-red-600 hover:bg-red-700 text-white px-12 h-full py-3 text-lg font-semibold w-full"
-              onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
+              onClick={() => handlePhoneClick(contact_phone)}
             >
               <Phone className="h-6 w-6 mr-3" />
               URGENCE : {contact_phone}
