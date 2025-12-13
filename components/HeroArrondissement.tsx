@@ -11,7 +11,7 @@ interface HeroArrondissementProps {
 }
 
 const HeroArrondissement = ({ arrondissement }: HeroArrondissementProps) => {
-  const { contact_phone, contact_whatsapp, getPhoneLink, getWhatsAppLink } = useContactInfo();
+  const { contact_phone, contact_whatsapp, handlePhoneClick, getWhatsAppLink } = useContactInfo();
   const content = getArrondissementContent(arrondissement);
   const arrondissementData = getArrondissementData(arrondissement);
   const nomArrondissement = arrondissementData.name;
