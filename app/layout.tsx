@@ -51,11 +51,12 @@ export default function RootLayout({ children, }: { children: React.ReactNode; }
     return (
         <html lang="fr">
             <head>
+                <meta name="google-site-verification" content="z7bYTCabDUHihlE0FxznC4SMB600UI_QtNB49xCAccg" />
                 <link
                     href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
                     rel="stylesheet"
                 />
-                <link rel="canonical" href="https://serrurier-pas-cher-paris.fr" />
+                <link rel="canonical" href="https://www.serrurier-pas-cher.paris/" />
                 <meta name="geo.region" content="FR-75" />
                 <meta name="geo.placename" content="Paris" />
                 <meta name="geo.position" content="48.8566;2.3522" />
