@@ -6,7 +6,7 @@ import { useContactInfo } from '@/lib/useContactInfo';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { contact_phone, contact_whatsapp, contact_email, getPhoneLink, getWhatsAppLink } = useContactInfo();
+  const { contact_phone, contact_whatsapp, contact_email, handlePhoneClick, getPhoneLink, getWhatsAppLink } = useContactInfo();
 
   return (
     <footer className="bg-gray-900 text-white">

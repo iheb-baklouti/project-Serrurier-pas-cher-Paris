@@ -117,7 +117,7 @@ const Services = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
                 className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
-                onClick={() => window.open(`tel:${getPhoneLink(contact_phone)}`, '_self')}
+                onClick={() => handlePhoneClick(contact_phone)}
               >
                 <Clock className="h-5 w-5" />
                 Intervention immédiate
