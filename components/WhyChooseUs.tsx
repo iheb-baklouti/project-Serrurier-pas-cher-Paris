@@ -4,7 +4,7 @@ import { CircleCheck as CheckCircle, Clock, Euro, Users, Shield, Phone } from 'l
 import { useContactInfo } from '@/lib/useContactInfo';
 
 const WhyChooseUs = () => {
-  const { contact_phone, handlePhoneClick } = useContactInfo();
+  const { contact_phone, getTelLink, handlePhoneClick } = useContactInfo();
   const reasons = [
     {
       icon: Euro,
@@ -112,13 +112,14 @@ const WhyChooseUs = () => {
             <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
               Rejoignez nos milliers de clients satisfaits. Intervention immédiate et tarifs transparents.
             </p>
-            <button 
+            <a 
+              href={getTelLink(contact_phone)}
               className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors inline-flex items-center gap-2"
-              onClick={() => handlePhoneClick(contact_phone)}
+              onClick={(e) => handlePhoneClick(contact_phone, e)}
             >
               <Phone className="h-5 w-5" />
               Appelez maintenant : {contact_phone}
-            </button>
+            </a>
           </div>
         </div>
       </div>

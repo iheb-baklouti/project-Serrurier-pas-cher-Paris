@@ -25,7 +25,7 @@ const FAQ = ({ linkedPage, take = 20, showMoreButton = false }: FAQProps) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [faqs, setFaqs] = useState<FAQItem[]>([])
   const [loading, setLoading] = useState(true)
-  const { contact_phone, contact_whatsapp, handlePhoneClick, getWhatsAppLink } = useContactInfo();
+  const { contact_phone, contact_whatsapp, getTelLink, handlePhoneClick, getWhatsAppLink } = useContactInfo();
   const router = useRouter();
 
   const pageKey = useMemo(() => {
@@ -150,12 +150,13 @@ const FAQ = ({ linkedPage, take = 20, showMoreButton = false }: FAQProps) => {
               Notre équipe est à votre disposition pour répondre à toutes vos questions spécifiques.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-                onClick={() => handlePhoneClick(contact_phone)}
+              <a
+                href={getTelLink(contact_phone)}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors inline-flex items-center justify-center"
+                onClick={(e) => handlePhoneClick(contact_phone, e)}
               >
                 Appelez-nous maintenant
-              </button>
+              </a>
               <button
                 className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-6 py-3 rounded-lg font-semibold transition-colors"
                 onClick={() => window.open(getWhatsAppLink(contact_whatsapp, "Bonjour, j'ai une question sur vos services"), '_blank')}

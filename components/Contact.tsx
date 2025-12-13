@@ -17,7 +17,7 @@ interface ContactProps {
 
 const Contact = ({ arrondissement }: ContactProps = {}) => {
   const pathname = usePathname();
-  const { contact_phone, contact_whatsapp, contact_email, handlePhoneClick, getWhatsAppLink } = useContactInfo();
+  const { contact_phone, contact_whatsapp, contact_email, getTelLink, handlePhoneClick, getWhatsAppLink } = useContactInfo();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -158,12 +158,13 @@ const Contact = ({ arrondissement }: ContactProps = {}) => {
                     <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Téléphone d'urgence</h4>
                     <p className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">{contact_phone}</p>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">Disponible 24h/24, 7j/7</p>
-                    <Button 
-                      className="mt-3 bg-blue-600 hover:bg-blue-700"
-                      onClick={() => handlePhoneClick(contact_phone)}
+                    <a 
+                      href={getTelLink(contact_phone)}
+                      className="mt-3 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center justify-center"
+                      onClick={(e) => handlePhoneClick(contact_phone, e)}
                     >
                       Appeler maintenant
-                    </Button>
+                    </a>
                   </div>
                 </div>
 
@@ -350,14 +351,14 @@ const Contact = ({ arrondissement }: ContactProps = {}) => {
                       <MessageSquare className="h-4 w-4 mr-2" />
                       WhatsApp
                     </Button>
-                    <Button 
-                      variant="outline"
-                      className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
-                      onClick={() => handlePhoneClick(contact_phone)}
+                    <a 
+                      href={getTelLink(contact_phone)}
+                      className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white border-2 px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center justify-center"
+                      onClick={(e) => handlePhoneClick(contact_phone, e)}
                     >
                       <Phone className="h-4 w-4 mr-2" />
                       Appeler
-                    </Button>
+                    </a>
                   </div>
                 </div>
 
@@ -422,14 +423,14 @@ const Contact = ({ arrondissement }: ContactProps = {}) => {
               En cas d'urgence critique (porte blindée, nuit, situation de danger), 
               appelez-nous directement pour une intervention immédiate.
             </p>
-            <Button 
-              size="lg"
-              className="bg-red-600 hover:bg-red-700 text-white px-12 h-full py-3 text-lg font-semibold w-full"
-              onClick={() => handlePhoneClick(contact_phone)}
+            <a 
+              href={getTelLink(contact_phone)}
+              className="bg-red-600 hover:bg-red-700 text-white px-12 h-full py-3 text-lg font-semibold w-full rounded-lg flex items-center justify-center transition-colors"
+              onClick={(e) => handlePhoneClick(contact_phone, e)}
             >
               <Phone className="h-6 w-6 mr-3" />
               URGENCE : {contact_phone}
-            </Button>
+            </a>
           </div>
         </div>
       </div>

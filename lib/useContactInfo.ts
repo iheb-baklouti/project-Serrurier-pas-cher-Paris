@@ -92,50 +92,41 @@ export function useContactInfo() {
     return baseUrl
   }
 
-  // Fonction pour gérer les clics sur le téléphone avec conversion Google Ads
-  // Compatible iOS et Android
-  const handlePhoneClick = (phone: string) => {
+  // Fonction pour obtenir le lien tel: (pour utilisation directe dans href)
+  // Compatible iOS mode privé et Android
+  const getTelLink = (phone: string) => {
     const phoneNumber = getPhoneLink(phone)
-    const phoneLink = `tel:${phoneNumber}`
-    
-    // Vérifier si la fonction gtag_report_conversion existe (Google Ads)
+    return `tel:${phoneNumber}`
+  }
+
+  // Fonction pour gérer les clics sur le téléphone avec conversion Google Ads
+  // Compatible iOS mode privé et Android
+  // Version simplifiée : le script Google Ads gère tout
+  const handlePhoneClick = (phone: string, event?: React.MouseEvent) => {
+    // Appeler la fonction Google Ads (sans paramètre URL car le href gère la redirection)
     if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-      // Pour iOS, utiliser window.location.href au lieu de window.open
-      // car window.open peut ne pas fonctionner avec tel: sur iOS
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
-      
-      if (isIOS) {
-        // Sur iOS, utiliser window.location.href pour une meilleure compatibilité
-        (window as any).gtag_report_conversion(phoneLink)
-        // Le callback de gtag_report_conversion gérera la redirection
-      } else {
-        // Sur Android et autres, utiliser window.open
-        (window as any).gtag_report_conversion(phoneLink)
-      }
-    } else {
-      // Fallback si Google Ads n'est pas chargé
-      // Détecter iOS pour utiliser la méthode appropriée
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
-      
-      if (isIOS) {
-        // Sur iOS, utiliser window.location.href ou créer un lien temporaire
-        const link = document.createElement('a')
-        link.href = phoneLink
-        link.style.display = 'none'
-        document.body.appendChild(link)
-        link.click()
-        document.body.removeChild(link)
-      } else {
-        // Sur Android et autres, utiliser window.location.href (plus fiable que window.open)
-        window.location.href = phoneLink
+      try {
+        // Appeler sans URL - le href="tel:" du lien gère la redirection
+        // Sur iOS, le tracking se fait avant que le lien ne s'active
+        // Sur Android, le script gère la redirection après 300ms
+        (window as any).gtag_report_conversion()
+      } catch (e) {
+        // Ignorer les erreurs (mode privé, cookies bloqués, etc.)
+        // Le lien href="tel:" fonctionnera quand même
+        console.log('Tracking non disponible (mode privé possible)')
       }
     }
+    
+    // Retourner true pour permettre au lien href de fonctionner normalement
+    // Le script Google Ads gère la redirection sur Android si nécessaire
+    return true
   }
 
   return {
     ...contactInfo,
     loading,
     getPhoneLink,
+    getTelLink,
     getWhatsAppLink,
     handlePhoneClick
   }

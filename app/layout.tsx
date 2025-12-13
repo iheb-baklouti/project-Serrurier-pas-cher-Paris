@@ -77,34 +77,45 @@ export default function RootLayout({ children, }: { children: React.ReactNode; }
           gtag('config', 'AW-17776892300');
           
           // Fonction de conversion Google Ads pour les appels directs
-          // Compatible iOS et Android
+          // Optimisée pour iOS mode privé et Android
           function gtag_report_conversion(url) {
-            var callback = function () {
-              if (typeof(url) != 'undefined') {
-                // Détecter iOS pour utiliser la méthode la plus compatible
-                var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-                
-                if (isIOS) {
-                  // Sur iOS, créer un lien temporaire et le cliquer (méthode la plus fiable)
+            // Détection iOS / Safari
+            var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            
+            // Envoi conversion AVANT l'appel (important pour iOS)
+            try {
+              gtag('event', 'conversion', {
+                'send_to': 'AW-17776892300/4tPcCO7JvNAbEIyz15xC',
+                'value': 1.0,
+                'currency': 'EUR'
+              });
+            } catch (e) {
+              // Ignorer les erreurs (mode privé, cookies bloqués, etc.)
+              console.log('Tracking non disponible (mode privé possible)');
+            }
+            
+            // Sur Android / Desktop seulement (redirection via JavaScript)
+            // Sur iOS, le lien href="tel:" gère la redirection automatiquement
+            if (!isIOS && typeof(url) !== 'undefined') {
+              setTimeout(function () {
+                try {
+                  window.location.href = url;
+                } catch (e) {
+                  // Fallback si window.location.href échoue
                   var link = document.createElement('a');
                   link.href = url;
                   link.style.display = 'none';
                   document.body.appendChild(link);
                   link.click();
-                  document.body.removeChild(link);
-                } else {
-                  // Sur Android et autres, utiliser window.location.href
-                  window.location.href = url;
+                  setTimeout(function() {
+                    document.body.removeChild(link);
+                  }, 100);
                 }
-              }
-            };
-            gtag('event', 'conversion', {
-              'send_to': 'AW-17776892300/4tPcCO7JvNAbEIyz15xC',
-              'value': 1.0,
-              'currency': 'EUR',
-              'event_callback': callback
-            });
-            return false;
+              }, 300);
+            }
+            
+            // IMPORTANT : empêcher Safari d'annuler l'event
+            return true;
           }
           
           // Exposer la fonction globalement

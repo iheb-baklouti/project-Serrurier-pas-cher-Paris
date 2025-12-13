@@ -30,7 +30,7 @@ const FAQList = () => {
     const [search, setSearch] = useState('');
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const { contact_phone, contact_whatsapp, handlePhoneClick, getWhatsAppLink } = useContactInfo();
+    const { contact_phone, contact_whatsapp, getTelLink, handlePhoneClick, getWhatsAppLink } = useContactInfo();
 
     const take = 10;
 
@@ -180,12 +180,13 @@ const FAQList = () => {
                         Notre équipe d'experts est disponible 24h/24 et 7j/7 pour répondre à toutes vos questions et intervenir en urgence.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button
-                            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg shadow-blue-600/20 transition-all hover:scale-105"
-                            onClick={() => handlePhoneClick(contact_phone)}
+                        <a
+                            href={getTelLink(contact_phone)}
+                            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg shadow-blue-600/20 transition-all hover:scale-105 inline-flex items-center justify-center"
+                            onClick={(e) => handlePhoneClick(contact_phone, e)}
                         >
                             Appeler {contact_phone}
-                        </button>
+                        </a>
                         <button
                             className="bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-50 px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105"
                             onClick={() => window.open(getWhatsAppLink(contact_whatsapp, "Bonjour, j'ai une question..."), '_blank')}

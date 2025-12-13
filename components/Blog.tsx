@@ -111,7 +111,7 @@ const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
 
   // Les articles sont déjà filtrés côté serveur, donc pas besoin de filtrage côté client
   const filteredArticles = articles
-  const { contact_phone, contact_whatsapp, handlePhoneClick, getPhoneLink, getWhatsAppLink } = useContactInfo();
+  const { contact_phone, contact_whatsapp, getTelLink, handlePhoneClick, getPhoneLink, getWhatsAppLink } = useContactInfo();
   const viewAllHref = pageKey === 'principal' ? '/blog' : `/blog?linkedPage=${encodeURIComponent(pageKey)}`;
 
   const formatDate = (dateString?: string | null) => {
@@ -221,13 +221,14 @@ const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
                   Devis gratuit et intervention garantie.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button
+                  <a
+                    href={getTelLink(contact_phone)}
                     className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
-                    onClick={() => handlePhoneClick(contact_phone)}
+                    onClick={(e) => handlePhoneClick(contact_phone, e)}
                   >
                     <Phone className="h-5 w-5" />
                     Appeler maintenant
-                  </button>
+                  </a>
                   <button
                     className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-600 dark:hover:text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 hover:shadow-lg transform hover:scale-105"
                     onClick={() => window.open(getWhatsAppLink(contact_whatsapp, "Bonjour, j'ai une question suite à la lecture de votre article"), '_blank')}
@@ -600,13 +601,14 @@ const Blog = ({ linkedPage, take = 3 }: BlogProps) => {
               et vous conseiller sur les meilleures solutions de sécurité.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white flex items-center gap-2"
-                onClick={() => handlePhoneClick(contact_phone)}
-              >
+              <a
+        href={getTelLink(contact_phone)}
+        className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white flex items-center gap-2 transition-colors inline-flex items-center justify-center"
+        onClick={(e) => handlePhoneClick(contact_phone, e)}
+      >
                 <Shield className="h-5 w-5" />
                 Conseil gratuit
-              </Button>
+              </a>
               <Button
                 variant="outline"
                 className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-600 dark:hover:text-white"

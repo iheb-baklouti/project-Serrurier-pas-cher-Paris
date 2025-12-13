@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useContactInfo } from '@/lib/useContactInfo';
 
 const Services = () => {
-  const { contact_phone, handlePhoneClick } = useContactInfo();
+  const { contact_phone, getTelLink, handlePhoneClick } = useContactInfo();
   const services = [
     {
       icon: Key,
@@ -91,12 +91,13 @@ const Services = () => {
                   </CardDescription>
                   <div className="flex items-center justify-between">
                     <span className="text-blue-600 dark:text-blue-400 font-semibold">{service.price}</span>
-                    <button 
+                    <a 
+                      href={getTelLink(contact_phone)}
                       className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors"
-                      onClick={() => handlePhoneClick(contact_phone)}
+                      onClick={(e) => handlePhoneClick(contact_phone, e)}
                     >
                       En savoir plus →
-                    </button>
+                    </a>
                   </div>
                 </CardContent>
               </Card>
@@ -115,13 +116,14 @@ const Services = () => {
               Devis gratuit et intervention rapide garantie.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <a 
+                href={getTelLink(contact_phone)}
                 className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
-                onClick={() => handlePhoneClick(contact_phone)}
+                onClick={(e) => handlePhoneClick(contact_phone, e)}
               >
                 <Clock className="h-5 w-5" />
                 Intervention immédiate
-              </button>
+              </a>
               <button 
                 className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-600 dark:hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}

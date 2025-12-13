@@ -11,7 +11,7 @@ interface ContentArrondissementProps {
 }
 
 const ContentArrondissement = ({ arrondissement }: ContentArrondissementProps) => {
-  const { contact_phone, contact_whatsapp, handlePhoneClick, getWhatsAppLink } = useContactInfo();
+  const { contact_phone, contact_whatsapp, getTelLink, handlePhoneClick, getWhatsAppLink } = useContactInfo();
   const content = getArrondissementContent(arrondissement);
   const arrondissementData = getArrondissementData(arrondissement);
   const nomArrondissement = arrondissementData.name;
@@ -188,14 +188,14 @@ const ContentArrondissement = ({ arrondissement }: ContentArrondissementProps) =
               Notre équipe intervient rapidement dans tout le {nomArrondissement} arrondissement de Paris, notamment près de {content.stationsMetro.slice(0, 2).join(' et ')}.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg"
-                className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold"
-                onClick={() => handlePhoneClick(contact_phone)}
-              >
+              <a
+        href={getTelLink(contact_phone)}
+        className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold transition-colors inline-flex items-center justify-center"
+        onClick={(e) => handlePhoneClick(contact_phone, e)}
+      >
                 <Phone className="h-5 w-5 mr-2" />
                 Appelez-nous : {contact_phone}
-              </Button>
+              </a>
               <Button 
                 size="lg"
                 variant="outline"

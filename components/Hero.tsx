@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useContactInfo } from '@/lib/useContactInfo';
 
 const Hero = () => {
-  const { contact_phone, contact_whatsapp, handlePhoneClick, getWhatsAppLink } = useContactInfo();
+  const { contact_phone, contact_whatsapp, getTelLink, handlePhoneClick, getWhatsAppLink } = useContactInfo();
   return (
     <section id="accueil" className="pt-16 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -47,14 +47,14 @@ const Hero = () => {
 
             {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white text-lg px-8 py-4 h-auto"
-                onClick={() => handlePhoneClick(contact_phone)}
+              <a
+                href={getTelLink(contact_phone)}
+                className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white text-lg px-8 py-4 h-auto rounded-lg font-semibold flex items-center justify-center transition-colors"
+                onClick={(e) => handlePhoneClick(contact_phone, e)}
               >
                 <Phone className="h-5 w-5 mr-2" />
                 Appeler maintenant
-              </Button>
+              </a>
 
               <Button
                 size="lg"

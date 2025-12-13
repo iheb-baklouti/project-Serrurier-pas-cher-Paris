@@ -16,24 +16,25 @@ import Logo from '@/components/Logo';
 import { useContactInfo } from '@/lib/useContactInfo';
 
 const HeaderPhoneButton = () => {
-  const { contact_phone, handlePhoneClick } = useContactInfo();
+  const { contact_phone, getTelLink, handlePhoneClick } = useContactInfo();
 
   return (
     <div className="hidden md:flex items-center gap-3">
       <ThemeToggle />
-      <Button
-        className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white flex items-center gap-2"
-        onClick={() => handlePhoneClick(contact_phone)}
+      <a
+        href={getTelLink(contact_phone)}
+        className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors"
+        onClick={(e) => handlePhoneClick(contact_phone, e)}
       >
         <Phone className="h-4 w-4" />
         {contact_phone}
-      </Button>
+      </a>
     </div>
   );
 };
 
 const Header = () => {
-  const { contact_phone, handlePhoneClick } = useContactInfo();
+  const { contact_phone, getTelLink, handlePhoneClick } = useContactInfo();
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -257,13 +258,14 @@ const Header = () => {
                 <ThemeToggle />
               </div>
               <div className="px-3 py-2">
-                <Button
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-2"
-                  onClick={() => handlePhoneClick(contact_phone)}
+                <a
+                  href={getTelLink(contact_phone)}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors"
+                  onClick={(e) => handlePhoneClick(contact_phone, e)}
                 >
                   <Phone className="h-4 w-4" />
                   {contact_phone}
-                </Button>
+                </a>
               </div>
             </div>
           </div>
