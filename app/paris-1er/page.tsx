@@ -61,20 +61,20 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: 'website',
       locale: 'fr_FR',
-      url: 'https://serrurier-pas-cher.paris/paris-1er',
+      url: 'https://www.serrurier-pas-cher.paris/paris-1er',
       title: "Serrurier Paris 1er – Louvre, Palais-Royal | Dépannage 24h/24",
       description: "Serrurier pas cher Paris 1er. Intervention rapide Louvre, Palais-Royal. Dépannage serrurier urgent près métro Louvre-Rivoli, Palais Royal-Musée du Louvre. Ouverture de porte dès 95€, artisan serrurier qualifié 1er arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 1er - Louvre" }],
+      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 1er - Louvre" }],
     },
     twitter: {
       card: 'summary_large_image',
       title: "Serrurier Paris 1er – Louvre, Palais-Royal | Dépannage 24h/24",
       description: "Serrurier pas cher Paris 1er. Intervention rapide Louvre, Palais-Royal. Dépannage serrurier urgent, ouverture de porte dès 95€.",
-      images: ['https://serrurier-pas-cher.paris/icon.svg'],
+      images: ['https://www.serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
-      canonical: 'https://serrurier-pas-cher.paris/paris-1er',
+      canonical: 'https://www.serrurier-pas-cher.paris/paris-1er',
     },
     other: {
       'geo.region': 'FR-75',

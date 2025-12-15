@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://serrurier-pas-cher.paris'),
+  metadataBase: new URL('https://www.serrurier-pas-cher.paris'),
 }
 
 export default function Paris3emeLayout({
@@ -18,9 +18,9 @@ export default function Paris3emeLayout({
             '@context': 'https://schema.org',
             '@type': 'LocalBusiness',
             name: 'Serrurier pas cher Paris 3ème',
-            image: 'https://serrurier-pas-cher.paris/logo.png',
-            '@id': 'https://serrurier-pas-cher.paris/paris-3eme',
-            url: 'https://serrurier-pas-cher.paris/paris-3eme',
+            image: 'https://www.serrurier-pas-cher.paris/logo.png',
+            '@id': 'https://www.serrurier-pas-cher.paris/paris-3eme',
+            url: 'https://www.serrurier-pas-cher.paris/paris-3eme',
             telephone: '+33627558855',
             priceRange: '€€',
             address: {
@@ -81,8 +81,8 @@ export default function Paris3emeLayout({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://serrurier-pas-cher.paris' },
-              { '@type': 'ListItem', position: 2, name: 'Paris 3ème', item: 'https://serrurier-pas-cher.paris/paris-3eme' },
+              { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.serrurier-pas-cher.paris' },
+              { '@type': 'ListItem', position: 2, name: 'Paris 3ème', item: 'https://www.serrurier-pas-cher.paris/paris-3eme' },
             ],
           }),
         }}

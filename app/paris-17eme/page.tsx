@@ -61,20 +61,20 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: 'website',
       locale: 'fr_FR',
-      url: 'https://serrurier-pas-cher.paris/paris-17eme',
+      url: 'https://www.serrurier-pas-cher.paris/paris-17eme',
       title: "Serrurier Paris 17ème – Batignolles, Monceau | Dépannage 24h/24",
       description: "Serrurier pas cher Paris 17ème. Intervention rapide Batignolles, Monceau. Dépannage serrurier urgent près métro Villiers, Monceau. Ouverture de porte dès 95€, artisan serrurier qualifié 17ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 17ème - Batignolles" }],
+      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 17ème - Batignolles" }],
     },
     twitter: {
       card: 'summary_large_image',
       title: "Serrurier Paris 17ème – Batignolles, Monceau | Dépannage 24h/24",
       description: "Serrurier pas cher Paris 17ème. Intervention rapide Batignolles, Monceau. Dépannage serrurier urgent, ouverture de porte dès 95€.",
-      images: ['https://serrurier-pas-cher.paris/icon.svg'],
+      images: ['https://www.serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
-      canonical: 'https://serrurier-pas-cher.paris/paris-17eme',
+      canonical: 'https://www.serrurier-pas-cher.paris/paris-17eme',
     },
     other: {
       'geo.region': 'FR-75',

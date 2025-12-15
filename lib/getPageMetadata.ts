@@ -25,13 +25,13 @@ export async function getPageMetadata(pagePath: string): Promise<Metadata | null
       openGraph: {
         type: 'website',
         locale: 'fr_FR',
-        url: `https://serrurier-pas-cher.paris/${pagePath === 'principal' ? '' : pagePath}`,
+        url: `https://www.serrurier-pas-cher.paris/${pagePath === 'principal' ? '' : pagePath}`,
         siteName: 'Serrurier pas cher Paris',
         title: metadata.ogTitle || metadata.title,
         description: metadata.ogDescription || metadata.description,
         images: metadata.ogImage
           ? [{ url: metadata.ogImage }]
-          : [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
+          : [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg', alt: 'Serrurier pas cher Paris' }],
       },
       twitter: {
         card: 'summary_large_image',
@@ -39,10 +39,10 @@ export async function getPageMetadata(pagePath: string): Promise<Metadata | null
         description: metadata.twitterDescription || metadata.description,
         images: metadata.twitterImage
           ? [metadata.twitterImage]
-          : ['https://serrurier-pas-cher.paris/icon.svg'],
+          : ['https://www.serrurier-pas-cher.paris/icon.svg'],
       },
       alternates: {
-        canonical: metadata.canonical || `https://serrurier-pas-cher.paris/${pagePath === 'principal' ? '' : pagePath}`,
+        canonical: metadata.canonical || `https://www.serrurier-pas-cher.paris/${pagePath === 'principal' ? '' : pagePath}`,
       },
     }
   } catch (error) {

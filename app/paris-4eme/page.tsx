@@ -61,20 +61,20 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: 'website',
       locale: 'fr_FR',
-      url: 'https://serrurier-pas-cher.paris/paris-4eme',
+      url: 'https://www.serrurier-pas-cher.paris/paris-4eme',
       title: "Serrurier Paris 4ème – Marais, Notre-Dame | Dépannage 24h/24",
       description: "Serrurier pas cher Paris 4ème. Intervention rapide Marais, Notre-Dame. Dépannage serrurier urgent près métro Hôtel de Ville, Châtelet. Ouverture de porte dès 95€, artisan serrurier qualifié 4ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 4ème - Marais" }],
+      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 4ème - Marais" }],
     },
     twitter: {
       card: 'summary_large_image',
       title: "Serrurier Paris 4ème – Marais, Notre-Dame | Dépannage 24h/24",
       description: "Serrurier pas cher Paris 4ème. Intervention rapide Marais, Notre-Dame. Dépannage serrurier urgent, ouverture de porte dès 95€.",
-      images: ['https://serrurier-pas-cher.paris/icon.svg'],
+      images: ['https://www.serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
-      canonical: 'https://serrurier-pas-cher.paris/paris-4eme',
+      canonical: 'https://www.serrurier-pas-cher.paris/paris-4eme',
     },
     other: {
       'geo.region': 'FR-75',

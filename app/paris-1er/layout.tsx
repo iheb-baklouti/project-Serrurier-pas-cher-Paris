@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://serrurier-pas-cher.paris'),
+  metadataBase: new URL('https://www.serrurier-pas-cher.paris'),
 }
 
 export default function Paris1erLayout({
@@ -19,9 +19,9 @@ export default function Paris1erLayout({
             '@context': 'https://schema.org',
             '@type': 'LocalBusiness',
             name: 'Serrurier pas cher Paris 1er',
-            image: 'https://serrurier-pas-cher.paris/logo.png',
-            '@id': 'https://serrurier-pas-cher.paris/paris-1er',
-            url: 'https://serrurier-pas-cher.paris/paris-1er',
+            image: 'https://www.serrurier-pas-cher.paris/logo.png',
+            '@id': 'https://www.serrurier-pas-cher.paris/paris-1er',
+            url: 'https://www.serrurier-pas-cher.paris/paris-1er',
             telephone: '+33627558855',
             priceRange: '€€',
             address: {
@@ -114,13 +114,13 @@ export default function Paris1erLayout({
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Accueil',
-                item: 'https://serrurier-pas-cher.paris',
+                item: 'https://www.serrurier-pas-cher.paris',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Paris 1er',
-                item: 'https://serrurier-pas-cher.paris/paris-1er',
+                item: 'https://www.serrurier-pas-cher.paris/paris-1er',
               },
             ],
           }),

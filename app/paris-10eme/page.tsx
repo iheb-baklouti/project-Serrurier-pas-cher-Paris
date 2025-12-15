@@ -61,20 +61,20 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: 'website',
       locale: 'fr_FR',
-      url: 'https://serrurier-pas-cher.paris/paris-10eme',
+      url: 'https://www.serrurier-pas-cher.paris/paris-10eme',
       title: "Serrurier Paris 10ème – Canal Saint-Martin, République | Dépannage 24h/24",
       description: "Serrurier pas cher Paris 10ème. Intervention rapide Canal Saint-Martin, République. Dépannage serrurier urgent près métro République, Gare du Nord. Ouverture de porte dès 95€, artisan serrurier qualifié 10ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 10ème - Canal Saint-Martin" }],
+      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 10ème - Canal Saint-Martin" }],
     },
     twitter: {
       card: 'summary_large_image',
       title: "Serrurier Paris 10ème – Canal Saint-Martin, République | Dépannage 24h/24",
       description: "Serrurier pas cher Paris 10ème. Intervention rapide Canal Saint-Martin, République. Dépannage serrurier urgent, ouverture de porte dès 95€.",
-      images: ['https://serrurier-pas-cher.paris/icon.svg'],
+      images: ['https://www.serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
-      canonical: 'https://serrurier-pas-cher.paris/paris-10eme',
+      canonical: 'https://www.serrurier-pas-cher.paris/paris-10eme',
     },
     other: {
       'geo.region': 'FR-75',

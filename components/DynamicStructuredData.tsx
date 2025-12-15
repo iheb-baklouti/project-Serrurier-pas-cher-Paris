@@ -99,8 +99,8 @@ const DynamicStructuredData = ({ arrondissement }: DynamicStructuredDataProps) =
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://serrurier-pas-cher.paris' },
-        { '@type': 'ListItem', position: 2, name: `Paris ${arrondissementInfo.name}`, item: `https://serrurier-pas-cher.paris/paris-${slug}` },
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.serrurier-pas-cher.paris' },
+        { '@type': 'ListItem', position: 2, name: `Paris ${arrondissementInfo.name}`, item: `https://www.serrurier-pas-cher.paris/paris-${slug}` },
       ],
     };
 

@@ -61,20 +61,20 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: 'website',
       locale: 'fr_FR',
-      url: 'https://serrurier-pas-cher.paris/paris-5eme',
+      url: 'https://www.serrurier-pas-cher.paris/paris-5eme',
       title: "Serrurier Paris 5ème – Quartier Latin, Panthéon | Dépannage 24h/24",
       description: "Serrurier pas cher Paris 5ème. Intervention rapide Quartier Latin, Panthéon. Dépannage serrurier urgent près métro Place Monge, Censier-Daubenton. Ouverture de porte dès 95€, artisan serrurier qualifié 5ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 5ème - Quartier Latin" }],
+      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 5ème - Quartier Latin" }],
     },
     twitter: {
       card: 'summary_large_image',
       title: "Serrurier Paris 5ème – Quartier Latin, Panthéon | Dépannage 24h/24",
       description: "Serrurier pas cher Paris 5ème. Intervention rapide Quartier Latin, Panthéon. Dépannage serrurier urgent, ouverture de porte dès 95€.",
-      images: ['https://serrurier-pas-cher.paris/icon.svg'],
+      images: ['https://www.serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
-      canonical: 'https://serrurier-pas-cher.paris/paris-5eme',
+      canonical: 'https://www.serrurier-pas-cher.paris/paris-5eme',
     },
     other: {
       'geo.region': 'FR-75',

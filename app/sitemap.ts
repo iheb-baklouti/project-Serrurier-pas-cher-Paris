@@ -3,7 +3,7 @@ import { prisma } from '@/lib/prisma'
 import { normalizeSlug } from '@/lib/blogs'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://serrurier-pas-cher.paris'
+  const baseUrl = 'https://www.serrurier-pas-cher.paris'
   const date = new Date()
 
   // Page principale
