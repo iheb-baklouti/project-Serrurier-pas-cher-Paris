@@ -6,11 +6,43 @@ import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
-export const metadata: Metadata = {
-  title: 'Blog Serrurerie Paris | Conseils & Actualités',
-  description:
-    'Retrouvez toutes nos actualités, conseils sécurité et dossiers complets sur la serrurerie à Paris. Nouveaux articles chaque semaine pour protéger votre habitation.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Blog Serrurier Paris | Conseils Sécurité & Actualités Serrurerie',
+    description: 'Blog serrurier Paris : conseils sécurité, guides pratiques, actualités serrurerie. Découvrez nos articles sur les serrures, la sécurité des portes et le dépannage serrurier à Paris. Articles mis à jour chaque semaine.',
+    keywords: 'blog serrurier paris, conseils serrurerie paris, actualités serrurerie, sécurité porte paris, guide serrure paris, blog dépannage serrurier, conseils sécurité habitation paris',
+    authors: [{ name: 'Serrurier pas cher Paris' }],
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    openGraph: {
+      type: 'website',
+      locale: 'fr_FR',
+      url: 'https://www.serrurier-pas-cher.paris/blog',
+      title: 'Blog Serrurier Paris | Conseils Sécurité & Actualités',
+      description: 'Blog serrurier Paris : conseils sécurité, guides pratiques et actualités serrurerie. Articles mis à jour chaque semaine.',
+      siteName: 'Serrurier pas cher Paris',
+      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg', alt: 'Blog Serrurier Paris' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Blog Serrurier Paris | Conseils Sécurité',
+      description: 'Blog serrurier Paris : conseils sécurité et guides pratiques sur la serrurerie. Articles mis à jour chaque semaine.',
+      images: ['https://www.serrurier-pas-cher.paris/icon.svg'],
+    },
+    alternates: {
+      canonical: 'https://www.serrurier-pas-cher.paris/blog',
+    },
+  };
+}
 
 const PAGE_SIZE = 9;
 

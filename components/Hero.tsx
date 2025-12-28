@@ -19,8 +19,10 @@ const Hero = () => {
               </div>
 
               <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
-                Serrurier Pas Cher
-                <span className="text-blue-600 dark:text-blue-400 block">Paris - Dépannage 24h/24</span>
+                Serrurier Paris
+                <span className="text-blue-600 dark:text-blue-400 block">
+                  Tous Arrondissements (1er au 20ème) – Dépannage 24h/24
+                </span>
               </h1>
 
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-lg">
