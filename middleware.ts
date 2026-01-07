@@ -2,6 +2,14 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
+  // REDIRECTION HTTP → HTTPS (PRIORITÉ ABSOLUE)
+  // Vérifier si la requête est en HTTP et rediriger vers HTTPS
+  if (request.nextUrl.protocol === 'http:') {
+    const httpsUrl = request.nextUrl.clone()
+    httpsUrl.protocol = 'https:'
+    return NextResponse.redirect(httpsUrl, 301) // Redirection permanente
+  }
+
   const response = NextResponse.next()
 
   // Headers de sécurité
