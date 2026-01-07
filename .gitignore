@@ -40,3 +40,7 @@ public/uploads/*
 next-env.d.ts
 
 /lib/generated/prisma
+
+# Google API Credentials (NE JAMAIS COMMITER!)
+credentials.json
+token.json
