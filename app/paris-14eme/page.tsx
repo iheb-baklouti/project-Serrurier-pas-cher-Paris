@@ -61,11 +61,11 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: 'website',
       locale: 'fr_FR',
-      url: 'https://www.serrurier-pas-cher.paris/paris-14eme',
+      url: 'https://www.serrurier-pas-cher.paris/paris-14eme/',
       title: "Serrurier Paris 14ème – Montparnasse, Pernety | Dépannage 24h/24",
       description: "Serrurier pas cher Paris 14ème. Intervention rapide Montparnasse, Pernety. Dépannage serrurier urgent près métro Montparnasse-Bienvenüe, Alésia. Ouverture de porte dès 95€, artisan serrurier qualifié 14ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 14ème - Montparnasse" }],
+      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg/', alt: "Serrurier pas cher Paris 14ème - Montparnasse" }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -74,7 +74,7 @@ export async function generateMetadata(): Promise<Metadata> {
       images: ['https://www.serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
-      canonical: 'https://www.serrurier-pas-cher.paris/paris-14eme',
+      canonical: 'https://www.serrurier-pas-cher.paris/paris-14eme/',
     },
     other: {
       'geo.region': 'FR-75',

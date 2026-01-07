@@ -61,11 +61,11 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: 'website',
       locale: 'fr_FR',
-      url: 'https://www.serrurier-pas-cher.paris/paris-8eme',
+      url: 'https://www.serrurier-pas-cher.paris/paris-8eme/',
       title: "Serrurier Paris 8ème – Champs-Élysées, Madeleine | Dépannage 24h/24",
       description: "Serrurier pas cher Paris 8ème. Intervention rapide Champs-Élysées, Madeleine. Dépannage serrurier urgent près métro Champs-Élysées-Clemenceau, Concorde. Ouverture de porte dès 95€, artisan serrurier qualifié 8ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 8ème - Champs-Élysées" }],
+      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg/', alt: "Serrurier pas cher Paris 8ème - Champs-Élysées" }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -74,7 +74,7 @@ export async function generateMetadata(): Promise<Metadata> {
       images: ['https://www.serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
-      canonical: 'https://www.serrurier-pas-cher.paris/paris-8eme',
+      canonical: 'https://www.serrurier-pas-cher.paris/paris-8eme/',
     },
     other: {
       'geo.region': 'FR-75',

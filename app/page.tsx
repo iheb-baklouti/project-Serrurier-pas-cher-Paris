@@ -32,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       },
       alternates: {
-        canonical: 'https://www.serrurier-pas-cher.paris',
+        canonical: 'https://www.serrurier-pas-cher.paris/',
       },
       other: {
         'geo.region': 'FR-75',
@@ -76,7 +76,7 @@ export async function generateMetadata(): Promise<Metadata> {
       images: ['https://www.serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
-      canonical: 'https://www.serrurier-pas-cher.paris',
+      canonical: 'https://www.serrurier-pas-cher.paris/',
     },
     other: {
       'geo.region': 'FR-75',

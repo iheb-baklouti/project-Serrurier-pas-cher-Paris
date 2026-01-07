@@ -61,11 +61,11 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: 'website',
       locale: 'fr_FR',
-      url: 'https://www.serrurier-pas-cher.paris/paris-9eme',
+      url: 'https://www.serrurier-pas-cher.paris/paris-9eme/',
       title: "Serrurier Paris 9ème – Opéra, Pigalle | Dépannage 24h/24",
       description: "Serrurier pas cher Paris 9ème. Intervention rapide Opéra, Pigalle. Dépannage serrurier urgent près métro Opéra, Chaussée d'Antin. Ouverture de porte dès 95€, artisan serrurier qualifié 9ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 9ème - Opéra" }],
+      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg/', alt: "Serrurier pas cher Paris 9ème - Opéra" }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -74,7 +74,7 @@ export async function generateMetadata(): Promise<Metadata> {
       images: ['https://www.serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
-      canonical: 'https://www.serrurier-pas-cher.paris/paris-9eme',
+      canonical: 'https://www.serrurier-pas-cher.paris/paris-9eme/',
     },
     other: {
       'geo.region': 'FR-75',

@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
         answer,
         linkedPage: normalizeLinkedPage(linkedPage || 'principal'),
         order: order || 0,
-        visible: true, // Toujours visible pour les FAQs automatisées
+        visible: true, // Toujour visible pour les FAQs automatisées
       }
     })
 

@@ -61,11 +61,11 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: 'website',
       locale: 'fr_FR',
-      url: 'https://www.serrurier-pas-cher.paris/paris-16eme',
+      url: 'https://www.serrurier-pas-cher.paris/paris-16eme/',
       title: "Serrurier Paris 16ème – Auteuil, Passy | Dépannage 24h/24",
       description: "Serrurier pas cher Paris 16ème. Intervention rapide Auteuil, Passy. Dépannage serrurier urgent près métro Trocadéro, Passy. Ouverture de porte dès 95€, artisan serrurier qualifié 16ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 16ème - Auteuil" }],
+      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg/', alt: "Serrurier pas cher Paris 16ème - Auteuil" }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -74,7 +74,7 @@ export async function generateMetadata(): Promise<Metadata> {
       images: ['https://www.serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
-      canonical: 'https://www.serrurier-pas-cher.paris/paris-16eme',
+      canonical: 'https://www.serrurier-pas-cher.paris/paris-16eme/',
     },
     other: {
       'geo.region': 'FR-75',

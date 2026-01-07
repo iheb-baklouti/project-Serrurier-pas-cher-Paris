@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
         openGraph: {
             type: 'website',
             locale: 'fr_FR',
-            url: 'https://www.serrurier-pas-cher.paris/faq',
+            url: 'https://www.serrurier-pas-cher.paris/faq/',
             title: 'FAQ Serrurier Paris | Questions Fréquentes',
             description: 'FAQ serrurier Paris : réponses à toutes vos questions sur le dépannage, les tarifs et nos services d\'urgence 24h/24.',
             siteName: 'Serrurier pas cher Paris',
@@ -39,7 +39,7 @@ export async function generateMetadata(): Promise<Metadata> {
             images: ['https://www.serrurier-pas-cher.paris/icon.svg'],
         },
         alternates: {
-            canonical: 'https://www.serrurier-pas-cher.paris/faq',
+            canonical: 'https://www.serrurier-pas-cher.paris/faq/',
         },
     };
 }

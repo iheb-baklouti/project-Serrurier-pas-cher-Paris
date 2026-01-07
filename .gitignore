@@ -44,3 +44,4 @@ next-env.d.ts
 # Google API Credentials (NE JAMAIS COMMITER!)
 credentials.json
 token.json
+reindex-progress.json

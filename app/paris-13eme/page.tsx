@@ -61,11 +61,11 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: 'website',
       locale: 'fr_FR',
-      url: 'https://www.serrurier-pas-cher.paris/paris-13eme',
+      url: 'https://www.serrurier-pas-cher.paris/paris-13eme/',
       title: "Serrurier Paris 13ème – Gobelins, Butte-aux-Cailles | Dépannage 24h/24",
       description: "Serrurier pas cher Paris 13ème. Intervention rapide Gobelins, Butte-aux-Cailles. Dépannage serrurier urgent près métro Place d'Italie, Tolbiac. Ouverture de porte dès 95€, artisan serrurier qualifié 13ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 13ème - Gobelins" }],
+      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg/', alt: "Serrurier pas cher Paris 13ème - Gobelins" }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -74,7 +74,7 @@ export async function generateMetadata(): Promise<Metadata> {
       images: ['https://www.serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
-      canonical: 'https://www.serrurier-pas-cher.paris/paris-13eme',
+      canonical: 'https://www.serrurier-pas-cher.paris/paris-13eme/',
     },
     other: {
       'geo.region': 'FR-75',

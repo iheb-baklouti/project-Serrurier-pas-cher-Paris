@@ -9,13 +9,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Page principale
   const pages: MetadataRoute.Sitemap = [
     {
-      url: baseUrl,
+      url: `${baseUrl}/`,
       lastModified: date,
       changeFrequency: 'daily',
       priority: 1,
     },
     {
-      url: `${baseUrl}/faq`,
+      url: `${baseUrl}/faq/`,
       lastModified: date,
       changeFrequency: 'daily',
       priority: 0.9,
@@ -31,7 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     else slug = `paris-${i}eme`;
 
     pages.push({
-      url: `${baseUrl}/${slug}`,
+      url: `${baseUrl}/${slug}/`,
       lastModified: date,
       changeFrequency: 'daily',
       priority: 0.9,
@@ -40,7 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Ajouter la page blog principale
   pages.push({
-    url: `${baseUrl}/blog`,
+    url: `${baseUrl}/blog/`,
     lastModified: date,
     changeFrequency: 'daily',
     priority: 0.9,
@@ -81,12 +81,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       // Normaliser le slug pour qu'il corresponde aux URLs utilisées dans l'application
       const normalizedSlug = normalizeSlug(blog.slug)
       if (normalizedSlug) {
-        pages.push({
-          url: `${baseUrl}/blog/${encodeURIComponent(normalizedSlug)}`,
-          lastModified: blog.updatedAt,
-          changeFrequency: 'daily',
-          priority: 0.8,
-        })
+    pages.push({
+      url: `${baseUrl}/blog/${encodeURIComponent(normalizedSlug)}/`,
+      lastModified: blog.updatedAt,
+      changeFrequency: 'daily',
+      priority: 0.8,
+    })
       }
     })
   } catch (error) {

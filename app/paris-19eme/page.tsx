@@ -61,11 +61,11 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: 'website',
       locale: 'fr_FR',
-      url: 'https://www.serrurier-pas-cher.paris/paris-19eme',
+      url: 'https://www.serrurier-pas-cher.paris/paris-19eme/',
       title: "Serrurier Paris 19ème – Buttes-Chaumont, Belleville | Dépannage 24h/24",
       description: "Serrurier pas cher Paris 19ème. Intervention rapide Buttes-Chaumont, Belleville. Dépannage serrurier urgent près métro Belleville, Buttes Chaumont. Ouverture de porte dès 95€, artisan serrurier qualifié 19ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 19ème - Buttes-Chaumont" }],
+      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg/', alt: "Serrurier pas cher Paris 19ème - Buttes-Chaumont" }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -74,7 +74,7 @@ export async function generateMetadata(): Promise<Metadata> {
       images: ['https://www.serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
-      canonical: 'https://www.serrurier-pas-cher.paris/paris-19eme',
+      canonical: 'https://www.serrurier-pas-cher.paris/paris-19eme/',
     },
     other: {
       'geo.region': 'FR-75',

@@ -18,7 +18,8 @@
     "fix-linkedpage": "tsx scripts/fix-linkedpage-format.ts",
     "apply-metadata-corrections": "tsx scripts/apply-metadata-corrections.ts",
     "reindex": "tsx scripts/reindex-from-sitemap.ts",
-    "reindex:simple": "tsx scripts/reindex-simple.ts"
+    "reindex:simple": "tsx scripts/reindex-simple.ts",
+    "reindex:inspection": "tsx scripts/reindex-url-inspection.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

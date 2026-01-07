@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Calendar, Clock, ArrowLeft, User } from 'lucide-react';
-import { fetchBlogBySlug, canonicalLinkedPageSlug, getLinkedPageLabel } from '@/lib/blogs';
+import { fetchBlogBySlug, canonicalLinkedPageSlug, getLinkedPageLabel, normalizeSlug } from '@/lib/blogs';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -15,12 +15,50 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   if (!blog) {
     return {
       title: 'Article introuvable | Serrurier Paris',
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
+
+  // Normaliser le slug pour l'URL canonique (avec trailing slash pour correspondre à trailingSlash: true)
+  const normalizedSlug = normalizeSlug(blog.slug);
+  const canonicalUrl = normalizedSlug 
+    ? `https://www.serrurier-pas-cher.paris/blog/${encodeURIComponent(normalizedSlug)}/`
+    : `https://www.serrurier-pas-cher.paris/blog/${encodeURIComponent(blog.slug)}/`;
 
   return {
     title: `${blog.title} | Serrurier Paris`,
     description: blog.excerpt || blog.title,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      type: 'article',
+      locale: 'fr_FR',
+      url: canonicalUrl,
+      title: blog.title,
+      description: blog.excerpt || blog.title,
+      images: blog.image ? [{ url: blog.image }] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: blog.title,
+      description: blog.excerpt || blog.title,
+      images: blog.image ? [blog.image] : undefined,
+    },
   };
 }
 

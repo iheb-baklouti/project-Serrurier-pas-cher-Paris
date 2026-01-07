@@ -25,7 +25,7 @@ export async function getPageMetadata(pagePath: string): Promise<Metadata | null
       openGraph: {
         type: 'website',
         locale: 'fr_FR',
-        url: `https://www.serrurier-pas-cher.paris/${pagePath === 'principal' ? '' : pagePath}`,
+        url: `https://www.serrurier-pas-cher.paris/${pagePath === 'principal' ? '' : pagePath}${pagePath === 'principal' ? '' : '/'}`,
         siteName: 'Serrurier pas cher Paris',
         title: metadata.ogTitle || metadata.title,
         description: metadata.ogDescription || metadata.description,
@@ -42,7 +42,7 @@ export async function getPageMetadata(pagePath: string): Promise<Metadata | null
           : ['https://www.serrurier-pas-cher.paris/icon.svg'],
       },
       alternates: {
-        canonical: metadata.canonical || `https://www.serrurier-pas-cher.paris/${pagePath === 'principal' ? '' : pagePath}`,
+        canonical: metadata.canonical || `https://www.serrurier-pas-cher.paris/${pagePath === 'principal' ? '' : pagePath}${pagePath === 'principal' ? '' : '/'}`,
       },
     }
   } catch (error) {

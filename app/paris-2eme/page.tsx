@@ -61,11 +61,11 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: 'website',
       locale: 'fr_FR',
-      url: 'https://www.serrurier-pas-cher.paris/paris-2eme',
+      url: 'https://www.serrurier-pas-cher.paris/paris-2eme/',
       title: "Serrurier Paris 2ème – Bourse, Sentier | Dépannage 24h/24",
       description: "Serrurier pas cher Paris 2ème. Intervention rapide Bourse, Sentier. Dépannage serrurier urgent près métro Bourse, Sentier. Ouverture de porte dès 95€, artisan serrurier qualifié 2ème arrondissement.",
       siteName: 'Serrurier pas cher Paris',
-      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg', alt: "Serrurier pas cher Paris 2ème - Bourse" }],
+      images: [{ url: 'https://www.serrurier-pas-cher.paris/icon.svg/', alt: "Serrurier pas cher Paris 2ème - Bourse" }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -74,7 +74,7 @@ export async function generateMetadata(): Promise<Metadata> {
       images: ['https://www.serrurier-pas-cher.paris/icon.svg'],
     },
     alternates: {
-      canonical: 'https://www.serrurier-pas-cher.paris/paris-2eme',
+      canonical: 'https://www.serrurier-pas-cher.paris/paris-2eme/',
     },
     other: {
       'geo.region': 'FR-75',
