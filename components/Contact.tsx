@@ -177,7 +177,7 @@ const Contact = ({ arrondissement }: ContactProps = {}) => {
                     <p className="text-gray-600 dark:text-gray-300 mb-2">Message instantané</p>
                     <Button 
                       variant="outline" 
-                      className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white dark:border-green-500 dark:text-green-400"
+                      className="border-green-700 text-green-700 hover:bg-green-700 hover:text-white dark:border-green-600 dark:text-green-600 dark:hover:bg-green-600"
                       onClick={() => window.open(getWhatsAppLink(contact_whatsapp, "Bonjour, j'ai besoin d'un serrurier d'urgence"), '_blank')}
                     >
                       Envoyer un message
@@ -345,7 +345,7 @@ const Contact = ({ arrondissement }: ContactProps = {}) => {
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <Button 
                       variant="outline"
-                      className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
+                      className="border-green-700 text-green-700 hover:bg-green-700 hover:text-white"
                       onClick={() => window.open(getWhatsAppLink(contact_whatsapp, "Bonjour, j'ai besoin d'un serrurier d'urgence"), '_blank')}
                     >
                       <MessageSquare className="h-4 w-4 mr-2" />

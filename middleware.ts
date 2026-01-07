@@ -20,14 +20,18 @@ export function middleware(request: NextRequest) {
     response.headers.set(key, value)
   })
 
-  // Content Security Policy (CSP) - adapté selon vos besoins
+  // Content Security Policy (CSP) - adapté pour Google Tag Manager, Analytics et Ads
   const csp = [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://www.googletagmanager.com https://www.google-analytics.com",
+    // Scripts : Google Tag Manager, Analytics, Ads, DoubleClick
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://pagead2.googlesyndication.com",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com data:",
     "img-src 'self' data: https: blob:",
-    "connect-src 'self' https://api.vercel.app https://*.supabase.co https://www.google-analytics.com",
+    // Connexions : Google services complets
+    "connect-src 'self' https://api.vercel.app https://*.supabase.co https://www.google-analytics.com https://www.google.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://analytics.google.com https://region1.google-analytics.com",
+    // Frames : Google Tag Manager
+    "frame-src 'self' https://www.googletagmanager.com https://www.google.com https://td.doubleclick.net https://bid.g.doubleclick.net",
     "frame-ancestors 'self'",
     "base-uri 'self'",
     "form-action 'self'",

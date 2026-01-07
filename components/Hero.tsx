@@ -109,22 +109,22 @@ const Hero = () => {
                     </span>
                   </div>
                   
-                  {/* Badge "Nouveau" */}
-                  <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse">
+                  {/* Badge "Nouveau" - Contraste amélioré */}
+                  <div className="absolute -top-2 -right-2 bg-red-700 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse">
                     NEW
                   </div>
                 </a>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 uppercase max-w-xs mx-auto leading-tight">
+                <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2 uppercase max-w-xs mx-auto leading-tight">
                   SCANNEZ VOTRE SERRURE POUR UN DEVIS & UNE INTERVENTION
-                </h3>
+                </h2>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
                   ⚡ Devis instantané en 30 secondes
                 </p>
               </div>
             </div>
 
-            {/* Badges flottants */}
-            <div className="absolute -top-4 -right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
+            {/* Badges flottants - Contraste amélioré */}
+            <div className="absolute -top-4 -right-4 bg-green-700 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
               Disponible maintenant
             </div>
             <div className="absolute -bottom-4 -left-4 bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow-lg border border-gray-200 dark:border-gray-600">

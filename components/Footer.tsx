@@ -1,12 +1,18 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { useContactInfo } from '@/lib/useContactInfo';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  // Utiliser useState pour éviter les erreurs d'hydratation avec Date
+  const [currentYear, setCurrentYear] = useState<number>(2026);
   const { contact_phone, contact_whatsapp, contact_email, handlePhoneClick, getPhoneLink, getWhatsAppLink } = useContactInfo();
+
+  // Mettre à jour l'année côté client uniquement pour éviter les mismatches d'hydratation
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   return (
     <footer className="bg-gray-900 text-white">

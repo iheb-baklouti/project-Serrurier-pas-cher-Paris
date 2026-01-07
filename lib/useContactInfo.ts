@@ -17,8 +17,17 @@ const defaultContactInfo: ContactInfo = {
 export function useContactInfo() {
   const [contactInfo, setContactInfo] = useState<ContactInfo>(defaultContactInfo)
   const [loading, setLoading] = useState(true)
+  const [isMounted, setIsMounted] = useState(false)
+
+  // S'assurer que le composant est monté côté client avant de faire des opérations
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   useEffect(() => {
+    // Ne pas faire de fetch tant que le composant n'est pas monté côté client
+    if (!isMounted) return
+
     const fetchContactInfo = async () => {
       try {
         // Ajouter un timestamp pour éviter le cache
@@ -36,7 +45,8 @@ export function useContactInfo() {
         
         if (response.ok) {
           const data = await response.json()
-          console.log('Données reçues de l\'API (raw):', JSON.stringify(data, null, 2))
+          // Logs supprimés pour production - décommenter pour debug
+          // console.log('Données reçues de l\'API (raw):', JSON.stringify(data, null, 2))
           
           // Vérifier que les données sont valides et utiliser les valeurs de l'API en priorité
           const newContactInfo = {
@@ -45,17 +55,15 @@ export function useContactInfo() {
             contact_whatsapp: data.contact_whatsapp || defaultContactInfo.contact_whatsapp
           }
           
-          console.log('Comparaison - Valeurs par défaut:', defaultContactInfo)
-          console.log('Comparaison - Nouvelles valeurs:', newContactInfo)
-          console.log('Les valeurs sont-elles différentes?', JSON.stringify(newContactInfo) !== JSON.stringify(defaultContactInfo))
-          
           setContactInfo(newContactInfo)
         } else {
-          const errorText = await response.text()
-          console.error('Erreur HTTP lors de la récupération des informations de contact:', response.status, response.statusText, errorText)
+          // Log d'erreur supprimé pour production
+          // const errorText = await response.text()
+          // console.error('Erreur HTTP lors de la récupération des informations de contact:', response.status, response.statusText, errorText)
         }
       } catch (error) {
-        console.error('Erreur lors de la récupération des informations de contact:', error)
+        // Log d'erreur supprimé pour production
+        // console.error('Erreur lors de la récupération des informations de contact:', error)
         // Garder les valeurs par défaut en cas d'erreur
       } finally {
         setLoading(false)
@@ -63,7 +71,7 @@ export function useContactInfo() {
     }
 
     fetchContactInfo()
-  }, [])
+  }, [isMounted])
 
   // Fonction utilitaire pour formater le numéro de téléphone pour tel:
   // Compatible iOS et Android

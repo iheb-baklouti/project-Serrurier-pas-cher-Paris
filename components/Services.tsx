@@ -71,7 +71,7 @@ const Services = () => {
             return (
               <Card key={index} className="relative hover:shadow-lg transition-shadow duration-300 group bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
                 {service.urgent && (
-                  <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                  <div className="absolute -top-2 -right-2 bg-red-700 text-white text-xs px-2 py-1 rounded-full font-medium">
                     Urgent
                   </div>
                 )}
