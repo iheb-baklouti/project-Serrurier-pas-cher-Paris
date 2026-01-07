@@ -28,7 +28,7 @@
           "value": "http"
         }
       ],
-      "destination": "https://www.serrurier-pas-cher.paris/:path*",
+      "destination": "https://www.serrurier-pas-cher.paris/$1",
       "permanent": true
     }
   ]
